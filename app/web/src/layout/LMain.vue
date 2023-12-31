@@ -18,6 +18,8 @@ import LBody from './LBody.vue';
 import LFooter from './LFooter.vue';
 import LHeader from './LHeader.vue';
 
+window.$message = useMessage();
+
 const router = useRouter();
 const appStore = useAppStore();
 const bar = useLoadingBar();

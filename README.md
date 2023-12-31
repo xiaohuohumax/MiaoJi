@@ -1,6 +1,12 @@
 ## MiaoJi(喵记)
 
-**基于 `Github API` `Issue` `Label` 实现的简单网站, 可用于搭建简单博客, 笔记等**
+**基于 `Github API` `Issue` `Label` 实现的简单网站, 可用于搭建简单博客, 记录笔记等**
+
+### 在线访问
+
+[Live Demo](https://xiaohuohumax.github.io/MiaoJi/)
+
+由于未添加 `Token`, 所以访问频次有限制(大概60次/每人/每小时), 详见[REST API](https://docs.github.com/zh/rest/using-the-rest-api/rate-limits-for-the-rest-api)
 
 ## 功能
 

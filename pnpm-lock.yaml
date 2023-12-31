@@ -44,6 +44,9 @@ importers:
       await-to-js:
         specifier: ^3.0.0
         version: 3.0.0
+      axios:
+        specifier: ^1.6.3
+        version: 1.6.3
       md-editor-v3:
         specifier: ^4.10.0
         version: 4.10.0(@codemirror/state@6.4.0)(@codemirror/view@6.23.0)(@lezer/common@1.2.0)(vue@3.4.2)

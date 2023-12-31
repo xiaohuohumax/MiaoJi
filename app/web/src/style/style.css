@@ -10,6 +10,11 @@ button,
     background-color: var(--n-color);
 }
 
+img,
+video {
+  height: initial;
+}
+
 /* 字体: 寒蝉圆黑体 */
 @font-face {
     font-family: ChillRoundGothic;

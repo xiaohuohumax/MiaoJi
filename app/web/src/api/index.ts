@@ -1,7 +1,20 @@
 import { CommentApi, IssueApi, LabelApi } from '@miaoji/api';
 import { logger, RequestExecutor } from '@miaoji/util';
-import { useMessage } from 'naive-ui';
+import { AxiosResponse } from 'axios';
 import appConfig from '#/app.config';
+
+function handleError(response?: AxiosResponse) {
+    if (!response) {
+        return;
+    }
+    switch (response.status) {
+    case 401:
+        window.$message?.error('未授权!');
+        break;
+    case 403:
+        window.$message?.error('没有权限,可能访问超出限制!');
+    }
+}
 
 const executor = RequestExecutor.create({
     baseURL: 'https://api.github.com',
@@ -17,11 +30,11 @@ const executor = RequestExecutor.create({
         resInterceptors(response) {
             logger.debug(`[${response.config.url}]` + JSON.stringify(response.config.params));
             logger.debug(response);
-            const message = useMessage();
-            if(response.status == 401){ 
-                message.error('没有权限');
-            }
             return response;
+        },
+        resInterceptorCatch(err) {
+            handleError(err.response);
+            return Promise.reject(err);
         },
     }
 });

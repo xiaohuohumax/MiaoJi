@@ -2,7 +2,9 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 export interface RequestInterceptors {
     reqtInterceptors?: <T extends AxiosRequestConfig>(config: T) => T | Promise<T>
+    reqInterceptorCatch?: (err: any) => any
     resInterceptors?: (response: AxiosResponse) => AxiosResponse
+    resInterceptorCatch?: (err: any) => any
 }
 
 export interface RequestConfig extends AxiosRequestConfig {
@@ -18,11 +20,11 @@ export class RequestExecutor {
 
         this.instance.interceptors.request.use(
             this.interceptors?.reqtInterceptors,
-            err => Promise.reject(err),
+            this.interceptors?.reqInterceptorCatch
         );
         this.instance.interceptors.response.use(
             this.interceptors?.resInterceptors,
-            err => Promise.reject(err),
+            this.interceptors?.resInterceptorCatch
         );
         this.instance.interceptors.response.use(res => res.data);
     }

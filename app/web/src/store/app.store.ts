@@ -122,7 +122,7 @@ export const useAppStore = defineStore('app', {
                 const [err, data] = await awaitTo(labelApi.qAllLabels());
                 if (err) {
                     logger.error('load labels fail', count, failMax, err);
-                    this._st = setTimeout(load, 3_000, res, rej);
+                    this._st = setTimeout(load, 10_000, res, rej);
                     return;
                 }
                 res(this.labels = data);

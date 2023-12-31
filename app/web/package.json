@@ -3,10 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "repository": "https://api.github.com/xiaohuohumax/MiaoJi",
+  "repository": "https://github.com/xiaohuohumax/MiaoJi",
   "author": {
     "name": "xiaohuohumax",
-    "url": "https://api.github.com/xiaohuohumax"
+    "url": "https://github.com/xiaohuohumax"
   },
   "scripts": {
     "dev": "vite",
@@ -20,6 +20,7 @@
     "@miaoji/util": "workspace:^",
     "D": "^1.0.0",
     "await-to-js": "^3.0.0",
+    "axios": "^1.6.3",
     "md-editor-v3": "^4.10.0",
     "naive-ui": "^2.36.0",
     "pinia": "^2.1.7",

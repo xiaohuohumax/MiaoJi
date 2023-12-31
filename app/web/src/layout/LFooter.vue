@@ -1,8 +1,7 @@
 <template>
     <div size="small" class="text-center py-8 flex justify-center items-center text-xs">
         <NSpace>
-
-            <a :href="appConfig.author.url" target="_blank" class="hover:text-green-300">
+            <a :href="appConfig.repository" target="_blank" class="hover:text-green-300">
                 {{ appConfig.name }}
             </a>
             <span>

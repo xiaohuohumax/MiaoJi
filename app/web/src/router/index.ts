@@ -116,10 +116,18 @@ const routes: RouteRecordRaw[] = [
     }
 ];
 
-export default createRouter('WebHistory', routes, import.meta.env.VITE_APP_BASE, {
-    scrollBehavior(to) {
-        if (to.meta.scrollTop) {
-            return { top: 0 };
-        }
-    },
-});
+export default createRouter(
+    // 路由模式
+    import.meta.env.VITE_ROUTER_HISTORY,
+    // 路由
+    routes,
+    // 基础路径
+    import.meta.env.VITE_APP_BASE,
+    {
+        scrollBehavior(to) {
+            if (to.meta.scrollTop) {
+                return { top: 0 };
+            }
+        },
+    }
+);

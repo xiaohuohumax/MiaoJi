@@ -85,7 +85,7 @@ const dState = watchLoading({
 const isOver = ref(false);
 
 let page = 1;
-const perPage = 10;
+const perPage = 20;
 
 async function queryDocuments(page: number, labels: string[]) {
     dState.value = 'loading';
