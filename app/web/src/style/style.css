@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* tailwindcss 与 naive-ui 基础样式冲突 */
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+    background-color: var(--n-color);
+}
+
+/* 字体: 寒蝉圆黑体 */
+@font-face {
+    font-family: ChillRoundGothic;
+    src: url(/font/ChillRoundGothic_Regular.otf);
+}
+
+body,
+.md-editor,
+:root {
+    font-family: ChillRoundGothic !important;
+}

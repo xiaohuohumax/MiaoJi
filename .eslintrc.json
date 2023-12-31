@@ -1,0 +1,67 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:vue/vue3-essential"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "parser": "@typescript-eslint/parser",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "vue",
+        "simple-import-sort"
+    ],
+    "rules": {
+        "key-spacing": [
+            "error",
+            {
+                "afterColon": true
+            }
+        ],
+        "indent": [
+            "error",
+            4
+        ],
+        "linebreak-style": [
+            "error",
+            "windows"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "no-undef": "off",
+        "no-empty": "off",
+        "simple-import-sort/imports": [
+            "error",
+            {
+                "groups": [
+                    [
+                        "^node:",
+                        "^vite",
+                        "^vue",
+                        "^@?\\w",
+                        "^[#@&]/",
+                        "^\\.\\.?",
+                        "^\\.(css|less|scss)$",
+                        "^\\u0000"
+                    ]
+                ]
+            }
+        ],
+        "sort-imports": "off",
+        "import/order": "off",
+        "@typescript-eslint/no-explicit-any": "off"
+    }
+}

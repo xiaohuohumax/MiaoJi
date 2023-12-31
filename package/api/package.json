@@ -1,0 +1,13 @@
+{
+  "name": "@miaoji/api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@miaoji/util": "workspace:^"
+  }
+}

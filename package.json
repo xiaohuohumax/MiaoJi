@@ -1,0 +1,20 @@
+{
+  "name": "miaoji",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "pnpm --filter @miaoji/web dev",
+    "build": "pnpm --filter @miaoji/web build",
+    "lint": "eslint --fix --ext=.ts,.d.ts,.vue . && echo success 🎉🎉"
+  },
+  "keywords": [],
+  "author": "xiaohuohumax",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-vue": "^9.19.2"
+  }
+}

@@ -1,0 +1,81 @@
+import { author, repository, version } from './package.json';
+
+export interface AppConfigLable {
+    communicationLabel: string,
+    linkLabel: string,
+    aboutLabel: string,
+    docLabel: string,
+    applyLinkLabel: string,
+    hiddenCommentLabel: string,
+    bannerLabel: string,
+    historyLabel: string,
+    photoLabel: string,
+}
+
+export interface AppConfig {
+    name: string,
+    version: string,
+    repository: string,
+    author: {
+        name: string,
+        url: string
+    },
+    api: {
+        apiBaseUrl: string,
+        repo: string,
+        owner: string,
+        accessToken?: string
+    },
+    funcLabelPrefix: string
+    label: AppConfigLable,
+    loopLoadLabelsTimeout: number,
+}
+
+const appConfig: AppConfig = {
+    // 项目名称
+    name: import.meta.env.VITE_APP_NAME,
+    // 版本号
+    version,
+    // 仓库地址
+    repository,
+    // 作者信息
+    author,
+    api: {
+        // github rest api 一般不变
+        apiBaseUrl: 'https://api.github.com',
+        // 仓库名称
+        repo: 'MiaoJi',
+        // 持有者
+        owner: 'xiaohuohumax',
+        // github token 只需提供访问issue权限即可 可有可无
+        // (提升游客访问数量限制)
+        accessToken: import.meta.env.VITE_GITHUB_TOKEN,
+    },
+    // 功能标签前缀
+    funcLabelPrefix: 'func:',
+    // 标签
+    label: {
+        // 留言标签
+        communicationLabel: 'func:communication',
+        // 友链标签
+        linkLabel: 'func:link',
+        // 关于标签
+        aboutLabel: 'func:about',
+        // 文章笔记标签
+        docLabel: 'func:doc',
+        // 申请友链标签
+        applyLinkLabel: 'func:apply-link',
+        // 影藏评论标签
+        hiddenCommentLabel: 'func:hidden-comment',
+        // 轮播图标签
+        bannerLabel: 'func:banner',
+        // 历史记录标签
+        historyLabel: 'func:history',
+        // 相册标签
+        photoLabel: 'func:photo'
+    },
+    // 循环刷新全部标签时间间隔
+    loopLoadLabelsTimeout: 30_60_000
+};
+
+export default appConfig;

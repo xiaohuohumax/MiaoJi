@@ -1,0 +1,17 @@
+{
+  "name": "@miaoji/util",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@types/markdown-it": "^13.0.7",
+    "axios": "^1.6.3",
+    "loglevel": "^1.8.1",
+    "markdown-it": "^14.0.0",
+    "vue-router": "^4.2.5"
+  }
+}

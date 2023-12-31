@@ -1,0 +1,39 @@
+<template>
+    <div class="flex flex-col min-h-svh">
+        <LHeader />
+        <LBody class="my-2 flex-grow" />
+        <LFooter/>
+    </div>
+    <NBackTop :bottom="40" :right="40" :visibility-height="300" class=" hidden md:flex">
+        <ToTop size="1.5em" />
+    </NBackTop>
+</template>
+<script setup lang="ts">
+import { useRouter } from 'vue-router';
+import { ToTop } from '@icon-park/vue-next';
+import { NBackTop, useMessage } from 'naive-ui';
+import { useLoadingBar } from 'naive-ui';
+import { useAppStore } from '@/store/app.store';
+import LBody from './LBody.vue';
+import LFooter from './LFooter.vue';
+import LHeader from './LHeader.vue';
+
+const router = useRouter();
+const appStore = useAppStore();
+const bar = useLoadingBar();
+
+router.beforeEach((_to, _from, next) => {
+    bar.start();
+    next();
+});
+
+router.afterEach(() => bar.finish());
+
+const message = useMessage();
+// 首次加载全部标签
+appStore.loadLabels(5).catch(() => {
+    message.error('加载标签失败!');
+});
+appStore.loadBanners();
+appStore.loopLoadLabels();
+</script>

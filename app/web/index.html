@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%- title %></title>
+  <style>
+    :root {
+      --app-context-color: #67bc66;
+      --app-background-color: #101014;
+      --loading-time: <%- logingTime %>s
+    }
+
+    body {
+      background-color: var(--app-background-color);
+    }
+
+    .app-loading {
+      position: fixed;
+      display: flex;
+      width: 100svw;
+      height: 100svh;
+      z-index: 99999;
+      transition: background-color .5s;
+      background-color: var(--app-background-color);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .app-load-ok {
+      animation: loadok var(--loading-time) ease-in-out;
+    }
+
+    .app-loading img {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      animation: loading 1s infinite alternate ease-in-out;
+    }
+
+    @keyframes loadok {
+      0% {
+        opacity: 1;
+      }
+
+      60% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes loading {
+      0% {
+        opacity: 0;
+        transform: scale(1);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-loading">
+    <div class=""><img src="/logo.png"></div>
+  </div>
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
