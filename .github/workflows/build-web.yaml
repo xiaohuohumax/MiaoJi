@@ -48,6 +48,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           # 私人令牌必须包含workflows权限
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GH_PAGE_TOKEN }}
           # 部署的文件目录
           publish_dir: ./app/web/dist
