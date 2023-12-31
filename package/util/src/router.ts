@@ -19,9 +19,9 @@ function getHistoryFunc(routerHistory: HistoryType) {
         : historyMap.MemoryHistory;
 }
 
-export function createRouter(historyType: HistoryType, routes: RouteRecordRaw[], option: Partial<RouterOptions> = {}) {
+export function createRouter(historyType: HistoryType, routes: RouteRecordRaw[], baseUrl: string = '', option: Partial<RouterOptions> = {}) {
     return cRouter({
-        history: getHistoryFunc(historyType)(),
+        history: getHistoryFunc(historyType)(baseUrl),
         routes,
         ...option
     });

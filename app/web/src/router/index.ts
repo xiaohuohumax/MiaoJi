@@ -116,7 +116,7 @@ const routes: RouteRecordRaw[] = [
     }
 ];
 
-export default createRouter('WebHistory', routes, {
+export default createRouter('WebHistory', routes, import.meta.env.VITE_APP_BASE, {
     scrollBehavior(to) {
         if (to.meta.scrollTop) {
             return { top: 0 };
