@@ -716,6 +716,11 @@ button,
     background-color: var(--n-color);
 }
 
+img,
+video {
+  height: initial;
+}
+
 /* 字体: 寒蝉圆黑体 */
 @font-face {
     font-family: ChillRoundGothic;
@@ -751,7 +756,22 @@ body,
     .md\:flex {
         display: flex;
     }
+    .md\:h-56 {
+        height: 14rem;
+    }
     .md\:w-16 {
         width: 4rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .lg\:h-64 {
+        height: 16rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .xl\:h-72 {
+        height: 18rem;
     }
 }

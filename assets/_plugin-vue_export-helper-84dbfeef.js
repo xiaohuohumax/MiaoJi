@@ -1,5 +1,5 @@
-import { H as createTextVNode, L as Fragment, a_ as Comment, c as cB, a as cM, b as c, g as useTheme, d as defineComponent, u as useConfig, f as computed, j as useThemeClass, an as warn, h, m as mergeProps, bn as iconLight, a2 as useRtl, bo as spaceLight, a4 as createKey } from "./index-7a7392d0.js";
-import { d as getGap, e as depx } from "./Card-755bbea7.js";
+import { H as createTextVNode, L as Fragment, aZ as Comment, c as cB, a as cM, b as c, g as useTheme, d as defineComponent, u as useConfig, f as computed, j as useThemeClass, am as warn, h, m as mergeProps, bm as iconLight, a1 as useRtl, bn as spaceLight, a3 as createKey, p as inject, q as throwError, bo as messageApiInjectionKey } from "./index-d862e802.js";
+import { d as getGap, e as depx } from "./Card-9da4f331.js";
 function getSlot(instance, slotName = "default", fallback = []) {
   const slots = instance.$slots;
   const slot = slots[slotName];
@@ -267,6 +267,13 @@ const NSpace = defineComponent({
     ] }, child)));
   }
 });
+function useMessage() {
+  const api = inject(messageApiInjectionKey, null);
+  if (api === null) {
+    throwError("use-message", "No outer <n-message-provider /> founded. See prerequisite in https://www.naiveui.com/en-US/os-theme/components/message for more details. If you want to use `useMessage` outside setup, please check https://www.naiveui.com/zh-CN/os-theme/components/message#Q-&-A.");
+  }
+  return api;
+}
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
   for (const [key, val] of props) {
@@ -281,5 +288,6 @@ export {
   flatten as b,
   formatLength as f,
   getSlot as g,
-  isBrowser as i
+  isBrowser as i,
+  useMessage as u
 };

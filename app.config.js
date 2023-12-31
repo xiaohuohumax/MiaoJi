@@ -1,8 +1,8 @@
 const version = "0.0.0";
-const repository = "https://api.github.com/xiaohuohumax/MiaoJi";
+const repository = "https://github.com/xiaohuohumax/MiaoJi";
 const author = {
   name: "xiaohuohumax",
-  url: "https://api.github.com/xiaohuohumax"
+  url: "https://github.com/xiaohuohumax"
 };
 const appConfig = {
   // 项目名称

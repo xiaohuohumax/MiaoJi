@@ -1,8 +1,8 @@
-import { r as ref, h, c as cB, a as cM, b as c, d as defineComponent, u as useConfig, w as watchEffect, e as watch, t as toRef, f as computed, g as useTheme, o as onMounted, i as onBeforeUnmount, j as useThemeClass, k as isMounted, T as Transition, m as mergeProps, n as nextTick, N as NBaseIcon, l as backTopLight, p as inject, q as loadingBarApiInjectionKey, s as throwError, I as IconWrapper, v as createVNode, x as resolveComponent, y as openBlock, z as createElementBlock, A as withCtx, B as createBlock, K as KeepAlive, C as resolveDynamicComponent, D as createCommentVNode, E as createBaseVNode, F as toDisplayString, G as unref, H as createTextVNode, J as useAppStore, L as Fragment, M as renderList, O as useRouter, P as useMessage } from "./index-7a7392d0.js";
-import { f as formatLength, _ as _export_sfc, N as NSpace, a as NIcon } from "./_plugin-vue_export-helper-e34dca77.js";
+import { r as ref, h, c as cB, a as cM, b as c, d as defineComponent, u as useConfig, w as watchEffect, e as watch, t as toRef, f as computed, g as useTheme, o as onMounted, i as onBeforeUnmount, j as useThemeClass, k as isMounted, T as Transition, m as mergeProps, n as nextTick, N as NBaseIcon, l as backTopLight, p as inject, q as throwError, s as loadingBarApiInjectionKey, I as IconWrapper, v as createVNode, x as resolveComponent, y as openBlock, z as createElementBlock, A as withCtx, B as createBlock, K as KeepAlive, C as resolveDynamicComponent, D as createCommentVNode, E as createBaseVNode, F as toDisplayString, G as unref, H as createTextVNode, J as useAppStore, L as Fragment, M as renderList, O as useRouter } from "./index-d862e802.js";
+import { f as formatLength, _ as _export_sfc, N as NSpace, a as NIcon, u as useMessage } from "./_plugin-vue_export-helper-84dbfeef.js";
 import { a as appConfig } from "../app.config.js";
-import { r as resolveSlot, N as NCard } from "./Card-755bbea7.js";
-import { f as fadeInScaleUpTransition, u as useMergedState, L as LazyTeleport } from "./fade-in-scale-up.cssr-1505300e.js";
+import { r as resolveSlot, N as NCard } from "./Card-9da4f331.js";
+import { f as fadeInScaleUpTransition, u as useMergedState, L as LazyTeleport } from "./fade-in-scale-up.cssr-92e4083b.js";
 function getParentNode(node) {
   if (node.nodeType === 9) {
     return null;
@@ -378,7 +378,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
         createVNode(unref(NSpace), null, {
           default: withCtx(() => [
             createBaseVNode("a", {
-              href: unref(appConfig).author.url,
+              href: unref(appConfig).repository,
               target: "_blank",
               class: "hover:text-green-300"
             }, toDisplayString(unref(appConfig).name), 9, _hoisted_2$1),
@@ -494,6 +494,7 @@ const _hoisted_1 = { class: "flex flex-col min-h-svh" };
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "LMain",
   setup(__props) {
+    window.$message = useMessage();
     const router = useRouter();
     const appStore = useAppStore();
     const bar = useLoadingBar();

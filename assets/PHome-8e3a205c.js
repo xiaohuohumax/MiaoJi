@@ -1,14 +1,14 @@
-import { Q as upperFirst, R as toString, d as defineComponent, h, S as replaceable, c as cB, b as c, U as cE, V as iconSwitchTransition, W as useStyle, t as toRef, X as NIconSwitchTransition, N as NBaseIcon, Y as NBaseLoading, Z as createInjectionKey, r as ref, e as watch, p as inject, f as computed, a as cM, _ as cNotM, u as useConfig, g as useTheme, $ as useMemo, o as onMounted, a0 as getCurrentInstance, w as watchEffect, a1 as provide, a2 as useRtl, j as useThemeClass, L as Fragment, n as nextTick, a3 as inputLight, a4 as createKey, a5 as cloneVNode, s as throwError, a6 as onBeforeUpdate, a7 as indexMap, i as onBeforeUnmount, a8 as onUpdated, a9 as withDirectives, aa as vShow, T as Transition, ab as normalizeStyle, ac as carouselLight, I as IconWrapper, v as createVNode, J as useAppStore, G as unref, y as openBlock, B as createBlock, A as withCtx, z as createElementBlock, M as renderList, D as createCommentVNode, O as useRouter, ad as onBeforeRouteUpdate, ae as onActivated, af as onBeforeRouteLeave, x as resolveComponent, E as createBaseVNode, H as createTextVNode, F as toDisplayString, ag as removeFuncLabels, ah as to, ai as issueApi } from "./index-7a7392d0.js";
-import { i as isSafari, u as useFormItem, w as watchLoading, N as NButton, C as COver, _ as _sfc_main$2 } from "./COver-b6e981a4.js";
-import { _ as _sfc_main$3 } from "./CLabel.vue_vue_type_script_setup_true_lang-c9bb30f5.js";
-import { C as CMarkdown } from "./CMarkdown-5656abae.js";
-import { u as useLocale, N as NTime, _ as _sfc_main$4 } from "./CReactions.vue_vue_type_script_setup_true_lang-f1c72f25.js";
+import { P as upperFirst, Q as toString, d as defineComponent, h, R as replaceable, c as cB, b as c, S as cE, U as iconSwitchTransition, V as useStyle, t as toRef, W as NIconSwitchTransition, N as NBaseIcon, X as NBaseLoading, Y as createInjectionKey, r as ref, e as watch, p as inject, f as computed, a as cM, Z as cNotM, u as useConfig, g as useTheme, _ as useMemo, o as onMounted, $ as getCurrentInstance, w as watchEffect, a0 as provide, a1 as useRtl, j as useThemeClass, L as Fragment, n as nextTick, a2 as inputLight, a3 as createKey, a4 as cloneVNode, q as throwError, a5 as onBeforeUpdate, a6 as indexMap, i as onBeforeUnmount, a7 as onUpdated, a8 as withDirectives, a9 as vShow, T as Transition, aa as normalizeStyle, ab as carouselLight, I as IconWrapper, v as createVNode, J as useAppStore, G as unref, y as openBlock, B as createBlock, A as withCtx, z as createElementBlock, M as renderList, D as createCommentVNode, ac as onBeforeRouteUpdate, ad as onActivated, ae as onBeforeRouteLeave, O as useRouter, x as resolveComponent, E as createBaseVNode, H as createTextVNode, F as toDisplayString, af as removeFuncLabels, ag as to, ah as issueApi } from "./index-d862e802.js";
+import { i as isSafari, u as useFormItem, w as watchLoading, N as NButton, C as COver, _ as _sfc_main$2 } from "./COver-eb0f379e.js";
+import { _ as _sfc_main$3 } from "./CLabel.vue_vue_type_script_setup_true_lang-810b9aa6.js";
+import { C as CMarkdown } from "./CMarkdown-9b25e5ed.js";
+import { u as useLocale, N as NTime, _ as _sfc_main$4 } from "./CReactions.vue_vue_type_script_setup_true_lang-7b4b304d.js";
 import { a as appConfig } from "../app.config.js";
-import { c as createCompounder, N as NScrollbar, o as on, a as off, k as keep, g as getPreciseEventTarget, b as NImage } from "./Image-6c1b71f6.js";
-import { u as useMergedState } from "./fade-in-scale-up.cssr-1505300e.js";
-import { b as flatten, N as NSpace } from "./_plugin-vue_export-helper-e34dca77.js";
-import { V as VResizeObserver } from "./VResizeObserver-e97fbd9b.js";
-import { r as resolveSlot, a as resolveSlotWithProps, b as resolveWrappedSlot, c as call, g as getMargin, N as NCard } from "./Card-755bbea7.js";
+import { c as createCompounder, N as NScrollbar, o as on, a as off, k as keep, g as getPreciseEventTarget, b as NImage } from "./Image-33ee6b1b.js";
+import { u as useMergedState } from "./fade-in-scale-up.cssr-92e4083b.js";
+import { b as flatten, N as NSpace } from "./_plugin-vue_export-helper-84dbfeef.js";
+import { V as VResizeObserver } from "./VResizeObserver-660fe53e.js";
+import { r as resolveSlot, a as resolveSlotWithProps, b as resolveWrappedSlot, c as call, g as getMargin, N as NCard } from "./Card-9da4f331.js";
 function capitalize(string) {
   return upperFirst(toString(string).toLowerCase());
 }
@@ -2735,12 +2735,14 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
         default: withCtx(() => [
           (openBlock(true), createElementBlock(Fragment, null, renderList(unref(issuesStore).banners, (banner) => {
             return openBlock(), createElementBlock("div", {
-              class: "h-48 w-full inline-block rounded-md overflow-hidden",
+              class: "h-48 md:h-56 lg:h-64 xl:h-72 w-full inline-block rounded-md overflow-hidden",
               key: banner.src
             }, [
               createVNode(unref(NImage), {
                 "object-fit": "cover",
-                class: "h-full w-full inline-block",
+                width: "100%",
+                height: "100%",
+                class: "w-full h-full",
                 src: banner.src,
                 alt: banner.alt
               }, null, 8, ["src", "alt"])
@@ -2757,7 +2759,7 @@ const _hoisted_2 = {
   key: 1,
   class: "text-center"
 };
-const perPage = 10;
+const perPage = 20;
 const beginBttom = 100;
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "PHome",
