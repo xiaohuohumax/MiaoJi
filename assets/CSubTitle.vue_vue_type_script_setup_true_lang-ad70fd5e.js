@@ -1,0 +1,25 @@
+import { d as defineComponent, y as openBlock, B as createBlock, A as withCtx, E as createBaseVNode, F as toDisplayString, G as unref } from "./index-766f9230.js";
+import { N as NCard } from "./Card-9e30a367.js";
+const _hoisted_1 = { class: "font-bold text-lg" };
+const _sfc_main = /* @__PURE__ */ defineComponent({
+  __name: "CSubTitle",
+  props: {
+    context: {}
+  },
+  setup(__props) {
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(unref(NCard), {
+        size: "small",
+        bordered: false
+      }, {
+        default: withCtx(() => [
+          createBaseVNode("div", _hoisted_1, toDisplayString(_ctx.context), 1)
+        ]),
+        _: 1
+      });
+    };
+  }
+});
+export {
+  _sfc_main as _
+};
