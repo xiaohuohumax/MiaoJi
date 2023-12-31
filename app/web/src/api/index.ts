@@ -8,7 +8,7 @@ const executor = RequestExecutor.create({
     timeout: 10_0000,
     headers: {
         Accept: 'application/json',
-        Authorization: appConfig.api.accessToken || ('Bearer ' + appConfig.api.accessToken)
+        Authorization: appConfig.api.accessToken && ('Bearer ' + appConfig.api.accessToken)
     },
     interceptors: {
         reqtInterceptors(config) {
