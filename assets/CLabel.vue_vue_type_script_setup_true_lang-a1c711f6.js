@@ -1,4 +1,4 @@
-import { d as defineComponent, y as openBlock, z as createElementBlock, E as createBaseVNode, ab as normalizeStyle, H as createTextVNode, F as toDisplayString } from "./index-766f9230.js";
+import { d as defineComponent, y as openBlock, z as createElementBlock, E as createBaseVNode, ab as normalizeStyle, H as createTextVNode, F as toDisplayString } from "./index-9ab0a72d.js";
 const _hoisted_1 = { class: "p-1 text-left text-wrap max-w-full cursor-pointer hover:scale-105 duration-100" };
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "CLabel",

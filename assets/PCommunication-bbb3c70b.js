@@ -1,12 +1,12 @@
-import { d as defineComponent, r as ref, B as createBlock, A as withCtx, G as unref, ah as to, ai as issueApi, y as openBlock, E as createBaseVNode, v as createVNode, H as createTextVNode } from "./index-766f9230.js";
-import { _ as _sfc_main$2 } from "./CSubTitle.vue_vue_type_script_setup_true_lang-ad70fd5e.js";
-import { w as watchLoading, _ as _sfc_main$1, N as NButton, C as COver } from "./COver-cf9908d9.js";
-import { C as CMarkdown } from "./CMarkdown-845f11ce.js";
-import { _ as _sfc_main$3 } from "./CReactions.vue_vue_type_script_setup_true_lang-bce368a9.js";
+import { d as defineComponent, r as ref, B as createBlock, A as withCtx, G as unref, ah as to, ai as issueApi, y as openBlock, E as createBaseVNode, v as createVNode, H as createTextVNode } from "./index-9ab0a72d.js";
+import { _ as _sfc_main$2 } from "./CSubTitle.vue_vue_type_script_setup_true_lang-55245493.js";
+import { w as watchLoading, _ as _sfc_main$1, N as NButton, C as COver } from "./COver-291e9a76.js";
+import { C as CMarkdown } from "./CMarkdown-0954d770.js";
+import { _ as _sfc_main$3 } from "./CReactions.vue_vue_type_script_setup_true_lang-737f1eaf.js";
 import { a as appConfig } from "../app.config.js";
-import { _ as _sfc_main$4 } from "./CComments.vue_vue_type_script_setup_true_lang-77d5b109.js";
-import { N as NSpace } from "./_plugin-vue_export-helper-76661c52.js";
-import { N as NCard } from "./Card-9e30a367.js";
+import { _ as _sfc_main$4 } from "./CComments.vue_vue_type_script_setup_true_lang-ce2db2d7.js";
+import { N as NSpace } from "./_plugin-vue_export-helper-5fb8bf2a.js";
+import { N as NCard } from "./Card-3fcb523c.js";
 const _hoisted_1 = { class: "text-center" };
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "PCommunication",

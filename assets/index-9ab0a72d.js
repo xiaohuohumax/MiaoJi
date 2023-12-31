@@ -10960,9 +10960,9 @@ const historyMap = {
 function getHistoryFunc(routerHistory) {
   return Object.keys(historyMap).includes(routerHistory) ? historyMap[routerHistory] : historyMap.MemoryHistory;
 }
-function createRouter(historyType, routes2, option = {}) {
+function createRouter(historyType, routes2, baseUrl = "", option = {}) {
   return createRouter$1({
-    history: getHistoryFunc(historyType)(),
+    history: getHistoryFunc(historyType)(baseUrl),
     routes: routes2,
     ...option
   });
@@ -26329,12 +26329,12 @@ const __vitePreload = function preload(baseModule, deps, importerUrl) {
 const routes = [
   {
     path: "/",
-    component: () => __vitePreload(() => import("./LMain-e411f7f5.js"), true ? ["assets/LMain-e411f7f5.js","assets/_plugin-vue_export-helper-76661c52.js","assets/Card-9e30a367.js","app.config.js","assets/fade-in-scale-up.cssr-90f2a206.js"] : void 0),
+    component: () => __vitePreload(() => import("./LMain-a1ffa590.js"), true ? ["assets/LMain-a1ffa590.js","assets/_plugin-vue_export-helper-5fb8bf2a.js","assets/Card-3fcb523c.js","app.config.js","assets/fade-in-scale-up.cssr-f60307be.js"] : void 0),
     children: [
       {
         path: "",
         name: "PHome",
-        component: () => __vitePreload(() => import("./PHome-d499bc4c.js"), true ? ["assets/PHome-d499bc4c.js","assets/COver-cf9908d9.js","assets/_plugin-vue_export-helper-76661c52.js","assets/Card-9e30a367.js","assets/CLabel.vue_vue_type_script_setup_true_lang-1b998215.js","assets/CMarkdown-845f11ce.js","assets/CMarkdown-567c9081.css","assets/CReactions.vue_vue_type_script_setup_true_lang-bce368a9.js","app.config.js","assets/Image-6b360862.js","assets/fade-in-scale-up.cssr-90f2a206.js","assets/VResizeObserver-dc842312.js"] : void 0),
+        component: () => __vitePreload(() => import("./PHome-914d8572.js"), true ? ["assets/PHome-914d8572.js","assets/COver-291e9a76.js","assets/_plugin-vue_export-helper-5fb8bf2a.js","assets/Card-3fcb523c.js","assets/CLabel.vue_vue_type_script_setup_true_lang-a1c711f6.js","assets/CMarkdown-0954d770.js","assets/CMarkdown-567c9081.css","assets/CReactions.vue_vue_type_script_setup_true_lang-737f1eaf.js","app.config.js","assets/Image-3e3d43f7.js","assets/fade-in-scale-up.cssr-f60307be.js","assets/VResizeObserver-36278d00.js"] : void 0),
         props: (route) => route.query,
         meta: {
           title: "首页",
@@ -26345,7 +26345,7 @@ const routes = [
       {
         path: "doc/:id",
         name: "PDocument",
-        component: () => __vitePreload(() => import("./PDocument-8105b981.js"), true ? ["assets/PDocument-8105b981.js","assets/COver-cf9908d9.js","assets/_plugin-vue_export-helper-76661c52.js","assets/Card-9e30a367.js","assets/CLabel.vue_vue_type_script_setup_true_lang-1b998215.js","assets/CMarkdown-845f11ce.js","assets/CMarkdown-567c9081.css","assets/CReactions.vue_vue_type_script_setup_true_lang-bce368a9.js","assets/CComments.vue_vue_type_script_setup_true_lang-77d5b109.js","app.config.js"] : void 0),
+        component: () => __vitePreload(() => import("./PDocument-e57a0442.js"), true ? ["assets/PDocument-e57a0442.js","assets/COver-291e9a76.js","assets/_plugin-vue_export-helper-5fb8bf2a.js","assets/Card-3fcb523c.js","assets/CLabel.vue_vue_type_script_setup_true_lang-a1c711f6.js","assets/CMarkdown-0954d770.js","assets/CMarkdown-567c9081.css","assets/CReactions.vue_vue_type_script_setup_true_lang-737f1eaf.js","assets/CComments.vue_vue_type_script_setup_true_lang-ce2db2d7.js","app.config.js"] : void 0),
         props: (to2) => to2.params,
         meta: {
           title: "文章",
@@ -26355,7 +26355,7 @@ const routes = [
       {
         path: "about",
         name: "PAbout",
-        component: () => __vitePreload(() => import("./PAbout-9f7d8ccc.js"), true ? ["assets/PAbout-9f7d8ccc.js","assets/CSubTitle.vue_vue_type_script_setup_true_lang-ad70fd5e.js","assets/Card-9e30a367.js","assets/COver-cf9908d9.js","assets/_plugin-vue_export-helper-76661c52.js","assets/CMarkdown-845f11ce.js","assets/CMarkdown-567c9081.css","assets/CReactions.vue_vue_type_script_setup_true_lang-bce368a9.js","app.config.js","assets/CComments.vue_vue_type_script_setup_true_lang-77d5b109.js"] : void 0),
+        component: () => __vitePreload(() => import("./PAbout-fe9a17d6.js"), true ? ["assets/PAbout-fe9a17d6.js","assets/CSubTitle.vue_vue_type_script_setup_true_lang-55245493.js","assets/Card-3fcb523c.js","assets/COver-291e9a76.js","assets/_plugin-vue_export-helper-5fb8bf2a.js","assets/CMarkdown-0954d770.js","assets/CMarkdown-567c9081.css","assets/CReactions.vue_vue_type_script_setup_true_lang-737f1eaf.js","app.config.js","assets/CComments.vue_vue_type_script_setup_true_lang-ce2db2d7.js"] : void 0),
         meta: {
           title: "关于",
           scrollTop: true,
@@ -26365,7 +26365,7 @@ const routes = [
       {
         path: "label",
         name: "PLabel",
-        component: () => __vitePreload(() => import("./PLabel-89ac329a.js"), true ? ["assets/PLabel-89ac329a.js","assets/CSubTitle.vue_vue_type_script_setup_true_lang-ad70fd5e.js","assets/Card-9e30a367.js","assets/COver-cf9908d9.js","assets/_plugin-vue_export-helper-76661c52.js","assets/CLabel.vue_vue_type_script_setup_true_lang-1b998215.js","app.config.js"] : void 0),
+        component: () => __vitePreload(() => import("./PLabel-19b27734.js"), true ? ["assets/PLabel-19b27734.js","assets/CSubTitle.vue_vue_type_script_setup_true_lang-55245493.js","assets/Card-3fcb523c.js","assets/COver-291e9a76.js","assets/_plugin-vue_export-helper-5fb8bf2a.js","assets/CLabel.vue_vue_type_script_setup_true_lang-a1c711f6.js","app.config.js"] : void 0),
         meta: {
           title: "标签",
           scrollTop: true
@@ -26374,7 +26374,7 @@ const routes = [
       {
         path: "communication",
         name: "PCommunication",
-        component: () => __vitePreload(() => import("./PCommunication-c207fa1a.js"), true ? ["assets/PCommunication-c207fa1a.js","assets/CSubTitle.vue_vue_type_script_setup_true_lang-ad70fd5e.js","assets/Card-9e30a367.js","assets/COver-cf9908d9.js","assets/_plugin-vue_export-helper-76661c52.js","assets/CMarkdown-845f11ce.js","assets/CMarkdown-567c9081.css","assets/CReactions.vue_vue_type_script_setup_true_lang-bce368a9.js","app.config.js","assets/CComments.vue_vue_type_script_setup_true_lang-77d5b109.js"] : void 0),
+        component: () => __vitePreload(() => import("./PCommunication-bbb3c70b.js"), true ? ["assets/PCommunication-bbb3c70b.js","assets/CSubTitle.vue_vue_type_script_setup_true_lang-55245493.js","assets/Card-3fcb523c.js","assets/COver-291e9a76.js","assets/_plugin-vue_export-helper-5fb8bf2a.js","assets/CMarkdown-0954d770.js","assets/CMarkdown-567c9081.css","assets/CReactions.vue_vue_type_script_setup_true_lang-737f1eaf.js","app.config.js","assets/CComments.vue_vue_type_script_setup_true_lang-ce2db2d7.js"] : void 0),
         meta: {
           title: "留言",
           scrollTop: true,
@@ -26384,7 +26384,7 @@ const routes = [
       {
         path: "link",
         name: "PLink",
-        component: () => __vitePreload(() => import("./PLink-2117f94b.js"), true ? ["assets/PLink-2117f94b.js","assets/CSubTitle.vue_vue_type_script_setup_true_lang-ad70fd5e.js","assets/Card-9e30a367.js","assets/COver-cf9908d9.js","assets/_plugin-vue_export-helper-76661c52.js","app.config.js","assets/Grid-dc23a54d.js","assets/VResizeObserver-dc842312.js"] : void 0),
+        component: () => __vitePreload(() => import("./PLink-ce27adfc.js"), true ? ["assets/PLink-ce27adfc.js","assets/CSubTitle.vue_vue_type_script_setup_true_lang-55245493.js","assets/Card-3fcb523c.js","assets/COver-291e9a76.js","assets/_plugin-vue_export-helper-5fb8bf2a.js","app.config.js","assets/Grid-ba7da17e.js","assets/VResizeObserver-36278d00.js"] : void 0),
         meta: {
           title: "友链",
           scrollTop: true,
@@ -26394,7 +26394,7 @@ const routes = [
       {
         path: "history",
         name: "PHistory",
-        component: () => __vitePreload(() => import("./PHistory-90092f10.js"), true ? ["assets/PHistory-90092f10.js","assets/CSubTitle.vue_vue_type_script_setup_true_lang-ad70fd5e.js","assets/Card-9e30a367.js","assets/COver-cf9908d9.js","assets/_plugin-vue_export-helper-76661c52.js","assets/CMarkdown-845f11ce.js","assets/CMarkdown-567c9081.css","assets/CReactions.vue_vue_type_script_setup_true_lang-bce368a9.js","app.config.js"] : void 0),
+        component: () => __vitePreload(() => import("./PHistory-a2710c2e.js"), true ? ["assets/PHistory-a2710c2e.js","assets/CSubTitle.vue_vue_type_script_setup_true_lang-55245493.js","assets/Card-3fcb523c.js","assets/COver-291e9a76.js","assets/_plugin-vue_export-helper-5fb8bf2a.js","assets/CMarkdown-0954d770.js","assets/CMarkdown-567c9081.css","assets/CReactions.vue_vue_type_script_setup_true_lang-737f1eaf.js","app.config.js"] : void 0),
         meta: {
           title: "历史",
           scrollTop: true,
@@ -26404,7 +26404,7 @@ const routes = [
       {
         path: "photo",
         name: "PPhoto",
-        component: () => __vitePreload(() => import("./PPhoto-746eb5f2.js"), true ? ["assets/PPhoto-746eb5f2.js","assets/CSubTitle.vue_vue_type_script_setup_true_lang-ad70fd5e.js","assets/Card-9e30a367.js","assets/COver-cf9908d9.js","assets/_plugin-vue_export-helper-76661c52.js","assets/CReactions.vue_vue_type_script_setup_true_lang-bce368a9.js","app.config.js","assets/Grid-dc23a54d.js","assets/VResizeObserver-dc842312.js"] : void 0),
+        component: () => __vitePreload(() => import("./PPhoto-fdf22c6a.js"), true ? ["assets/PPhoto-fdf22c6a.js","assets/CSubTitle.vue_vue_type_script_setup_true_lang-55245493.js","assets/Card-3fcb523c.js","assets/COver-291e9a76.js","assets/_plugin-vue_export-helper-5fb8bf2a.js","assets/CReactions.vue_vue_type_script_setup_true_lang-737f1eaf.js","app.config.js","assets/Grid-ba7da17e.js","assets/VResizeObserver-36278d00.js"] : void 0),
         meta: {
           title: "相册",
           scrollTop: true,
@@ -26414,7 +26414,7 @@ const routes = [
       {
         path: "photo/:id",
         name: "PhotoDetails",
-        component: () => __vitePreload(() => import("./PPhotoDetails-81a1fbeb.js"), true ? ["assets/PPhotoDetails-81a1fbeb.js","assets/COver-cf9908d9.js","assets/_plugin-vue_export-helper-76661c52.js","assets/Card-9e30a367.js","assets/CLabel.vue_vue_type_script_setup_true_lang-1b998215.js","assets/CReactions.vue_vue_type_script_setup_true_lang-bce368a9.js","assets/CComments.vue_vue_type_script_setup_true_lang-77d5b109.js","assets/CMarkdown-845f11ce.js","assets/CMarkdown-567c9081.css","app.config.js","assets/Grid-dc23a54d.js","assets/VResizeObserver-dc842312.js","assets/Image-6b360862.js","assets/fade-in-scale-up.cssr-90f2a206.js"] : void 0),
+        component: () => __vitePreload(() => import("./PPhotoDetails-689c5ae3.js"), true ? ["assets/PPhotoDetails-689c5ae3.js","assets/COver-291e9a76.js","assets/_plugin-vue_export-helper-5fb8bf2a.js","assets/Card-3fcb523c.js","assets/CLabel.vue_vue_type_script_setup_true_lang-a1c711f6.js","assets/CReactions.vue_vue_type_script_setup_true_lang-737f1eaf.js","assets/CComments.vue_vue_type_script_setup_true_lang-ce2db2d7.js","assets/CMarkdown-0954d770.js","assets/CMarkdown-567c9081.css","app.config.js","assets/Grid-ba7da17e.js","assets/VResizeObserver-36278d00.js","assets/Image-3e3d43f7.js","assets/fade-in-scale-up.cssr-f60307be.js"] : void 0),
         props: (to2) => to2.params,
         meta: {
           title: "相册",
@@ -26424,7 +26424,7 @@ const routes = [
       {
         path: "/404",
         name: "PNotFound",
-        component: () => __vitePreload(() => import("./PNotFound-30bfdf74.js"), true ? ["assets/PNotFound-30bfdf74.js","assets/Card-9e30a367.js","app.config.js"] : void 0),
+        component: () => __vitePreload(() => import("./PNotFound-8fffe6d1.js"), true ? ["assets/PNotFound-8fffe6d1.js","assets/Card-3fcb523c.js","app.config.js"] : void 0),
         meta: {
           title: "404",
           scrollTop: true
@@ -26439,7 +26439,7 @@ const routes = [
     }
   }
 ];
-const router = createRouter("WebHistory", routes, {
+const router = createRouter("WebHistory", routes, "/MiaoJi/", {
   scrollBehavior(to2) {
     if (to2.meta.scrollTop) {
       return { top: 0 };
