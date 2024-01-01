@@ -1,5 +1,6 @@
 import { RouteRecordRaw } from 'vue-router';
-import { createRouter } from '@miaoji/util';
+import { createRouter, updateTitle } from '@miaoji/util';
+import { useAppStore } from '@/store/app.store';
 import appConfig from '#/app.config';
 
 const routes: RouteRecordRaw[] = [
@@ -116,7 +117,7 @@ const routes: RouteRecordRaw[] = [
     }
 ];
 
-export default createRouter(
+const router = createRouter(
     // 路由模式
     import.meta.env.VITE_ROUTER_HISTORY,
     // 路由
@@ -131,3 +132,16 @@ export default createRouter(
         },
     }
 );
+
+router.beforeEach(({ meta }, _from, next) => {
+    const appStore = useAppStore();
+    // 设置标题
+    meta?.title && updateTitle({ title: meta.title, after: '' });
+    // 拦截不可用标签
+    if (Array.isArray(meta.label) && !appStore.hasLabels(meta.label)) {
+        return next({ name: 'PNotFound' });
+    }
+    next();
+});
+
+export default router;
