@@ -1,5 +1,5 @@
-import { d as defineComponent, B as createBlock, A as withCtx, G as unref, y as openBlock, E as createBaseVNode } from "./index-d862e802.js";
-import { N as NCard } from "./Card-9da4f331.js";
+import { d as defineComponent, B as createBlock, A as withCtx, G as unref, y as openBlock, E as createBaseVNode } from "./index-2ff28f77.js";
+import { N as NCard } from "./Card-bc1cf177.js";
 import "../app.config.js";
 const _hoisted_1 = /* @__PURE__ */ createBaseVNode("div", { class: "font-bold text-center" }, [
   /* @__PURE__ */ createBaseVNode("p", { class: "text-2xl" }, " 404 Not Found "),
