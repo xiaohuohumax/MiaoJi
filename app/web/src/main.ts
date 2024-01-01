@@ -14,7 +14,7 @@ logger.setDefaultLevel(import.meta.env.VITE_LOGGER_LEVEL);
 (async () => {
     logger.info('welcome use: ' + appConfig.name);
 
-    updateTitle({ pre: '🎉', title: appConfig.name });
+    updateTitle({ pre: '🎉' + appConfig.name });
 
     const app = createApp(App);
 

@@ -12,5 +12,7 @@ const dTitle: Title = {
 
 export function updateTitle(title: Partial<Title>) {
     Object.assign(dTitle, title);
-    document.title = `${dTitle.pre}•${dTitle.title}•${dTitle.after}`;
+    document.title = [dTitle.pre, dTitle.title, dTitle.after]
+        .filter(v => v && v != '')
+        .join('•');
 }
