@@ -3,7 +3,6 @@ import { defineConfig, loadEnv } from 'vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import vue from '@vitejs/plugin-vue';
 
-
 function resolve(...paths: string[]) {
     return path.resolve(__dirname, ...paths);
 }
@@ -14,6 +13,7 @@ export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, envDir);
     return {
         envDir,
+        publicDir: resolve('../../public'),
         base: env.VITE_APP_BASE,
         plugins: [
             vue(),
@@ -48,7 +48,6 @@ export default defineConfig(({ mode }) => {
             outDir: './dist',
             rollupOptions: {
                 input: {
-                    index: resolve('./index.html'),
                     appConfig: resolve('./app.config.ts')
                 },
                 output: {
@@ -61,6 +60,7 @@ export default defineConfig(({ mode }) => {
             }
         },
         server: {
+            port: 8900,
             host: '0.0.0.0',
         }
     };

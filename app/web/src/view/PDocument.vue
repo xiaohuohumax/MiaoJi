@@ -42,14 +42,14 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { Issue, Label } from '@miaoji/api';
+import { CLoading } from '@miaoji/components';
+import { watchLoading } from '@miaoji/components';
 import { updateTitle } from '@miaoji/util';
 import awaitTo from 'await-to-js';
 import { NCard, NSpace, NTime } from 'naive-ui';
 import { issueApi } from '@/api';
 import { removeFuncLabels } from '@/store/app.store';
-import { watchLoading } from '@/util/loading';
 import CLabel from '&/CLabel.vue';
-import CLoading from '&/CLoading.vue';
 import CMarkdown from '&/CMarkdown.vue';
 import CReactions from '&/CReactions.vue';
 import CComments from './items/CComments.vue';

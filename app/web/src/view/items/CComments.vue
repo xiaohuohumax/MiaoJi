@@ -54,14 +54,14 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { Comment, Issue } from '@miaoji/api';
+import { CLoading } from '@miaoji/components';
+import { COver } from '@miaoji/components';
+import { watchLoading } from '@miaoji/components';
 import awaitTo from 'await-to-js';
 import { NButton, NCard, NSpace, NTime } from 'naive-ui';
 import { commentApi } from '@/api';
 import { hasLabel } from '@/store/app.store';
-import { watchLoading } from '@/util/loading';
-import CLoading from '&/CLoading.vue';
 import CMarkdown from '&/CMarkdown.vue';
-import COver from '&/COver.vue';
 import CReactions from '&/CReactions.vue';
 import appConfig from '#/app.config';
 

@@ -38,15 +38,15 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { CLoading } from '@miaoji/components';
+import { COver } from '@miaoji/components';
+import { CSubTitle } from '@miaoji/components';
+import { watchLoading } from '@miaoji/components';
 import { gImages } from '@miaoji/util';
 import awaitTo from 'await-to-js';
 import { NButton, NCard, NGrid, NGridItem, NSpace, NTime } from 'naive-ui';
 import { issueApi } from '@/api';
-import { Photo } from '@/api/entry.ext';
-import CSubTitle from '@/components/CSubTitle.vue';
-import { watchLoading } from '@/util/loading';
-import CLoading from '&/CLoading.vue';
-import COver from '&/COver.vue';
+import { Photo } from '@/api/entity.ext';
 import CReactions from '&/CReactions.vue';
 import appConfig from '#/app.config';
 
@@ -92,4 +92,4 @@ function nextPage() {
         }
     });
 }
-</script>
+</script>@/api/entity.ext

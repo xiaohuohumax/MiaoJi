@@ -23,14 +23,14 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { Issue } from '@miaoji/api';
+import { CLoading } from '@miaoji/components';
+import { COver } from '@miaoji/components';
+import { CSubTitle } from '@miaoji/components';
+import { watchLoading } from '@miaoji/components';
 import awaitTo from 'await-to-js';
 import { NButton, NCard, NSpace } from 'naive-ui';
 import { issueApi } from '@/api';
-import CSubTitle from '@/components/CSubTitle.vue';
-import { watchLoading } from '@/util/loading';
-import CLoading from '&/CLoading.vue';
 import CMarkdown from '&/CMarkdown.vue';
-import COver from '&/COver.vue';
 import CReactions from '&/CReactions.vue';
 import appConfig from '#/app.config';
 import CComments from './items/CComments.vue';

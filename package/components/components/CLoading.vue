@@ -21,7 +21,7 @@
 <script setup lang="ts">
 import { Caution, Loading } from '@icon-park/vue-next';
 import { NCard, NIcon } from 'naive-ui';
-import { LoadingState } from '@/util/loading';
+import { LoadingState } from '../util/loading';
 defineProps<{
     state: LoadingState
 }>();

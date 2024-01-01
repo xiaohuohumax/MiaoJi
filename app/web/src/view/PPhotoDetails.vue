@@ -43,16 +43,16 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
+import { CLoading } from '@miaoji/components';
+import { watchLoading } from '@miaoji/components';
 import { gImages } from '@miaoji/util';
 import { updateTitle } from '@miaoji/util';
 import awaitTo from 'await-to-js';
 import { NCard, NGrid, NGridItem, NImage, NSpace, NTime } from 'naive-ui';
 import { issueApi } from '@/api';
-import { Photo } from '@/api/entry.ext';
+import { Photo } from '@/api/entity.ext';
 import { removeFuncLabels } from '@/store/app.store';
-import { watchLoading } from '@/util/loading';
 import CLabel from '&/CLabel.vue';
-import CLoading from '&/CLoading.vue';
 import CReactions from '&/CReactions.vue';
 import CComments from './items/CComments.vue';
 
@@ -80,4 +80,4 @@ async function queryPhoto() {
 }
 
 queryPhoto();
-</script>
+</script>@/api/entity.ext

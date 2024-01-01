@@ -42,8 +42,6 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "types/*.d.ts",
-    "admin/**/*.ts",
-    "admin/**/*.vue",
     "app.config.ts",
   ],
   "references": [

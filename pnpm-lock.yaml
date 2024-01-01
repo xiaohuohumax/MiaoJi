@@ -27,6 +27,46 @@ importers:
         specifier: ^9.19.2
         version: 9.19.2(eslint@8.56.0)
 
+  app/tool:
+    dependencies:
+      '@miaoji/api':
+        specifier: workspace:^
+        version: link:../../package/api
+      '@miaoji/base':
+        specifier: workspace:^
+        version: link:../../package/base
+      '@miaoji/components':
+        specifier: workspace:^
+        version: link:../../package/components
+      '@miaoji/util':
+        specifier: workspace:^
+        version: link:../../package/util
+      await-to-js:
+        specifier: ^3.0.0
+        version: 3.0.0
+      axios:
+        specifier: ^1.6.3
+        version: 1.6.3
+      naive-ui:
+        specifier: ^2.36.0
+        version: 2.36.0(vue@3.4.2)
+      vue:
+        specifier: ^3.3.4
+        version: 3.4.2(typescript@5.3.3)
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^4.2.3
+        version: 4.6.1(vite@4.5.1)(vue@3.4.2)
+      typescript:
+        specifier: ^5.0.2
+        version: 5.3.3
+      vite:
+        specifier: ^4.4.5
+        version: 4.5.1(@types/node@20.10.6)
+      vue-tsc:
+        specifier: ^1.8.5
+        version: 1.8.27(typescript@5.3.3)
+
   app/web:
     dependencies:
       '-':
@@ -38,12 +78,15 @@ importers:
       '@miaoji/api':
         specifier: workspace:^
         version: link:../../package/api
+      '@miaoji/base':
+        specifier: workspace:^
+        version: link:../../package/base
+      '@miaoji/components':
+        specifier: workspace:^
+        version: link:../../package/components
       '@miaoji/util':
         specifier: workspace:^
         version: link:../../package/util
-      D:
-        specifier: ^1.0.0
-        version: 1.0.0
       await-to-js:
         specifier: ^3.0.0
         version: 3.0.0
@@ -99,8 +142,23 @@ importers:
       '@miaoji/util':
         specifier: workspace:^
         version: link:../util
+      axios:
+        specifier: ^1.6.3
+        version: 1.6.3
 
-  package/components: {}
+  package/base: {}
+
+  package/components:
+    dependencies:
+      '@icon-park/vue-next':
+        specifier: ^1.4.2
+        version: 1.4.2(vue@3.4.2)
+      naive-ui:
+        specifier: ^2.36.0
+        version: 2.36.0(vue@3.4.2)
+      vue:
+        specifier: ^3.3.4
+        version: 3.4.2
 
   package/util:
     dependencies:
@@ -654,7 +712,7 @@ packages:
     peerDependencies:
       vue: ^3.0.11
     dependencies:
-      vue: 3.4.2(typescript@5.3.3)
+      vue: 3.4.2
     dev: false
 
   /@emotion/hash@0.8.0:
@@ -922,7 +980,7 @@ packages:
     peerDependencies:
       vue: 3.x
     dependencies:
-      vue: 3.4.2(typescript@5.3.3)
+      vue: 3.4.2
     dev: false
 
   /@isaacs/cliui@8.0.2:
@@ -1458,15 +1516,10 @@ packages:
     dependencies:
       '@vue/compiler-ssr': 3.4.2
       '@vue/shared': 3.4.2
-      vue: 3.4.2(typescript@5.3.3)
+      vue: 3.4.2
 
   /@vue/shared@3.4.2:
     resolution: {integrity: sha512-QANtRj0jTGS/jrAyFak0S1Pvlb+By3Q7GOW1l++kFWz8B0kv3AR/ZmwkoWf+i75jJPse+/F17jXou3fwQm47wg==}
-
-  /D@1.0.0:
-    resolution: {integrity: sha512-nQvrCBu7K2pSSEtIM0EEF03FVjcczCXInMt3moLNFbjlWx6bZrX72uT6/1uAXDbnzGUAx9gTyDiQ+vrFi663oA==}
-    deprecated: Package no longer supported. Contact support@npmjs.com for more info.
-    dev: false
 
   /acorn-jsx@5.3.2(acorn@8.11.3):
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -3410,7 +3463,7 @@ packages:
       treemate: 0.3.11
       vdirs: 0.1.8(vue@3.4.2)
       vooks: 0.2.12(vue@3.4.2)
-      vue: 3.4.2(typescript@5.3.3)
+      vue: 3.4.2
       vueuc: 0.4.58(vue@3.4.2)
     dev: false
 
@@ -4479,7 +4532,7 @@ packages:
       vue: ^3.0.11
     dependencies:
       evtd: 0.2.4
-      vue: 3.4.2(typescript@5.3.3)
+      vue: 3.4.2
     dev: false
 
   /vite-plugin-html@3.0.6(vite@4.5.1):
@@ -4544,7 +4597,7 @@ packages:
       vue: ^3.0.0
     dependencies:
       evtd: 0.2.4
-      vue: 3.4.2(typescript@5.3.3)
+      vue: 3.4.2
     dev: false
 
   /vue-demi@0.14.6(vue@3.4.2):
@@ -4608,6 +4661,20 @@ packages:
       typescript: 5.3.3
     dev: true
 
+  /vue@3.4.2:
+    resolution: {integrity: sha512-lLLsnZLysSxHXM5uIk7frehU2B0vwzZmbZlX9im/kKISd9rfDtywo9jhvgAMLnrLBtP5QtEaP4f9MYHPpfIJtQ==}
+    peerDependencies:
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@vue/compiler-dom': 3.4.2
+      '@vue/compiler-sfc': 3.4.2
+      '@vue/runtime-dom': 3.4.2
+      '@vue/server-renderer': 3.4.2(vue@3.4.2)
+      '@vue/shared': 3.4.2
+
   /vue@3.4.2(typescript@5.3.3):
     resolution: {integrity: sha512-lLLsnZLysSxHXM5uIk7frehU2B0vwzZmbZlX9im/kKISd9rfDtywo9jhvgAMLnrLBtP5QtEaP4f9MYHPpfIJtQ==}
     peerDependencies:
@@ -4635,7 +4702,7 @@ packages:
       seemly: 0.3.8
       vdirs: 0.1.8(vue@3.4.2)
       vooks: 0.2.12(vue@3.4.2)
-      vue: 3.4.2(typescript@5.3.3)
+      vue: 3.4.2
     dev: false
 
   /w3c-keyname@2.2.8:

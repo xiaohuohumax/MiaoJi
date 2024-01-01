@@ -1,24 +1,8 @@
 import { Api, RequestExecutor } from '@miaoji/util';
-import { Issue } from '../entry';
+import { Issue, } from '../entity';
+import { QPageBase, QSortBase } from '../query';
 
-interface QPageBase {
-    // 仅显示上次在给定时间之后更新的结果(这是ISO8601格式的时间戳) YYYY-MM-DDTHH:MM:SSZ
-    since?: string
-    // 每页的结果数（最多 100 个）
-    // 默认: 30
-    per_page?: string
-    // 要获取的结果的页码 
-    // 默认: 1
-    page?: string
-}
-
-interface QSortBase {
-    // 对结果进行排序的方向 
-    // 默认: desc
-    direction?: 'asc' | 'desc'
-}
-
-type QIssuesParams = QPageBase & QSortBase & {
+export type QIssuesParams = QPageBase & QSortBase & {
     // 指示要返回的问题的状态
     // 默认: open
     state?: 'open' | 'closed' | 'all'

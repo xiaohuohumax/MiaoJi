@@ -1,16 +1,8 @@
 import { Api, RequestExecutor } from '@miaoji/util';
-import { Label } from '../entry';
+import { Label } from '../entity';
+import { QPageBase } from '../query';
 
-interface QPageBase {
-    // 仅显示上次在给定时间之后更新的结果(这是ISO8601格式的时间戳) YYYY-MM-DDTHH:MM:SSZ
-    since?: string
-    // 每页的结果数（最多 100 个）
-    // 默认: 30
-    per_page?: string
-    // 要获取的结果的页码 
-    // 默认: 1
-    page?: string
-}
+export type CreateLabelData = Partial<Omit<Label, 'id'>>
 
 export class LabelApi extends Api {
     owner: string;
@@ -23,7 +15,7 @@ export class LabelApi extends Api {
     // 分页查询
     qLabelsByPage(params: QPageBase) {
         return this.request<Label[]>({
-            url: `repos/${this.owner}/${this.repo}/labels`,
+            url: `/repos/${this.owner}/${this.repo}/labels`,
             method: 'GET',
             params
         });
@@ -43,5 +35,16 @@ export class LabelApi extends Api {
             }
         }
         return labels;
+    }
+    // 创建标签
+    createLabel(label: CreateLabelData, token: string = '') {
+        return this.request<Label, CreateLabelData>({
+            url: `/repos/${this.owner}/${this.repo}/labels`,
+            method: 'POST',
+            data: label,
+            headers: !token
+                ? { Authorization: 'Bearer ' + token }
+                : {}
+        });
     }
 }

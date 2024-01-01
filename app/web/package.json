@@ -1,7 +1,7 @@
 {
   "name": "@miaoji/web",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "repository": "https://github.com/xiaohuohumax/MiaoJi",
   "author": {
@@ -17,8 +17,9 @@
     "-": "^0.0.1",
     "@icon-park/vue-next": "^1.4.2",
     "@miaoji/api": "workspace:^",
+    "@miaoji/base": "workspace:^",
+    "@miaoji/components": "workspace:^",
     "@miaoji/util": "workspace:^",
-    "D": "^1.0.0",
     "await-to-js": "^3.0.0",
     "axios": "^1.6.3",
     "md-editor-v3": "^4.10.0",

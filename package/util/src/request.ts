@@ -26,7 +26,11 @@ export class RequestExecutor {
             this.interceptors?.resInterceptors,
             this.interceptors?.resInterceptorCatch
         );
-        this.instance.interceptors.response.use(res => res.data);
+        // 默认返回 data 和 response
+        this.instance.interceptors.response.use(
+            res => res.data,
+            err=> Promise.reject(err.response)
+        );
     }
     static create(config: RequestConfig) {
         return new RequestExecutor(config);
@@ -38,7 +42,7 @@ export class Api {
     constructor(executor: RequestExecutor) {
         this.executor = executor;
     }
-    request<R = AxiosResponse, D = any>(config: AxiosRequestConfig<D>): Promise<R> {
+    request<R = any, D = any>(config: AxiosRequestConfig<D>): Promise<R> {
         return this.executor.instance.request<null, R, D>(config);
     }
 }

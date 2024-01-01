@@ -66,17 +66,17 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { Issue } from '@miaoji/api';
+import { CLoading } from '@miaoji/components';
+import { COver } from '@miaoji/components';
+// import CMarkdown from '@/components/CMarkdown.vue';
+// import CReactions from '@/components/CReactions.vue';
+import { CSubTitle } from '@miaoji/components';
+import { LoadingState, watchLoading } from '@miaoji/components';
 import { gAnchors } from '@miaoji/util';
 import awaitTo from 'await-to-js';
 import { NButton, NCard, NGrid, NGridItem, NSpace } from 'naive-ui';
 import { issueApi } from '@/api';
-import { Link } from '@/api/entry.ext';
-// import CMarkdown from '@/components/CMarkdown.vue';
-// import CReactions from '@/components/CReactions.vue';
-import CSubTitle from '@/components/CSubTitle.vue';
-import { LoadingState, watchLoading } from '@/util/loading';
-import CLoading from '&/CLoading.vue';
-import COver from '&/COver.vue';
+import { Link } from '@/api/entity.ext';
 import appConfig from '#/app.config';
 
 const perPage = 10;
@@ -147,4 +147,4 @@ async function queryApplyLink() {
 }
 
 queryApplyLink();
-</script>
+</script>@/api/entity.ext

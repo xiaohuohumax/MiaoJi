@@ -30,14 +30,14 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import { Label } from '@miaoji/api';
+import { CLoading } from '@miaoji/components';
+import { COver } from '@miaoji/components';
+import { CSubTitle } from '@miaoji/components';
+import { watchLoading } from '@miaoji/components';
 import awaitTo from 'await-to-js';
 import { NButton, NCard, NSpace } from 'naive-ui';
-import CSubTitle from '@/components/CSubTitle.vue';
 import { useAppStore } from '@/store/app.store';
-import { watchLoading } from '@/util/loading';
 import CLabel from '&/CLabel.vue';
-import CLoading from '&/CLoading.vue';
-import COver from '&/COver.vue';
 
 const issuesStore = useAppStore();
 const router = useRouter();
