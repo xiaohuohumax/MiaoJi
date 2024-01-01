@@ -1,6 +1,6 @@
-import { p as inject, a0 as provide, f as computed, i as onBeforeUnmount, Y as createInjectionKey, c as cB, d as defineComponent, V as useStyle, t as toRef, r as ref, n as nextTick, h, b as c, a$ as commonVariables, bi as composite, a as cM, S as cE, Z as cNotM, U as iconSwitchTransition, g as useTheme, _ as useMemo, u as useConfig, a1 as useRtl, j as useThemeClass, bj as NFadeInExpandTransition, W as NIconSwitchTransition, X as NBaseLoading, bk as buttonLight, a3 as createKey, bl as changeColor, I as IconWrapper, v as createVNode, e as watch, z as createElementBlock, b6 as renderSlot, D as createCommentVNode, y as openBlock, A as withCtx, G as unref, H as createTextVNode } from "./index-2ff28f77.js";
-import { i as isBrowser, u as useMessage, a as NIcon, _ as _export_sfc } from "./_plugin-vue_export-helper-2b0fed72.js";
-import { b as resolveWrappedSlot, i as isSlotEmpty, c as call, N as NCard } from "./Card-bc1cf177.js";
+import { p as inject, a0 as provide, f as computed, i as onBeforeUnmount, Y as createInjectionKey, c as cB, d as defineComponent, V as useStyle, t as toRef, r as ref, n as nextTick, h, b as c, a$ as commonVariables, bi as composite, a as cM, S as cE, Z as cNotM, U as iconSwitchTransition, g as useTheme, _ as useMemo, u as useConfig, a1 as useRtl, j as useThemeClass, bj as NFadeInExpandTransition, W as NIconSwitchTransition, X as NBaseLoading, bk as buttonLight, a3 as createKey, bl as changeColor, I as IconWrapper, v as createVNode, y as openBlock, z as createElementBlock, b6 as renderSlot, D as createCommentVNode, A as withCtx, G as unref, H as createTextVNode, e as watch } from "./index-d7777b86.js";
+import { i as isBrowser, a as NIcon, _ as _export_sfc, u as useMessage } from "./_plugin-vue_export-helper-d6e0fff0.js";
+import { b as resolveWrappedSlot, i as isSlotEmpty, c as call, N as NCard } from "./Card-f7545e27.js";
 function color2Class(color) {
   return color.replace(/#|\(|\)|,|\s|\./g, "_");
 }
@@ -724,25 +724,6 @@ const Loading = IconWrapper("loading", true, function(props) {
     "stroke-linejoin": props.strokeLinejoin
   }, null)]);
 });
-const defaultDuration = 2e3;
-function watchLoading(config) {
-  const message = useMessage();
-  const loading = ref(config.state);
-  const stateMap = {
-    "loading": message.info,
-    "success": message.success,
-    "fail": message.error,
-    "init": () => {
-    }
-  };
-  watch(() => loading.value, () => {
-    const data = config[loading.value];
-    data && stateMap[loading.value](data, {
-      duration: config.duration || defaultDuration
-    });
-  });
-  return loading;
-}
 const _sfc_main$1 = /* @__PURE__ */ defineComponent({
   __name: "CLoading",
   props: {
@@ -798,6 +779,25 @@ function _sfc_render(_ctx, _cache) {
   ]);
 }
 const COver = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+const defaultDuration = 2e3;
+function watchLoading(config) {
+  const message = useMessage();
+  const loading = ref(config.state);
+  const stateMap = {
+    "loading": message.info,
+    "success": message.success,
+    "fail": message.error,
+    "init": () => {
+    }
+  };
+  watch(() => loading.value, () => {
+    const data = config[loading.value];
+    data && stateMap[loading.value](data, {
+      duration: config.duration || defaultDuration
+    });
+  });
+  return loading;
+}
 export {
   COver as C,
   NButton as N,

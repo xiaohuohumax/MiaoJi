@@ -1,9 +1,9 @@
-import { d as defineComponent, J as useAppStore, z as createElementBlock, v as createVNode, A as withCtx, G as unref, L as Fragment, O as useRouter, y as openBlock, a8 as withDirectives, a9 as vShow, M as renderList, E as createBaseVNode, H as createTextVNode, ag as to, B as createBlock } from "./index-2ff28f77.js";
-import { _ as _sfc_main$2 } from "./CSubTitle.vue_vue_type_script_setup_true_lang-06009095.js";
-import { w as watchLoading, _ as _sfc_main$1, C as COver, N as NButton } from "./COver-141fd53a.js";
-import { _ as _sfc_main$3 } from "./CLabel.vue_vue_type_script_setup_true_lang-5f2d3974.js";
-import { N as NCard } from "./Card-bc1cf177.js";
-import { N as NSpace } from "./_plugin-vue_export-helper-2b0fed72.js";
+import { d as defineComponent, J as useAppStore, z as createElementBlock, v as createVNode, A as withCtx, G as unref, L as Fragment, O as useRouter, y as openBlock, a8 as withDirectives, a9 as vShow, M as renderList, E as createBaseVNode, H as createTextVNode, ag as to, B as createBlock } from "./index-d7777b86.js";
+import { w as watchLoading, C as COver, N as NButton, _ as _sfc_main$2 } from "./loading-e3f50597.js";
+import { _ as _sfc_main$1 } from "./CSubTitle.vue_vue_type_script_setup_true_lang-d5c7aea0.js";
+import { _ as _sfc_main$3 } from "./CLabel.vue_vue_type_script_setup_true_lang-9008eaaa.js";
+import { N as NCard } from "./Card-f7545e27.js";
+import { N as NSpace } from "./_plugin-vue_export-helper-d6e0fff0.js";
 import "../app.config.js";
 const _hoisted_1 = { class: "text-center" };
 const _hoisted_2 = { class: "text-center" };
@@ -29,7 +29,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       return openBlock(), createElementBlock(Fragment, null, [
         createVNode(unref(NSpace), { vertical: "" }, {
           default: withCtx(() => [
-            createVNode(_sfc_main$2, { context: "标签" }),
+            createVNode(unref(_sfc_main$1), { context: "标签" }),
             withDirectives(createVNode(unref(NCard), {
               size: "small",
               bordered: false
@@ -63,11 +63,11 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             }, 512), [
               [vShow, unref(issuesStore).notFuncLabels.length > 0]
             ]),
-            createVNode(COver)
+            createVNode(unref(COver))
           ]),
           _: 1
         }),
-        createVNode(_sfc_main$1, {
+        createVNode(unref(_sfc_main$2), {
           state: unref(lState),
           class: "my-2"
         }, {

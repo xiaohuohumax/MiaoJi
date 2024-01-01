@@ -1,16 +1,16 @@
-import { d as defineComponent, r as ref, B as createBlock, A as withCtx, G as unref, ag as to, ah as issueApi, al as gImages, ai as updateTitle, y as openBlock, v as createVNode, E as createBaseVNode, F as toDisplayString, H as createTextVNode, z as createElementBlock, M as renderList, af as removeFuncLabels, L as Fragment } from "./index-2ff28f77.js";
-import { w as watchLoading, _ as _sfc_main$1 } from "./COver-141fd53a.js";
-import { _ as _sfc_main$4 } from "./CLabel.vue_vue_type_script_setup_true_lang-5f2d3974.js";
-import { N as NTime, _ as _sfc_main$2 } from "./CReactions.vue_vue_type_script_setup_true_lang-47dc8c86.js";
-import { _ as _sfc_main$3 } from "./CComments.vue_vue_type_script_setup_true_lang-0814bd4a.js";
-import { N as NCard } from "./Card-bc1cf177.js";
-import { N as NSpace } from "./_plugin-vue_export-helper-2b0fed72.js";
-import { N as NGrid, a as NGridItem } from "./Grid-96d060a8.js";
-import { b as NImage } from "./Image-f2290e6d.js";
+import { w as watchLoading, _ as _sfc_main$3 } from "./loading-e3f50597.js";
+import { d as defineComponent, r as ref, B as createBlock, A as withCtx, G as unref, ag as to, ah as issueApi, al as gImages, ai as updateTitle, y as openBlock, v as createVNode, E as createBaseVNode, F as toDisplayString, H as createTextVNode, z as createElementBlock, M as renderList, af as removeFuncLabels, L as Fragment } from "./index-d7777b86.js";
+import { _ as _sfc_main$4 } from "./CLabel.vue_vue_type_script_setup_true_lang-9008eaaa.js";
+import { N as NTime, _ as _sfc_main$1 } from "./CReactions.vue_vue_type_script_setup_true_lang-4f774dae.js";
+import { _ as _sfc_main$2 } from "./CComments.vue_vue_type_script_setup_true_lang-e6b69b19.js";
+import { N as NCard } from "./Card-f7545e27.js";
+import { N as NSpace } from "./_plugin-vue_export-helper-d6e0fff0.js";
+import { N as NGrid, a as NGridItem } from "./Grid-f3f7d557.js";
+import { b as NImage } from "./Image-4d71e217.js";
 import "../app.config.js";
-import "./CMarkdown-bbf8b408.js";
-import "./VResizeObserver-df570f05.js";
-import "./fade-in-scale-up.cssr-de48a42b.js";
+import "./CMarkdown-9b75f261.js";
+import "./VResizeObserver-a983230e.js";
+import "./fade-in-scale-up.cssr-6019f59a.js";
 const _hoisted_1 = { class: "text-2xl font-bold align-middle" };
 const _hoisted_2 = ["href"];
 const _sfc_main = /* @__PURE__ */ defineComponent({
@@ -38,7 +38,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     }
     queryPhoto();
     return (_ctx, _cache) => {
-      return openBlock(), createBlock(_sfc_main$1, { state: unref(pState) }, {
+      return openBlock(), createBlock(unref(_sfc_main$3), { state: unref(pState) }, {
         fail: withCtx(() => [
           createVNode(unref(NCard), {
             size: "small",
@@ -101,7 +101,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                               class: "font-bold"
                             }, null, 8, ["onClick", "label"]);
                           }), 128)),
-                          createVNode(_sfc_main$2, {
+                          createVNode(_sfc_main$1, {
                             reactions: photo.value.reactions
                           }, null, 8, ["reactions"])
                         ]),
@@ -136,7 +136,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                 ]),
                 _: 1
               }),
-              createVNode(_sfc_main$3, {
+              createVNode(_sfc_main$2, {
                 issue: photo.value,
                 name: "评论"
               }, null, 8, ["issue"])
