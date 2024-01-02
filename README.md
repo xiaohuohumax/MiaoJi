@@ -1,6 +1,6 @@
 ## MiaoJi(喵记)
 
-**基于 `Github API` `Issue` `Label` 实现的简单网站, 可用于搭建简单博客, 记录笔记等**
+**基于 `Github API` `Github Pages` `Issue` `Label` 实现的简单网站, 可用于搭建简单博客, 记录笔记等**
 
 ### 在线访问
 
