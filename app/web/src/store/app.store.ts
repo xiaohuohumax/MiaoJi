@@ -111,7 +111,7 @@ export const useAppStore = defineStore('app', {
     }),
     actions: {
         // 加载全部标签
-        async loadLabels(failMax: number = -1) {
+        async loadLabels(failMax: number = -1, loop_steep: number = 1_000) {
             let count = 0;
             type Load<T> = (resolve: (value: T | PromiseLike<T>) => void, reject: (reason?: unknown) => void) => void
             const load: Load<Label[]> = async (res, rej) => {
@@ -122,7 +122,7 @@ export const useAppStore = defineStore('app', {
                 const [err, data] = await awaitTo(labelApi.qAllLabels());
                 if (err) {
                     logger.error('load labels fail', count, failMax, err);
-                    this._st = setTimeout(load, 10_000, res, rej);
+                    this._st = setTimeout(load, loop_steep, res, rej);
                     return;
                 }
                 res(this.labels = data);

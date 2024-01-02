@@ -99,7 +99,7 @@ const routes: RouteRecordRaw[] = [
                 }
             },
             {
-                path: '/404',
+                path: '404',
                 name: 'PNotFound',
                 component: () => import('@/view/PNotFound.vue'),
                 meta: {

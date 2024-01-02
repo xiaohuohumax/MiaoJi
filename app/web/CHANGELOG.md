@@ -1,5 +1,11 @@
 # @miaoji/web
 
+## 0.2.1
+
+### Patch Changes
+
+- 修复刷新后 404 异常
+
 ## 0.2.0
 
 ### Minor Changes

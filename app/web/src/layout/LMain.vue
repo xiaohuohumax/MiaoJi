@@ -31,11 +31,6 @@ router.beforeEach((_to, _from, next) => {
 
 router.afterEach(() => bar.finish());
 
-const message = useMessage();
-// 首次加载全部标签
-appStore.loadLabels(5).catch(() => {
-    message.error('加载标签失败!');
-});
 appStore.loadBanners();
 appStore.loopLoadLabels();
 </script>
