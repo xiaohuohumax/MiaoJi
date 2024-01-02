@@ -1,9 +1,12 @@
 name: build-web
 
 on:
-  # 主线更新
   push:
-    branches: [main]
+    # 版本更新
+    tags:
+      - "v*"
+  # 主线更新
+  # branches: [main]
   # 主动触发
   workflow_dispatch:
 
