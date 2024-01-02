@@ -1,8 +1,8 @@
-import { r as ref, h, c as cB, a as cM, b as c, d as defineComponent, u as useConfig, w as watchEffect, e as watch, t as toRef, f as computed, g as useTheme, o as onMounted, i as onBeforeUnmount, j as useThemeClass, k as isMounted, T as Transition, m as mergeProps, n as nextTick, N as NBaseIcon, l as backTopLight, p as inject, q as throwError, s as loadingBarApiInjectionKey, I as IconWrapper, v as createVNode, x as resolveComponent, y as openBlock, z as createElementBlock, A as withCtx, B as createBlock, K as KeepAlive, C as resolveDynamicComponent, D as createCommentVNode, E as createBaseVNode, F as toDisplayString, G as unref, H as createTextVNode, J as useAppStore, L as Fragment, M as renderList, O as useRouter } from "./index-d7777b86.js";
-import { f as formatLength, _ as _export_sfc, N as NSpace, a as NIcon, u as useMessage } from "./_plugin-vue_export-helper-d6e0fff0.js";
+import { r as ref, h, c as cB, a as cM, b as c, d as defineComponent, u as useConfig, w as watchEffect, e as watch, t as toRef, f as computed, g as useTheme, o as onMounted, i as onBeforeUnmount, j as useThemeClass, k as isMounted, T as Transition, m as mergeProps, n as nextTick, N as NBaseIcon, l as backTopLight, p as inject, q as throwError, s as loadingBarApiInjectionKey, I as IconWrapper, v as createVNode, x as resolveComponent, y as openBlock, z as createElementBlock, A as withCtx, B as createBlock, K as KeepAlive, C as resolveDynamicComponent, D as createCommentVNode, E as createBaseVNode, F as toDisplayString, G as unref, H as createTextVNode, J as useAppStore, L as Fragment, M as renderList, O as useRouter } from "./index-1df43889.js";
+import { f as formatLength, _ as _export_sfc, N as NSpace, a as NIcon, u as useMessage } from "./_plugin-vue_export-helper-68b6f5d3.js";
 import { a as appConfig } from "../app.config.js";
-import { r as resolveSlot, N as NCard } from "./Card-f7545e27.js";
-import { f as fadeInScaleUpTransition, u as useMergedState, L as LazyTeleport } from "./fade-in-scale-up.cssr-6019f59a.js";
+import { r as resolveSlot, N as NCard } from "./Card-da1fd150.js";
+import { f as fadeInScaleUpTransition, u as useMergedState, L as LazyTeleport } from "./fade-in-scale-up.cssr-36221e4e.js";
 function getParentNode(node) {
   if (node.nodeType === 9) {
     return null;
@@ -503,10 +503,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       next();
     });
     router.afterEach(() => bar.finish());
-    const message = useMessage();
-    appStore.loadLabels(5).catch(() => {
-      message.error("加载标签失败!");
-    });
     appStore.loadBanners();
     appStore.loopLoadLabels();
     return (_ctx, _cache) => {

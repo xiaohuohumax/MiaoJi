@@ -23,7 +23,7 @@ const defaultLabel = {
     photoLabel: "func:photo"
   }
 };
-const version = "0.2.0";
+const version = "0.2.1";
 const repository = "https://github.com/xiaohuohumax/MiaoJi";
 const author = {
   name: "xiaohuohumax",
