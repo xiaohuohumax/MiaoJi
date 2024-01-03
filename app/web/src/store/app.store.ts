@@ -68,7 +68,7 @@ const menus: Menu[] = [
         icon: markRaw(ILabel)
     },
     {
-        name: '留言板',
+        name: '留言',
         path: '/communication',
         labels: [appConfig.label.communicationLabel],
         icon: markRaw(Communication)

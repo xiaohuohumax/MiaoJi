@@ -26,7 +26,8 @@ const routes: RouteRecordRaw[] = [
                 props: (to) => to.params,
                 meta: {
                     title: '文章',
-                    scrollTop: true
+                    scrollTop: true,
+                    keepAlive: true
                 }
             },
             {
@@ -36,7 +37,8 @@ const routes: RouteRecordRaw[] = [
                 meta: {
                     title: '关于',
                     scrollTop: true,
-                    label: [appConfig.label.aboutLabel]
+                    label: [appConfig.label.aboutLabel],
+                    keepAlive: true
                 }
             },
             {
@@ -55,7 +57,8 @@ const routes: RouteRecordRaw[] = [
                 meta: {
                     title: '留言',
                     scrollTop: true,
-                    label: [appConfig.label.communicationLabel]
+                    label: [appConfig.label.communicationLabel],
+                    keepAlive: true
                 }
             },
             {
@@ -65,7 +68,8 @@ const routes: RouteRecordRaw[] = [
                 meta: {
                     title: '友链',
                     scrollTop: true,
-                    label: [appConfig.label.linkLabel]
+                    label: [appConfig.label.linkLabel],
+                    keepAlive: true
                 }
             },
             {
@@ -75,7 +79,8 @@ const routes: RouteRecordRaw[] = [
                 meta: {
                     title: '历史',
                     scrollTop: true,
-                    label: [appConfig.label.historyLabel]
+                    label: [appConfig.label.historyLabel],
+                    keepAlive: true
                 }
             },
             {
@@ -85,7 +90,8 @@ const routes: RouteRecordRaw[] = [
                 meta: {
                     title: '相册',
                     scrollTop: true,
-                    label: [appConfig.label.photoLabel]
+                    label: [appConfig.label.photoLabel],
+                    keepAlive: true
                 }
             },
             {
@@ -95,7 +101,8 @@ const routes: RouteRecordRaw[] = [
                 props: (to) => to.params,
                 meta: {
                     title: '相册',
-                    scrollTop: true
+                    scrollTop: true,
+                    keepAlive: true
                 }
             },
             {

@@ -26,7 +26,7 @@
                 </NTimelineItem>
             </NTimeline>
         </NCard>
-        <CLoading :state="hState" class="my-2">
+        <CLoading :state="hState">
             <template #fail>
                 <div class="text-center">
                     <NButton @click="nextPage">

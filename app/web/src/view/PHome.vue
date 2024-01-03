@@ -3,28 +3,15 @@
         <NCard size="small" :bordered="false">
             <CBanner />
         </NCard>
-        <NCard size="small" :bordered="false">
-            <NInput size="large" placeholder="搜索标签" v-model:value="select">
-                <template #suffix>
-                    <CloseOne size="1.5rem" class="cursor-pointer mx-2" @click="labelChange('')" />
-                </template>
-            </NInput>
-        </NCard>
-        <NCard size="small" :bordered="false" v-if="selectLabels.length > 0">
-            <NSpace>
-                <CLabel v-for="label in selectLabels" :key="label.id" :hidden-des="false" :label="label"
-                    @click="labelChange(label.name)" class="font-bold " />
-            </NSpace>
-        </NCard>
         <NCard v-for="document in documents" :key="document.number" size="small" :bordered="false">
             <NSpace vertical size="small">
-                <RouterLink :to="`/doc/${document.number}`" class="text-2xl font-bold duration-100 hover:text-green-300">
+                <RouterLink :to="`/doc/${document.number}`" class="text-2xl">
                     {{ document.title }}
                 </RouterLink>
                 <NSpace align="center" size="small">
                     <NTime :time="new Date(document.updated_at)" type="relative" />
                     <CLabel v-for="label in removeFuncLabels(document.labels)" :key="label.id" :hidden-des="true"
-                        :label="label" class="font-bold" @click="labelChange(label.name)" />
+                        :label="label" @click="labelClick(label)" />
                     <CReactions :reactions="document.reactions" />
                 </NSpace>
                 <!-- <CReactions :reactions="issue.reactions" /> -->
@@ -49,23 +36,21 @@
     </NSpace>
 </template>
 <script setup lang="ts">
-import { onActivated, ref, watch } from 'vue';
-import { onBeforeRouteLeave, onBeforeRouteUpdate, useRouter } from 'vue-router';
-import { CloseOne } from '@icon-park/vue-next';
+import { onActivated, ref } from 'vue';
+import { onBeforeRouteLeave, useRouter } from 'vue-router';
 import { Issue, Label } from '@miaoji/api';
 import { CLoading } from '@miaoji/components';
 import { COver } from '@miaoji/components';
 import { watchLoading } from '@miaoji/components';
 import awaitTo from 'await-to-js';
-import { NButton, NCard, NInput, NSpace, NTime } from 'naive-ui';
+import { NButton, NCard, NSpace, NTime } from 'naive-ui';
 import { issueApi } from '@/api';
-import { removeFuncLabels, useAppStore } from '@/store/app.store';
+import { removeFuncLabels } from '@/store/app.store';
 import CLabel from '&/CLabel.vue';
 import CMarkdown from '&/CMarkdown.vue';
 import CReactions from '&/CReactions.vue';
 import appConfig from '#/app.config';
 import CBanner from './items/CBanner.vue';
-
 
 const props = withDefaults(defineProps<{
     label?: string
@@ -73,11 +58,9 @@ const props = withDefaults(defineProps<{
     label: ''
 });
 
-const router = useRouter();
-const issuesStore = useAppStore();
-
 // 文章查询
 const documents = ref<Issue[]>([]);
+const label = ref<string>(props.label);
 const dState = watchLoading({
     state: 'loading',
     fail: '文章查询失败!'
@@ -87,16 +70,13 @@ const isOver = ref(false);
 let page = 1;
 const perPage = 20;
 
-async function queryDocuments(page: number, labels: string[]) {
+async function queryDocuments(page: number, label: string) {
     dState.value = 'loading';
-
-    const labelString = [...labels, appConfig.label.docLabel]
-        .filter(l => l.trim() != '').join(',');
 
     const [err, data] = await awaitTo(issueApi.qIssuePage({
         state: 'all',
         page: page.toString(),
-        labels: labelString,
+        labels: appConfig.label.docLabel + ',' + label,
         per_page: perPage.toString()
     }));
     if (err) {
@@ -117,7 +97,7 @@ function nextPage(op: number) {
         clearTimeout(st);
     }
     function next() {
-        queryDocuments(page + op, selectLabels.value.map(l => l.name))
+        queryDocuments(page + op, label.value)
             .then(() => {
                 page += op;
             });
@@ -125,36 +105,13 @@ function nextPage(op: number) {
     st = setTimeout(next, 500);
 }
 
+// 首次搜索
+nextPage(0);
 
-// 搜索
-const select = ref(props.label);
-const selectLabels = ref<Label[]>([]);
-
-function selectChange() {
-    page = 1;
-    documents.value = [];
-    isOver.value = false;
-    selectLabels.value = issuesStore.selectNotFuncLabels(select.value);
-    nextPage(0);
+const router = useRouter();
+function labelClick(label: Label) {
+    router.push({ path: '/', query: { label: label.name } });
 }
-
-selectChange();
-// 监听
-watch(() => select.value, selectChange);
-
-// 标签变化
-function labelChange(label: string) {
-    router.replace({ query: { label } });
-}
-// 路由监听
-onBeforeRouteUpdate(({ query }) => {
-    // 同页跳转回顶部
-    window.scrollTo(0, 0);
-    if (typeof (query?.label) === 'string') {
-        select.value = query.label;
-    }
-});
-
 
 // 滚动条记录
 let oldSTop = 0;
@@ -170,17 +127,14 @@ function handleScroll() {
     if (oldSTop < sTop && viewH >= sHeight && !isOver.value) {
         nextPage(1);
     }
-    oldSTop = sTop;
 }
 
+onBeforeRouteLeave(() => {
+    oldSTop = document.documentElement.scrollTop;
+});
+
 onActivated(() => {
-    // 其他标签页特殊地址
-    if (props.label && props.label != select.value) {
-        window.scrollTo(0, 0);
-        select.value = props.label;
-    } else {
-        window.scrollTo(0, oldSTop);
-    }
+    window.scrollTo(0, oldSTop);
     window.addEventListener('scroll', handleScroll);
 });
 

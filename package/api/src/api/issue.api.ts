@@ -16,6 +16,17 @@ export type QIssuesParams = QPageBase & QSortBase & {
     sort?: 'created' | 'updated' | 'comments'
 }
 
+export type KeywordRule = {
+    [key in string]: string
+}
+
+export interface SelectRes<I> {
+    // unknown properties
+    incomplete_results: boolean,
+    items: I[],
+    total_count: number
+}
+
 export class IssueApi extends Api {
     owner: string;
     repo: string;
@@ -30,6 +41,24 @@ export class IssueApi extends Api {
             url: `/repos/${this.owner}/${this.repo}/issues`,
             method: 'GET',
             params
+        });
+    }
+    // 通过关键词搜索 Issue
+    qIssuePageByKeyword(keyword: string, rule: KeywordRule, page: QPageBase = {}) {
+        const q = Object.entries(rule)
+            .map(([name, value]) => `${name}:${value}`);
+        // 设置仓库
+        q.push('repo:' + this.owner + '/' + this.repo);
+        q.push('is:issue');
+        q.push(keyword);
+
+        return this.request<SelectRes<Issue>>({
+            url: '/search/issues',
+            method: 'GET',
+            params: {
+                q: q.join(' '),
+                ...page
+            }
         });
     }
     // 通过 number 查询

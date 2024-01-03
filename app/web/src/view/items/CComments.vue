@@ -3,20 +3,21 @@
         <NCard class="font-bold" size="small" :bordered="false">
             <p>{{ name }}:</p>
         </NCard>
-        <NCard size="small" :bordered="false">
-            <a :href="issue.html_url" target="_blank">
-                <NButton class="w-full" type="info">去{{ name }}</NButton>
-            </a>
-        </NCard>
         <NCard class="font-bold p-2 text-center" v-if="closeComment" size="small" :bordered="false">
             {{ name }}已影藏
         </NCard>
         <template v-else>
+            <NCard size="small" :bordered="false">
+                <a :href="issue.html_url" target="_blank">
+                    <NButton class="w-full" type="info">去{{ name }}</NButton>
+                </a>
+            </NCard>
             <NSpace vertical v-if="comments.length > 0">
                 <NCard size="small" v-for="comment in comments" :key="comment.id" :bordered="false">
                     <div class="flex">
                         <a target="_blank" :href="comment.user.html_url">
-                            <img :src="comment.user.avatar_url" class="rounded-md block w-16 h-16 flex-shrink-0 hover:scale-105 duration-100">
+                            <img :src="comment.user.avatar_url"
+                                class="rounded-md block w-16 h-16 flex-shrink-0 hover:scale-105 duration-100">
                         </a>
                         <NSpace vertical class="ml-2 flex-grow w-0">
                             <a target="_blank" :href="comment.user.html_url">
@@ -73,23 +74,22 @@ const props = defineProps<{
 // 依据留言issue查询相关评论
 const comments = ref<Comment[]>([]);
 const cState = watchLoading({
-    state: 'loading',
+    state: 'init',
     fail: '评论查询失败!'
 });
 const isOver = ref(false);
 let cPage = 1;
 const cPerPage = 10;
 
-queryComments(props.issue.number.toString(), cPage);
-
 // 判断评论区是否关闭
 const closeComment = computed(() => {
-    return props.issue == null
-        ? false
-        : hasLabel(props.issue.labels, appConfig.label.hiddenCommentLabel);
+    return hasLabel(props.issue.labels, appConfig.label.hiddenCommentLabel);
 });
 
 async function queryComments(issueId: string, page: number) {
+    if (closeComment.value) {
+        return;
+    }
     cState.value = 'loading';
     const [err, data] = await awaitTo(commentApi.qCommentsByIssueId(issueId, {
         page: page.toString(),
@@ -105,6 +105,8 @@ async function queryComments(issueId: string, page: number) {
     comments.value.push(...data);
     cState.value = 'success';
 }
+
+queryComments(props.issue.number.toString(), cPage);
 
 function nextPage() {
     const oldSize = comments.value.length;

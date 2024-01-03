@@ -18,7 +18,7 @@ export default defineConfig(({ mode }) => {
         plugins: [
             vue(),
             createHtmlPlugin({
-                minify: false,
+                minify: true,
                 pages: [
                     {
                         entry: 'src/main.ts',
@@ -43,7 +43,7 @@ export default defineConfig(({ mode }) => {
         },
         build: {
             emptyOutDir: true,
-            minify: false,
+            minify: true,
             chunkSizeWarningLimit: 1500,
             outDir: './dist',
             rollupOptions: {

@@ -16,6 +16,7 @@ export type AppConfig = DefaultLabel & {
         accessToken?: string
     },
     loopLoadLabelsTimeout: number,
+    selectDocPageSize:number
 }
 
 const appConfig: AppConfig = {
@@ -31,9 +32,9 @@ const appConfig: AppConfig = {
         // github rest api 一般不变
         apiBaseUrl: 'https://api.github.com',
         // 仓库名称
-        repo: 'MiaoJi',
+        repo: import.meta.env.VITE_ISSUE_REPO,
         // 持有者
-        owner: 'xiaohuohumax',
+        owner: import.meta.env.VITE_ISSUE_owner,
         // github token 只需提供访问issue权限即可 可有可无
         // (提升游客访问数量限制)
         accessToken: import.meta.env.VITE_GITHUB_TOKEN,
@@ -43,7 +44,9 @@ const appConfig: AppConfig = {
     // 标签
     label: defaultLabel.label,
     // 循环刷新全部标签时间间隔
-    loopLoadLabelsTimeout: 30_60_000
+    loopLoadLabelsTimeout: 30_60_000,
+    // 文章查询数量 最多100
+    selectDocPageSize: 5
 };
 
 export default appConfig;

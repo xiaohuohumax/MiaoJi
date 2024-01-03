@@ -6,7 +6,8 @@ export default {
     },
     content: [
         './index.html',
-        './src/**/*.{js,ts,jsx,tsx,vue}'
+        './src/**/*.{js,ts,jsx,tsx,vue}',
+        './node_modules/@miaoji/components/**/*.{js,ts,jsx,tsx,vue}'
     ],
     theme: {
         extend: {},

@@ -1,12 +1,10 @@
 <template>
     <NSpace vertical>
-        <CSubTitle context="标签"/>
+        <CSubTitle context="标签" />
         <NCard size='small' :bordered="false" v-show="issuesStore.notFuncLabels.length > 0">
             <NSpace>
-                <NButton ghost class="max-w-full" v-for="label in issuesStore.notFuncLabels" :key="label.name"
-                    @click="gotoHome(label)" :color="'#' + label.color">
-                    <CLabel class="truncate" :label="label" :hidden-des="false" />
-                </NButton>
+                <CLabel class="truncate" :label="label" :hidden-des="false"
+                    v-for="label in issuesStore.notFuncLabels" :key="label.name" @click="gotoHome(label)" />
             </NSpace>
         </NCard>
         <COver />
