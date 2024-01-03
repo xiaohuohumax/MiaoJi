@@ -1,0 +1,1 @@
+import{_ as t}from"./loading-8758b90e.js";import{a6 as o,a7 as r,bc as s,ag as c}from"./index-f2d47f63.js";const a={},n={class:"text-center font-bold py-4"};function _(e,d){return o(),r("div",n,[s(e.$slots,"default",{},()=>[c("木有啦")])])}const i=t(a,[["render",_]]);export{i as C};
