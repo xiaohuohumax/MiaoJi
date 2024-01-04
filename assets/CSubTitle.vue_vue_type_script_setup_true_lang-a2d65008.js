@@ -1,0 +1,1 @@
+import{d as a,a6 as t,a9 as s,a8 as o,ad as r,ae as n,af as c}from"./index-e356217c.js";import{N as d}from"./Card-5655ee7b.js";const i={class:"font-bold text-lg"},m=a({__name:"CSubTitle",props:{context:{}},setup(l){return(e,p)=>(t(),s(c(d),{size:"small",bordered:!1},{default:o(()=>[r("div",i,n(e.context),1)]),_:1}))}});export{m as _};
