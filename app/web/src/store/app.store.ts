@@ -111,7 +111,7 @@ export const useAppStore = defineStore('app', {
     }),
     actions: {
         // 加载全部标签
-        async loadLabels(failMax: number = -1, loop_steep: number = 1_000) {
+        async loadLabels(failMax: number = 1, loop_steep: number = 1_000) {
             let count = 0;
             type Load<T> = (resolve: (value: T | PromiseLike<T>) => void, reject: (reason?: unknown) => void) => void
             const load: Load<Label[]> = async (res, rej) => {
@@ -132,7 +132,7 @@ export const useAppStore = defineStore('app', {
         // 定期加载全部标签
         loopLoadLabels() {
             this._lt && clearInterval(this._lt);
-            this._lt = setInterval(this.loadLabels, appConfig.loopLoadLabelsTimeout);
+            this._lt = setInterval(() => { this.loadLabels(1); }, appConfig.loopLoadLabelsTimeout);
         },
         // 加载全部banner
         async loadBanners() {

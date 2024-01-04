@@ -1,5 +1,11 @@
 # @miaoji/web
 
+## 0.3.1
+
+### Patch Changes
+
+- 修复定时更新标签异常 BUG
+
 ## 0.3.0
 
 ### Minor Changes
