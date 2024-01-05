@@ -3,47 +3,57 @@
         <template #fail>
             <div class="text-center">
                 <NButton @click="queryIssue" class="mx-auto">
-                    重试
+                    {{ t('comment.button.retry') }}
                 </NButton>
             </div>
         </template>
-        <COver v-if="!about">未指定"关于"页</COver>
+        <COver v-if="!about" :context="t('page.about.noPageTip')" />
         <NSpace v-else vertical>
-            <CSubTitle :context="about.title" />
+            <CSubTitle :context="t('page.about.subtitle')" />
             <NCard size="small" :bordered="false">
                 <NSpace vertical>
-                    <CMarkdown :text="about.body" :id="about.number" />
-                    <CReactions :reactions="about.reactions" />
+                    <CMarkdown :text="about.body" :id="about.number" :theme="appStore.theme.markdown" />
+                    <NSpace>
+                        <span>
+                            {{ t('comment.span.createAt') }}:
+                            <NTime :time="new Date(about.created_at)" />
+                        </span>
+                        <span>
+                            {{ t('comment.span.updateAt') }}:
+                            <NTime :time="new Date(about.updated_at)" type="relative" />
+                        </span>
+                        <CReactions :reactions="about.reactions" />
+                    </NSpace>
                 </NSpace>
             </NCard>
-            <CComments :issue="about" name="评论" />
+            <CComments :issue="about" :title="t('page.about.commentsTitle')" />
         </NSpace>
     </CLoading>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
 import { Issue } from '@miaoji/api';
-import { CSubTitle } from '@miaoji/components';
-import { CLoading } from '@miaoji/components';
-import { COver } from '@miaoji/components';
-import { watchLoading } from '@miaoji/components';
+import { CLoading, CMarkdown, COver, CSubTitle, watchLoading } from '@miaoji/components';
 import awaitTo from 'await-to-js';
-import { NButton, NCard, NSpace } from 'naive-ui';
+import { NButton, NCard, NSpace, NTime } from 'naive-ui';
 import { issueApi } from '@/api';
-import CMarkdown from '&/CMarkdown.vue';
+import { useAppStore } from '@/store/app.store';
 import CReactions from '&/CReactions.vue';
 import appConfig from '#/app.config';
+import { uI18n } from '#/locales';
 import CComments from './items/CComments.vue';
 
+const { t } = uI18n();
+const appStore = useAppStore();
 const about = ref<Issue>(null!);
 const aState = watchLoading({
     state: 'loading',
-    fail: '查询失败!'
+    fail: () => t('component.cLoading.fail', { name: '' })
 });
 
 async function queryIssue() {
     aState.value = 'loading';
-    const [err, data] = await awaitTo(issueApi.qIssuePage({
+    const [err, res] = await awaitTo(issueApi.qIssuePage({
         labels: appConfig.label.aboutLabel,
         per_page: '1',
         state: 'all'
@@ -52,7 +62,7 @@ async function queryIssue() {
         aState.value = 'fail';
         return;
     }
-    about.value = data[0];
+    about.value = res.data[0];
     aState.value = 'success';
 }
 

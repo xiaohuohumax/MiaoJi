@@ -1,4 +1,5 @@
 import { Api, RequestExecutor } from '@miaoji/util';
+import { AxiosResponse } from 'axios';
 import { Issue, } from '../entity';
 import { QPageBase, QSortBase } from '../query';
 
@@ -37,7 +38,7 @@ export class IssueApi extends Api {
     }
     // 分页查询
     qIssuePage(params: QIssuesParams) {
-        return this.request<Issue[]>({
+        return this.request<AxiosResponse<Issue[]>>({
             url: `/repos/${this.owner}/${this.repo}/issues`,
             method: 'GET',
             params
@@ -52,7 +53,7 @@ export class IssueApi extends Api {
         q.push('is:issue');
         q.push(keyword);
 
-        return this.request<SelectRes<Issue>>({
+        return this.request<AxiosResponse<SelectRes<Issue>>>({
             url: '/search/issues',
             method: 'GET',
             params: {
@@ -63,7 +64,7 @@ export class IssueApi extends Api {
     }
     // 通过 number 查询
     qIssueById(issueNumber: string) {
-        return this.request<Issue>({
+        return this.request<AxiosResponse<Issue>>({
             url: `/repos/${this.owner}/${this.repo}/issues/${issueNumber}`,
             method: 'GET',
         });

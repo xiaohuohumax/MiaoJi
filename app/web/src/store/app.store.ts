@@ -54,7 +54,7 @@ const uThemeName: ThemeName = window.matchMedia('(prefers-color-scheme: dark)').
     : 'light';
 
 interface Menu {
-    name: string,
+    name: I18nSchemaKey,
     path: string,
     labels: string[],
     icon: Icon
@@ -62,37 +62,37 @@ interface Menu {
 
 const menus: Menu[] = [
     {
-        name: '标签',
+        name: 'menu.label',
         path: '/label',
         labels: [],
         icon: markRaw(ILabel)
     },
     {
-        name: '留言',
+        name: 'menu.communication',
         path: '/communication',
         labels: [appConfig.label.communicationLabel],
         icon: markRaw(Communication)
     },
     {
-        name: '友链',
+        name: 'menu.link',
         path: '/link',
         labels: [appConfig.label.linkLabel],
         icon: markRaw(LinkOne)
     },
     {
-        name: '历史',
+        name: 'menu.history',
         path: '/history',
         labels: [appConfig.label.historyLabel],
         icon: markRaw(History)
     },
     {
-        name: '相册',
+        name: 'menu.photo',
         path: '/photo',
         labels: [appConfig.label.photoLabel],
         icon: markRaw(PictureAlbum)
     },
     {
-        name: '关于',
+        name: 'menu.about',
         path: '/about',
         labels: [appConfig.label.aboutLabel],
         icon: markRaw(Info)
@@ -104,6 +104,7 @@ export const useAppStore = defineStore('app', {
         labels: <Label[]>[],
         banners: <Image[]>[],
         menus,
+        lang: navigator.language,
         themes,
         themeIndex: themes.findIndex(t => t.name == uThemeName),
         _st: <number>null!,
@@ -117,13 +118,13 @@ export const useAppStore = defineStore('app', {
             const load: Load<Label[]> = async (res, rej) => {
                 this._st && clearTimeout(this._st);
                 if (failMax > 0 && count++ >= failMax) {
-                    return rej();
+                    return rej(new Error());
                 }
                 const [err, data] = await awaitTo(labelApi.qAllLabels());
                 if (err) {
                     logger.error('load labels fail', count, failMax, err);
                     this._st = setTimeout(load, loop_steep, res, rej);
-                    return;
+                    return rej(err);
                 }
                 res(this.labels = data);
             };
@@ -136,16 +137,16 @@ export const useAppStore = defineStore('app', {
         },
         // 加载全部banner
         async loadBanners() {
-            const [err, data] = await awaitTo(issueApi.qIssuePage({
+            const [err, res] = await awaitTo(issueApi.qIssuePage({
                 state: 'all',
                 page: '1',
                 labels: appConfig.label.bannerLabel,
                 per_page: '100'
             }));
-            if (err || data == null || data.length == 0) {
+            if (err || res.data.length == 0) {
                 return;
             }
-            this.banners = data.map(d => gImages(d.body)).flat(1);
+            this.banners = res.data.map(d => gImages(d.body)).flat(1);
         },
         // 是否存在某些标签
         hasLabels(labels: string[]) {
@@ -190,6 +191,6 @@ export const useAppStore = defineStore('app', {
     },
     persist: {
         key: appConfig.name + '-theme-store-' + appConfig.version,
-        paths: ['themeIndex']
+        paths: ['themeIndex', 'lang']
     }
 });

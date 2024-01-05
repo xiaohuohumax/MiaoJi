@@ -42,6 +42,7 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "types/*.d.ts",
+    "locales/**/*.ts",
     "app.config.ts",
   ],
   "references": [

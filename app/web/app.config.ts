@@ -16,7 +16,7 @@ export type AppConfig = DefaultLabel & {
         accessToken?: string
     },
     loopLoadLabelsTimeout: number,
-    selectDocPageSize:number
+    selectDocPageSize: number
 }
 
 const appConfig: AppConfig = {

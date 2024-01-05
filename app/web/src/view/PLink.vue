@@ -1,13 +1,7 @@
 <template>
     <NSpace vertical>
-        <CSubTitle context="友链" />
-        <!-- <NCard size="small" :bordered="false" v-if="aLState == 'success'">
-            <NSpace vertical>
-                <CMarkdown :text="applyLink.body" :id="applyLink.number" />
-                <CReactions :reactions="applyLink.reactions" />
-            </NSpace>
-        </NCard> -->
-        <NGrid cols="1 s:2 m:3 l:4 xl:5 2xl:6" responsive="screen" :x-gap="12" :y-gap="12">
+        <CSubTitle :context="t('page.link.subtitle')" />
+        <NGrid cols="1 s:2 m:3 l:4 xl:5 2xl:6" responsive="screen" :x-gap="12" :y-gap="12" v-if="links.length > 0">
             <NGridItem v-for="link in links" :key="link.number">
                 <NCard size="small" :bordered="false">
                     <NSpace class="h-full">
@@ -44,20 +38,20 @@
             <template #fail>
                 <div class="text-center">
                     <NButton @click="nextPage">
-                        重试
+                        {{ t('comment.button.retry') }}
                     </NButton>
                 </div>
             </template>
-            <COver v-if="isOver" />
+            <COver v-if="isOver" :context="t('component.cOver.context')" />
             <div v-else class="text-center">
                 <NButton @click="nextPage">
-                    更多
+                    {{ t('comment.button.more') }}
                 </NButton>
             </div>
         </CLoading>
         <NCard size="small" :bordered="false" v-if="aLState == 'success'">
             <a :href="applyLink.html_url" target="_blank">
-                <NButton class="w-full" type="info">去申请</NButton>
+                <NButton class="w-full" type="info">{{ t('page.link.gotoApply') }}</NButton>
             </a>
         </NCard>
     </NSpace>
@@ -66,33 +60,31 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { Issue } from '@miaoji/api';
-import { CLoading } from '@miaoji/components';
-import { COver } from '@miaoji/components';
-// import CMarkdown from '@/components/CMarkdown.vue';
-// import CReactions from '@/components/CReactions.vue';
-import { CSubTitle } from '@miaoji/components';
-import { LoadingState, watchLoading } from '@miaoji/components';
+import { CLoading, COver, CSubTitle, LoadingState, watchLoading } from '@miaoji/components';
 import { gAnchors } from '@miaoji/util';
 import awaitTo from 'await-to-js';
 import { NButton, NCard, NGrid, NGridItem, NSpace } from 'naive-ui';
 import { issueApi } from '@/api';
 import { Link } from '@/api/entity.ext';
 import appConfig from '#/app.config';
+import { uI18n } from '#/locales';
 
 const perPage = 10;
 let page = 1;
+
+const { t } = uI18n();
 
 // 查询友链
 const links = ref<Link[]>([]);
 const lState = watchLoading({
     state: 'loading',
-    fail: '友链查询失败!'
+    fail: () => t('component.cLoading.fail', { name: t('page.link.subtitle') })
 });
 const isOver = ref(false);
 
 async function queryLinks(page: number) {
     lState.value = 'loading';
-    const [err, data] = await awaitTo(issueApi.qIssuePage({
+    const [err, res] = await awaitTo(issueApi.qIssuePage({
         labels: appConfig.label.linkLabel,
         state: 'all',
         page: page.toString(),
@@ -103,16 +95,14 @@ async function queryLinks(page: number) {
         return;
     }
 
-    if (data.length == 0 || data.length < perPage) {
+    if (res.data.length == 0 || res.data.length < perPage) {
         isOver.value = true;
     }
-    const d: Link[] = data.map(d => {
+    const d: Link[] = res.data.map(d => {
         const anchors = gAnchors(d.body);
         return { ...d, anchor: anchors.length > 0 ? anchors[0] : null };
     });
-    // for(let a=0;a<100;a++){
     links.value.push(...d);
-    // }
     lState.value = 'success';
 }
 
@@ -138,13 +128,13 @@ async function queryApplyLink() {
         page: '1',
         per_page: '1'
     }));
-    if (err || res.length == 0) {
+    if (err || res.data.length == 0) {
         aLState.value = 'fail';
         return;
     }
-    applyLink.value = res[0];
+    applyLink.value = res.data[0];
     aLState.value = 'success';
 }
 
 queryApplyLink();
-</script>@/api/entity.ext
+</script>

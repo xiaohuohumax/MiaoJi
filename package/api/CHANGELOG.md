@@ -1,5 +1,16 @@
 # @miaoji/api
 
+## 1.3.0
+
+### Minor Changes
+
+- 添加i18n(中英) API接口优化 文章不匹配拦截跳转404
+
+### Patch Changes
+
+- Updated dependencies
+  - @miaoji/util@1.3.0
+
 ## 1.2.0
 
 ### Minor Changes

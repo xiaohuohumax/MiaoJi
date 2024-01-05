@@ -1,4 +1,5 @@
 import { Api, RequestExecutor } from '@miaoji/util';
+import { AxiosResponse } from 'axios';
 import { Comment } from '../entity';
 import { QPageBase } from '../query';
 
@@ -12,7 +13,7 @@ export class CommentApi extends Api {
     }
     // 通过issue id分页获取issue的评论
     qCommentsByIssueId(issueId: string, params: QPageBase) {
-        return this.request<Comment[]>({
+        return this.request<AxiosResponse<Comment[]>>({
             url: `/repos/${this.owner}/${this.repo}/issues/${issueId}/comments`,
             method: 'GET',
             params

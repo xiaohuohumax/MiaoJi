@@ -2,9 +2,9 @@
     <div class="flex flex-col min-h-svh">
         <LHeader />
         <LBody class="my-2 flex-grow" />
-        <LFooter/>
+        <LFooter />
     </div>
-    <NBackTop :bottom="40" :right="40" :visibility-height="300" class=" hidden md:flex">
+    <NBackTop :bottom="40" :right="40" :visibility-height="300" class="hidden md:flex">
         <ToTop size="1.5em" />
     </NBackTop>
 </template>
@@ -13,7 +13,6 @@ import { useRouter } from 'vue-router';
 import { ToTop } from '@icon-park/vue-next';
 import { NBackTop, useMessage } from 'naive-ui';
 import { useLoadingBar } from 'naive-ui';
-import { useAppStore } from '@/store/app.store';
 import LBody from './LBody.vue';
 import LFooter from './LFooter.vue';
 import LHeader from './LHeader.vue';
@@ -21,7 +20,6 @@ import LHeader from './LHeader.vue';
 window.$message = useMessage();
 
 const router = useRouter();
-const appStore = useAppStore();
 const bar = useLoadingBar();
 
 router.beforeEach((_to, _from, next) => {
@@ -30,7 +28,4 @@ router.beforeEach((_to, _from, next) => {
 });
 
 router.afterEach(() => bar.finish());
-
-appStore.loadBanners();
-appStore.loopLoadLabels();
 </script>

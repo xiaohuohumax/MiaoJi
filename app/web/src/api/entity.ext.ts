@@ -1,5 +1,5 @@
 import { Issue } from '@miaoji/api';
-import { Anchor,Image } from '@miaoji/util';
+import { Anchor, Image } from '@miaoji/util';
 
 export type Photo = Issue & {
     images: Image[]

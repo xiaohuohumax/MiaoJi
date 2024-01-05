@@ -2,23 +2,23 @@
     <NModal :show="show" :mask-closable="true" @mask-click="emit('update:show', false)" title="确认" :closable="true"
         @close="emit('update:show', false)">
         <div class="max-w-full flex p-3 shadow-none" style="margin-top: calc(100svh / 6);">
-            <NCard title="搜索" style="width: 30rem;" class=" flex-shrink" :bordered="false">
+            <NCard :title="t('layout.header.search.title')" style="width: 30rem;" class="flex-shrink" :bordered="false">
                 <NSpace vertical size="large">
                     <NInput size="large" v-model:value.trim="select" @keydown.enter="selectEnter" />
                     <NSpace justify="space-between">
                         <NRadioGroup v-model:value="mode">
-                            <NRadioButton value="label">标签</NRadioButton>
-                            <NRadioButton value="doc">文章</NRadioButton>
-                            <NRadioButton value="photo">相册</NRadioButton>
+                            <NRadioButton value="label">{{ t('layout.header.search.radioLabel') }}</NRadioButton>
+                            <NRadioButton value="doc">{{ t('layout.header.search.radioDoc') }}</NRadioButton>
+                            <NRadioButton value="photo">{{ t('layout.header.search.radioPhoto') }}</NRadioButton>
                         </NRadioGroup>
-                        <NButton type="info" ghost @click="selectEnter">搜索</NButton>
+                        <NButton type="info" ghost @click="selectEnter">{{ t('comment.button.search') }}</NButton>
                     </NSpace>
                     <template v-if="mode == 'label'">
                         <NSpace v-if="labels.length > 0">
                             <CLabel v-for="label in labels" :key="label.id" :hidden-des="false" :label="label"
                                 @click="labelClick(label)" />
                         </NSpace>
-                        <div v-else>木有相关标签</div>
+                        <div v-else>{{ t('layout.header.search.noMatchContext') }}</div>
                     </template>
                     <template v-else>
                         <CLoading :state="docState">
@@ -31,7 +31,7 @@
                                     </span>
                                 </div>
                             </NSpace>
-                            <div v-if="docs.length == 0">木有相关文章</div>
+                            <div v-if="docs.length == 0">{{ t('layout.header.search.noMatchContext') }}</div>
                         </CLoading>
                     </template>
                 </NSpace>
@@ -50,8 +50,9 @@ import { issueApi } from '@/api';
 import { useAppStore } from '@/store/app.store';
 import CLabel from '&/CLabel.vue';
 import appConfig from '#/app.config';
+import { uI18n } from '#/locales';
 
-
+const { t } = uI18n();
 const appStore = useAppStore();
 
 defineProps<{
@@ -64,15 +65,15 @@ const labels = ref<Label[]>([]);
 const docs = ref<Issue[]>([]);
 const select = ref('');
 type Mode = 'label' | 'doc' | 'photo'
-const mode = ref<Mode>('label');
+const mode = ref<Mode>('doc');
 const docState = watchLoading({
     state: 'init',
-    fail: '文章搜索失败!'
+    fail: () => t('component.cLoading.fail', { name: '' })
 });
 
 async function selectByKeyword(label: string) {
     docState.value = 'loading';
-    const [err, data] = await awaitTo(issueApi.qIssuePageByKeyword(
+    const [err, res] = await awaitTo(issueApi.qIssuePageByKeyword(
         // 搜索内容
         select.value,
         // 标签
@@ -85,7 +86,7 @@ async function selectByKeyword(label: string) {
         return;
     }
     docState.value = 'success';
-    docs.value = data.items;
+    docs.value = res.data.items;
 }
 
 const selectDoMap: { [key in Mode]: () => void } = {
@@ -119,5 +120,4 @@ function issueClick(doc: Issue) {
         router.push({ path: '/photo/' + doc.number });
     }
 }
-// emit('update:select',true);
 </script>

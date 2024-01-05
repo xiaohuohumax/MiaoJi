@@ -1,5 +1,3 @@
-import { AxiosResponse } from 'axios';
-
 export interface User {
     // 名称
     login: string,
@@ -66,32 +64,3 @@ export type Issue = {
 export type Comment = Omit<Issue, 'number' | 'title' | 'labels'> & {
     id: number
 }
-
-export interface ErrorItem {
-    resource: string,
-    code: string,
-    field: string
-}
-
-export interface ErrorData {
-    message: string,
-    errors?: ErrorItem[]
-}
-
-type Res<R = any> = Omit<AxiosResponse<R>, 'status'>
-
-type Res401 = Res<ErrorData> & {
-    status: 401
-}
-
-type Res422 = Res<Required<ErrorData>> & {
-    status: 422
-}
-
-type Res404 = Res & {
-    status: 404
-}
-// 其他补充
-
-// 异常返回
-export type ResError = Res401 | Res422 | Res404

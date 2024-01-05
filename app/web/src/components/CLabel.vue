@@ -18,6 +18,7 @@
 </template>
 <script setup lang="ts">
 import { Label } from '@miaoji/api';
+
 defineProps<{
     label: Label,
     hiddenDes: boolean

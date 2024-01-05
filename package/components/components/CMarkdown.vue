@@ -1,16 +1,15 @@
 <template>
-    <MdPreview :modelValue="text" v-if="text != null" :theme="appStore.theme.markdown" :editorId="'editor-' + id + ''" />
+    <MdPreview :modelValue="text" v-if="text != null" :theme="theme" :editorId="'editor-' + id + ''" />
 </template>
 <script setup lang="ts">
-import { MdPreview } from 'md-editor-v3';
-import { useAppStore } from '@/store/app.store';
+import { MdPreview, Themes } from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
+
 defineProps<{
     text: string | null,
-    id: string | number
+    id: string | number,
+    theme?: Themes | undefined
 }>();
-
-const appStore = useAppStore();
 </script>
 
 <style scoped>

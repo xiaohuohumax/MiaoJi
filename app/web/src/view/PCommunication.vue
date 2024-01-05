@@ -3,48 +3,49 @@
         <template #fail>
             <div class="text-center">
                 <NButton @click="queryCommunication" class="mx-auto">
-                    重试
+                    {{ t('comment.button.retry') }}
                 </NButton>
             </div>
         </template>
-        <COver v-if="!communication">未指定"留言"页</COver>
+        <COver v-if="!communication" :context="t('page.communication.noPageTip')" />
         <NSpace v-else vertical>
-            <CSubTitle :context="communication.title" />
+            <CSubTitle :context="t('page.communication.subtitle')" />
             <NCard :bordered="false" size="small">
                 <NSpace vertical size="small">
-                    <CMarkdown :text="communication.body" :id="communication.number" />
+                    <CMarkdown :text="communication.body" :id="communication.number" :theme="appStore.theme.markdown" />
                     <CReactions :reactions="communication.reactions" />
                 </NSpace>
             </NCard>
-            <CComments :issue="communication" name="留言" />
+            <CComments :issue="communication" :title="t('page.communication.subtitle')" />
         </NSpace>
     </CLoading>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
 import { Issue } from '@miaoji/api';
-import { CLoading } from '@miaoji/components';
-import { COver } from '@miaoji/components';
-import { CSubTitle } from '@miaoji/components';
-import { watchLoading } from '@miaoji/components';
+import { CLoading, CMarkdown, COver, CSubTitle, watchLoading } from '@miaoji/components';
 import awaitTo from 'await-to-js';
 import { NButton, NCard, NSpace } from 'naive-ui';
 import { issueApi } from '@/api';
-import CMarkdown from '&/CMarkdown.vue';
+import { useAppStore } from '@/store/app.store';
 import CReactions from '&/CReactions.vue';
 import appConfig from '#/app.config';
+import { uI18n } from '#/locales';
 import CComments from './items/CComments.vue';
+
+const { t } = uI18n();
+const appStore = useAppStore();
 
 // 查询留言
 const communication = ref<Issue>(null!);
 const cState = watchLoading({
     state: 'init',
-    fail: '留言查询失败!'
+    fail: () => t('component.cLoading.fail', { name: t('page.communication.subtitle') })
 });
 
 async function queryCommunication() {
     cState.value = 'loading';
-    const [err, data] = await awaitTo(issueApi.qIssuePage({
+    const [err, res] = await awaitTo(issueApi.qIssuePage({
         labels: appConfig.label.communicationLabel,
         per_page: '1',
         state: 'all'
@@ -53,7 +54,7 @@ async function queryCommunication() {
         cState.value = 'fail';
         return;
     }
-    communication.value = data[0];
+    communication.value = res.data[0];
     cState.value = 'success';
 }
 

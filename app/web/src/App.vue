@@ -1,6 +1,7 @@
 <template>
   <NLoadingBarProvider>
-    <NConfigProvider :theme="appStore.theme.naive" :locale="zhCN" :date-locale="dateZhCN">
+    <NConfigProvider :theme-overrides="themeOverrides" :theme="appStore.theme.naive" :locale="tm('naiveUi.locale')"
+      :date-locale="tm('naiveUi.dateLocale')">
       <NGlobalStyle />
       <NMessageProvider>
         <RouterView />
@@ -10,21 +11,42 @@
 </template>
 <script setup lang="ts">
 import { onMounted, watch } from 'vue';
-import { dateZhCN, NConfigProvider, NGlobalStyle, NLoadingBarProvider, NMessageProvider, zhCN } from 'naive-ui';
+import { useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
+import { updateTitle } from '@miaoji/util';
+import { GlobalThemeOverrides, NConfigProvider, NGlobalStyle, NLoadingBarProvider, NMessageProvider } from 'naive-ui';
 import { useAppStore } from '@/store/app.store';
-const appStore = useAppStore();
-const htmlClassList = document.documentElement.classList;
+import { uI18n } from '#/locales';
 
-function watchTailwindTheme() {
+const { t, tm, locale } = uI18n();
+
+const appStore = useAppStore();
+const route = useRoute();
+const router = useRouter();
+
+// 设置标题
+router.beforeEach(({ meta }, _from, next) => {
+    meta?.title && updateTitle({ title: t(meta.title), after: '' });
+    next();
+});
+
+// 监听语言变化
+watch(() => appStore.lang, () => {
+    const lang = appStore.lang;
+    locale.value = lang;
+    route.meta.title && updateTitle({ title: t(route.meta.title) });
+    document.documentElement.lang = lang;
+}, { immediate: true });
+
+// 主题
+const htmlClassList = document.documentElement.classList;
+watch(() => appStore.theme, () => {
     appStore.theme.name == 'dark'
         ? htmlClassList.add('dark')
         : htmlClassList.remove('dark');
-}
+});
 
-watchTailwindTheme();
-
-watch(() => appStore.theme, watchTailwindTheme);
-
+// 初始加载
 onMounted(() => {
     const loading = document.querySelector<HTMLDivElement>('.app-loading');
     const loadingTime = import.meta.env.VITE_APP_LOADING_TIME || '5';
@@ -35,4 +57,11 @@ onMounted(() => {
         }, parseInt(loadingTime) * 1_000);
     }
 });
+
+const themeOverrides: GlobalThemeOverrides = {
+    common: {
+        fontFamily: 'ChillRoundGothic',
+        fontFamilyMono: 'ChillRoundGothic'
+    }
+};
 </script>

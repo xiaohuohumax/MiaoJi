@@ -1,15 +1,17 @@
 <template>
     <NSpace vertical>
         <NCard class="font-bold" size="small" :bordered="false">
-            <p>{{ name }}:</p>
+            <p>{{ title }}:</p>
         </NCard>
         <NCard class="font-bold p-2 text-center" v-if="closeComment" size="small" :bordered="false">
-            {{ name }}已影藏
+            {{ t('component.cComments.hiddenContext', { title }) }}
         </NCard>
         <template v-else>
             <NCard size="small" :bordered="false">
                 <a :href="issue.html_url" target="_blank">
-                    <NButton class="w-full" type="info">去{{ name }}</NButton>
+                    <NButton class="w-full" type="info">{{ t('component.cComments.gotoComment', {
+                        title: title.toLocaleLowerCase()
+                    }) }}</NButton>
                 </a>
             </NCard>
             <NSpace vertical v-if="comments.length > 0">
@@ -28,7 +30,8 @@
                                 <CReactions class="inline-block" :reactions="comment.reactions" />
                             </NSpace>
                             <NCard :bordered="false" size="small" class="w-full overflow-hidden">
-                                <CMarkdown :text="comment.body" class="rounded-lg" :id="comment.id" />
+                                <CMarkdown :text="comment.body" class="rounded-lg" :id="comment.id"
+                                    :theme="appStore.theme.markdown" />
                             </NCard>
                         </NSpace>
                     </div>
@@ -38,14 +41,14 @@
                 <template #fail>
                     <div class="text-center">
                         <NButton @click="nextPage" class="mx-auto">
-                            重试
+                            {{ t('comment.button.retry') }}
                         </NButton>
                     </div>
                 </template>
-                <COver v-if="isOver" />
+                <COver v-if="isOver" :context="t('component.cOver.context')" />
                 <div v-else class="text-center">
                     <NButton @click="nextPage" class="mx-auto">
-                        更多
+                        {{ t('comment.button.more') }}
                     </NButton>
                 </div>
             </CLoading>
@@ -55,27 +58,28 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { Comment, Issue } from '@miaoji/api';
-import { CLoading } from '@miaoji/components';
-import { COver } from '@miaoji/components';
-import { watchLoading } from '@miaoji/components';
+import { CLoading, CMarkdown, COver, watchLoading } from '@miaoji/components';
 import awaitTo from 'await-to-js';
 import { NButton, NCard, NSpace, NTime } from 'naive-ui';
 import { commentApi } from '@/api';
-import { hasLabel } from '@/store/app.store';
-import CMarkdown from '&/CMarkdown.vue';
+import { hasLabel, useAppStore } from '@/store/app.store';
 import CReactions from '&/CReactions.vue';
 import appConfig from '#/app.config';
+import { uI18n } from '#/locales';
+
+const { t } = uI18n();
+const appStore = useAppStore();
 
 const props = defineProps<{
     issue: Issue,
-    name: string
+    title: string
 }>();
 
 // 依据留言issue查询相关评论
 const comments = ref<Comment[]>([]);
 const cState = watchLoading({
     state: 'init',
-    fail: '评论查询失败!'
+    fail: () => t('component.cLoading.fail', { name: props.title })
 });
 const isOver = ref(false);
 let cPage = 1;
@@ -91,7 +95,7 @@ async function queryComments(issueId: string, page: number) {
         return;
     }
     cState.value = 'loading';
-    const [err, data] = await awaitTo(commentApi.qCommentsByIssueId(issueId, {
+    const [err, res] = await awaitTo(commentApi.qCommentsByIssueId(issueId, {
         page: page.toString(),
         per_page: cPerPage.toString()
     }));
@@ -99,10 +103,10 @@ async function queryComments(issueId: string, page: number) {
         cState.value = 'fail';
         return;
     }
-    if (data.length == 0 || data.length < cPerPage) {
+    if (res.data.length == 0 || res.data.length < cPerPage) {
         isOver.value = true;
     }
-    comments.value.push(...data);
+    comments.value.push(...res.data);
     cState.value = 'success';
 }
 

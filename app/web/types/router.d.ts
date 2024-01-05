@@ -3,7 +3,7 @@ import 'vue-router';
 declare module 'vue-router' {
     interface RouteMeta {
         // 网页title名称
-        title?: string,
+        title?: I18nSchemaKey,
         // 是否回到开头
         // 默认 true
         scrollTop?: boolean,

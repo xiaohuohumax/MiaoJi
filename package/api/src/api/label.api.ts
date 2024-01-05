@@ -1,4 +1,5 @@
 import { Api, RequestExecutor } from '@miaoji/util';
+import { AxiosResponse } from 'axios';
 import { Label } from '../entity';
 import { QPageBase } from '../query';
 
@@ -14,18 +15,18 @@ export class LabelApi extends Api {
     }
     // 分页查询
     qLabelsByPage(params: QPageBase) {
-        return this.request<Label[]>({
+        return this.request<AxiosResponse<Label[]>>({
             url: `/repos/${this.owner}/${this.repo}/labels`,
             method: 'GET',
             params
         });
     }
     // 查询全部
-    async qAllLabels() {
+    async qAllLabels(): Promise<Label[]> {
         const labels: Label[] = [];
         const per_page = 100;
         for (let page = 1; ; page++) {
-            const data = await this.qLabelsByPage({
+            const { data } = await this.qLabelsByPage({
                 page: page.toString(),
                 per_page: per_page.toString()
             });
@@ -38,7 +39,7 @@ export class LabelApi extends Api {
     }
     // 创建标签
     createLabel(label: CreateLabelData, token: string = '') {
-        return this.request<Label, CreateLabelData>({
+        return this.request<AxiosResponse<Label>, CreateLabelData>({
             url: `/repos/${this.owner}/${this.repo}/labels`,
             method: 'POST',
             data: label,

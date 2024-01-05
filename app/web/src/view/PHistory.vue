@@ -1,6 +1,6 @@
 <template>
     <NSpace vertical>
-        <CSubTitle context="历史"/>
+        <CSubTitle :context="t('page.history.subtitle')" />
         <NCard size="small" :bordered="false" v-if="historys.length > 0">
             <NTimeline>
                 <NTimelineItem v-for="history in historys" :key="history.number" :color="gHistoryColor(history)">
@@ -12,15 +12,15 @@
                             <CReactions :reactions="history.reactions" />
                             <NSpace>
                                 <span>
-                                    创建于:
+                                    {{ t('comment.span.createAt') }}:
                                     <NTime :time="new Date(history.created_at)" />
                                 </span>
                                 <span>
-                                    更新于:
+                                    {{ t('comment.span.updateAt') }}:
                                     <NTime :time="new Date(history.updated_at)" type="relative" />
                                 </span>
                             </NSpace>
-                            <CMarkdown :text="history.body" :id="history.number" />
+                            <CMarkdown :text="history.body" :id="history.number" :theme="appStore.theme.markdown" />
                         </NSpace>
                     </template>
                 </NTimelineItem>
@@ -30,14 +30,14 @@
             <template #fail>
                 <div class="text-center">
                     <NButton @click="nextPage">
-                        重试
+                        {{ t('comment.button.retry') }}
                     </NButton>
                 </div>
             </template>
-            <COver v-if="isOver" />
+            <COver v-if="isOver" :context="t('component.cOver.context')" />
             <div v-else class="text-center">
                 <NButton @click="nextPage">
-                    更多
+                    {{ t('comment.button.more') }}
                 </NButton>
             </div>
         </CLoading>
@@ -47,17 +47,17 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { Issue } from '@miaoji/api';
-import { CLoading } from '@miaoji/components';
-import { COver } from '@miaoji/components';
-import { CSubTitle } from '@miaoji/components';
-import { watchLoading } from '@miaoji/components';
+import { CLoading, CMarkdown, COver, CSubTitle, watchLoading } from '@miaoji/components';
 import awaitTo from 'await-to-js';
-import{ NButton, NCard, NSpace, NTime, NTimeline, NTimelineItem } from 'naive-ui';
+import { NButton, NCard, NSpace, NTime, NTimeline, NTimelineItem } from 'naive-ui';
 import { issueApi } from '@/api';
-import CMarkdown from '&/CMarkdown.vue';
+import { useAppStore } from '@/store/app.store';
 import CReactions from '&/CReactions.vue';
 import appConfig from '#/app.config';
+import { uI18n } from '#/locales';
 
+const { t } = uI18n();
+const appStore = useAppStore();
 
 const perPage = 10;
 let page = 1;
@@ -66,13 +66,13 @@ let page = 1;
 const historys = ref<Issue[]>([]);
 const hState = watchLoading({
     state: 'loading',
-    fail: '历史查询失败!'
+    fail: () => t('component.cLoading.fail', { name: t('page.history.subtitle') })
 });
 const isOver = ref(false);
 
 async function queryIssues(page: number) {
     hState.value = 'loading';
-    const [err, data] = await awaitTo(issueApi.qIssuePage({
+    const [err, res] = await awaitTo(issueApi.qIssuePage({
         labels: appConfig.label.historyLabel,
         state: 'all',
         page: page.toString(),
@@ -82,10 +82,10 @@ async function queryIssues(page: number) {
         hState.value = 'fail';
         return;
     }
-    if (data.length == 0 || data.length < perPage) {
+    if (res.data.length == 0 || res.data.length < perPage) {
         isOver.value = true;
     }
-    historys.value.push(...data);
+    historys.value.push(...res.data);
     hState.value = 'success';
 }
 

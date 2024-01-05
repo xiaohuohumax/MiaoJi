@@ -9,10 +9,10 @@ interface WatchLoadingConfig {
     state: LoadingState,
     duration?: number,
 
-    init?: string,
-    loading?: string
-    success?: string,
-    fail?: string,
+    init?: (() => string) | string,
+    loading?: (() => string) | string,
+    success?: (() => string) | string,
+    fail?: (() => string) | string,
 }
 
 export function watchLoading(config: WatchLoadingConfig) {
@@ -27,7 +27,7 @@ export function watchLoading(config: WatchLoadingConfig) {
     watch(() => loading.value, () => {
         const data = config[loading.value];
 
-        data && stateMap[loading.value](data, {
+        data && stateMap[loading.value](typeof (data) == 'function' ? data() : data, {
             duration: config.duration || defaultDuration
         });
     });

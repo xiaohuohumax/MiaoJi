@@ -8,6 +8,7 @@
 <script setup lang="ts">
 import { Reactions } from '@miaoji/api';
 import { NSpace } from 'naive-ui';
+
 const props = defineProps<{
     reactions: Reactions
 }>();

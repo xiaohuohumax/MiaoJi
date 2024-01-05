@@ -3,7 +3,7 @@
         <template #fail>
             <NCard size="small" :bordered="false">
                 <button class="p-2 w-full font-bold" @click="queryPhoto">
-                    重新加载
+                    {{ t('comment.button.retry') }}
                 </button>
             </NCard>
         </template>
@@ -18,10 +18,12 @@
                             <span>{{ photo.user.login }}</span>
                         </a>
                         <span>
+                            {{ t('comment.span.createAt') }}:
                             <NTime :time="new Date(photo.created_at)" />
                         </span>
                         <span>
-                            <NTime :time="new Date(photo.updated_at)" type="relative" />更新
+                            {{ t('comment.span.updateAt') }}:
+                            <NTime :time="new Date(photo.updated_at)" type="relative" />
                         </span>
                     </NSpace>
                     <NSpace align="center">
@@ -37,24 +39,31 @@
                     </NGrid>
                 </NSpace>
             </NCard>
-            <CComments :issue="photo" name="评论" />
+            <CComments :issue="photo" :title="t('page.photoDetails.commentsTitle')" />
         </NSpace>
     </CLoading>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-import { CLoading } from '@miaoji/components';
-import { watchLoading } from '@miaoji/components';
+import { onActivated, ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { Issue } from '@miaoji/api';
+import { CLoading, watchLoading } from '@miaoji/components';
 import { gImages } from '@miaoji/util';
 import { updateTitle } from '@miaoji/util';
 import awaitTo from 'await-to-js';
+import { AxiosError, AxiosResponse } from 'axios';
 import { NCard, NGrid, NGridItem, NImage, NSpace, NTime } from 'naive-ui';
 import { issueApi } from '@/api';
 import { Photo } from '@/api/entity.ext';
-import { removeFuncLabels } from '@/store/app.store';
+import { hasLabel, removeFuncLabels } from '@/store/app.store';
 import CLabel from '&/CLabel.vue';
 import CReactions from '&/CReactions.vue';
+import appConfig from '#/app.config';
+import { uI18n } from '#/locales';
 import CComments from './items/CComments.vue';
+
+const { t } = uI18n();
+const router = useRouter();
 
 const props = defineProps<{
     id: string
@@ -64,20 +73,32 @@ const props = defineProps<{
 const photo = ref<Photo>(null!);
 const pState = watchLoading({
     state: 'loading',
-    fail: '文章查询失败!'
+    fail: () => t('component.cLoading.fail', { name: t('page.photoDetails.subtitle') })
 });
 
 async function queryPhoto() {
     pState.value = 'loading';
-    const [err, data] = await awaitTo(issueApi.qIssueById(props.id!));
-    if (err || data == null) {
+    const [err, res] = await awaitTo<AxiosResponse<Issue>, AxiosError>(issueApi.qIssueById(props.id!));
+    if (err) {
+        if (err?.response?.status == 404) {
+            router.replace({ name: 'PNotFound' });
+            return;
+        }
         pState.value = 'fail';
         return;
     }
-    photo.value = { ...data, images: gImages(data.body) };
+    if (!hasLabel(res.data.labels, appConfig.label.photoLabel)) {
+        router.replace({ name: 'PNotFound' });
+        return;
+    }
+    photo.value = { ...res.data, images: gImages(res.data.body) };
     pState.value = 'success';
     updateTitle({ after: photo.value.title });
 }
 
 queryPhoto();
-</script>@/api/entity.ext
+
+onActivated(() => {
+    photo.value && updateTitle({ after: photo.value.title });
+});
+</script>

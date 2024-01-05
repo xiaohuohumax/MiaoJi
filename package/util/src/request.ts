@@ -26,11 +26,6 @@ export class RequestExecutor {
             this.interceptors?.resInterceptors,
             this.interceptors?.resInterceptorCatch
         );
-        // 默认返回 data 和 response
-        this.instance.interceptors.response.use(
-            res => res.data,
-            err=> Promise.reject(err.response)
-        );
     }
     static create(config: RequestConfig) {
         return new RequestExecutor(config);

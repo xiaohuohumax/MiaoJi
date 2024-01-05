@@ -12,7 +12,7 @@ button,
 
 img,
 video {
-  height: initial;
+    height: initial;
 }
 
 /* 字体: 寒蝉圆黑体 */
@@ -25,4 +25,15 @@ body,
 .md-editor,
 :root {
     font-family: ChillRoundGothic !important;
+}
+
+/* 滚动条修改 */
+body::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: hsl(0deg 0% 70%);
+    border-radius: 5px;
 }
