@@ -1,1 +1,0 @@
-import{d as t,a6 as o,a7 as a,bf as s,ag as n,ae as r}from"./index-bab370b4.js";const c={class:"text-center font-bold py-4"},d=t({__name:"COver",props:{context:{}},setup(p){return(e,l)=>(o(),a("div",c,[s(e.$slots,"default",{},()=>[n(r(e.context),1)])]))}});export{d as _};
