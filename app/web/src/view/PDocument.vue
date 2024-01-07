@@ -10,11 +10,12 @@
         <NSpace vertical>
             <NCard size="small" :bordered="false">
                 <NSpace class="text-sm relative" vertical>
-                    <p class="text-2xl font-bold align-middle">
+                    <p class="text-2xl font-bold align-middle dark:text-green-300 text-orange-500">
                         {{ document.title }}
                     </p>
                     <NSpace>
-                        <a target="_blank" :href="document.user.html_url" class="hover:text-green-300">
+                        <a target="_blank" :href="document.user.html_url"
+                            class="hover:text-orange-500 dark:hover:text-green-300">
                             <span>{{ document.user.login }}</span>
                         </a>
                         <span>

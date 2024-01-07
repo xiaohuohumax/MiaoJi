@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" width="500" height="500"
+    viewBox="0 0 500 500" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>logo</title>
+    <g transform="matrix(10.58 0 0 10.58 250.02 192.23)">
+        <path
+            style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: #3f3d56; fill-rule: evenodd; opacity: 1;"
+            transform=" translate(-50.05, -45.68)"
+            d="M 72.1 45 H 63 V 30.4 c 0 -0.4 -0.3 -0.8 -0.7 -1 c -0.4 -0.1 -0.9 0 -1.1 0.4 L 55.4 38 H 44.5 l -5.7 -8.2 c -0.2 -0.4 -0.7 -0.5 -1.1 -0.4 c -0.4 0.1 -0.7 0.5 -0.7 1 V 45 h -9 c -0.6 0 -1 0.4 -1 1 s 0.4 1 1 1 h 9 v 2 h -8.1 c -0.6 0 -1 0.4 -1 1 s 0.4 1 1 1 H 37 v 4 c 0 0.4 0.2 0.7 0.6 0.9 l 12 6 C 49.7 62 49.8 62 50 62 s 0.3 0 0.4 -0.1 l 12 -6 c 0.3 -0.2 0.6 -0.5 0.6 -0.9 v -3.9 h 7.9 c 0.6 0 1 -0.4 1 -1 s -0.4 -1 -1 -1 H 63 V 47 h 9.1 c 0.6 0 1 -0.4 1 -1 S 72.6 45 72.1 45 z M 39 33.6 l 4.1 6 c 0.2 0.3 0.5 0.4 0.8 0.4 h 12 c 0.3 0 0.6 -0.2 0.8 -0.4 l 4.2 -6 V 45 h -5.8 c -0.1 0 -0.1 0 -0.2 0 c -0.3 0 -0.5 0.1 -0.7 0.3 L 50 49.6 l -4.2 -4.2 C 45.6 45.1 45.3 45 45 45 h -6 V 33.6 z M 61 49.1 h -4.1 c -0.6 0 -1 0.4 -1 1 s 0.4 1 1 1 H 61 v 3.3 l -11 5.5 l -11 -5.5 V 51 h 4.1 c 0.6 0 1 -0.4 1 -1 s -0.4 -1 -1 -1 H 39 v -2 h 5.6 l 4.7 4.7 c 0.2 0.2 0.5 0.3 0.7 0.3 s 0.5 -0.1 0.7 -0.3 l 4.7 -4.7 H 61 V 49.1 z"
+            stroke-linecap="round" />
+    </g>
+    <g transform="matrix(10.58 0 0 10.58 248.97 406.06)">
+        <path
+            style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: #86efac; fill-rule: evenodd; opacity: 1;"
+            transform=" translate(-49.95, -65.89)"
+            d="M 62.5 59.1 c -0.3 -0.2 -0.7 -0.2 -1 0 L 50 64.7 L 38.4 59 c -0.3 -0.2 -0.7 -0.1 -1 0 c -0.3 0.2 -0.5 0.5 -0.5 0.8 v 12 c 0 0.3 0.2 0.7 0.5 0.8 c 0.2 0.1 0.3 0.2 0.5 0.2 c 0.2 0 0.3 0 0.4 -0.1 L 50 67.1 l 11.6 5.7 c 0.1 0.1 0.3 0.1 0.4 0.1 c 0.2 0 0.4 -0.1 0.5 -0.2 c 0.3 -0.2 0.5 -0.5 0.5 -0.8 v -12 C 63 59.6 62.8 59.3 62.5 59.1 z M 39 70.3 v -8.8 l 8.9 4.4 L 39 70.3 z M 61 70.3 L 52 65.9 l 8.9 -4.4 V 70.3 z"
+            stroke-linecap="round" />
+    </g>
+</svg>

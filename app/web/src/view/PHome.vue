@@ -3,7 +3,7 @@
         <CBanner />
         <NCard v-for="document in documents" :key="document.number" size="small" :bordered="false">
             <NSpace vertical size="small">
-                <RouterLink :to="`/doc/${document.number}`" class="text-2xl font-bold hover:text-green-300">
+                <RouterLink :to="`/doc/${document.number}`" class="text-2xl font-bold dark:text-green-300 text-orange-500">
                     {{ document.title }}
                 </RouterLink>
                 <NSpace align="center" size="small">

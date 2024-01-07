@@ -4,7 +4,7 @@
         <LBody class="my-2 flex-grow" />
         <LFooter />
     </div>
-    <NBackTop :bottom="40" :right="40" :visibility-height="300" class="hidden md:flex">
+    <NBackTop :bottom="40" :right="40" :visibility-height="300" class="hidden md:flex  dark:text-green-300 text-orange-500">
         <ToTop size="1.5em" />
     </NBackTop>
 </template>

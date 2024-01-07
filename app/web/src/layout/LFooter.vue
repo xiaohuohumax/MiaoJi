@@ -1,13 +1,13 @@
 <template>
     <div size="small" class="text-center py-8 flex justify-center items-center text-xs">
         <NSpace>
-            <a :href="appConfig.repository" target="_blank" class="hover:text-green-300">
+            <a :href="appConfig.repository" target="_blank" class="hover:text-orange-500 dark:hover:text-green-300">
                 {{ appConfig.name }}
             </a>
             <span>
                 v{{ appConfig.version }}
             </span>
-            <a :href="appConfig.author.url" target="_blank" class="hover:text-green-300 flex items-center">
+            <a :href="appConfig.author.url" target="_blank" class="hover:text-orange-500 dark:hover:text-green-300 flex items-center">
                 <GithubOne class="inline-block" />
                 {{ appConfig.author.name }}
             </a>

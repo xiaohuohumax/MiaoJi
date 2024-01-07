@@ -10,12 +10,12 @@
                                 :alt="link.user.login" />
                         </a>
                         <NSpace size="small" vertical class="flex-grow">
-                            <div size="small" class="flex items-center text-xl hover:text-green-300">
+                            <div size="small" class="flex items-center text-xl hover:text-orange-500 dark:hover:text-green-300">
                                 <a :href="link.anchor ? link.anchor.href : link.user.html_url" target="_blank">
                                     {{ link.anchor ? link.anchor.content : link.title }}
                                 </a>
                             </div>
-                            <div size="small" class="flex items-center hover:text-green-300">
+                            <div size="small" class="flex items-center hover:text-orange-500 dark:hover:text-green-300">
                                 <a :href="link.user.html_url" target="_blank">
                                     {{ link.user.login }}
                                 </a>

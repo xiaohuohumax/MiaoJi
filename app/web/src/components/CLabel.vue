@@ -1,5 +1,6 @@
 <template>
-    <div class="p-1 text-left text-wrap max-w-full cursor-pointer hover:text-green-300 font-bold flex items-center">
+    <div
+        class="p-1 text-left text-wrap max-w-full cursor-pointer hover:text-orange-500 dark:hover:text-green-300 font-bold flex items-center">
         <div>
             <slot>
                 <span class="inline-block p-1 rounded-full shadow-md mr-1" :style="{

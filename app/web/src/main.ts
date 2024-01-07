@@ -34,7 +34,8 @@ logger.info('welcome use: ' + appConfig.name);
     // router
     app.use(router);
 
+    const loadTime = import.meta.env.VITE_APP_LOADING_TIME;
     // 等待
-    // setTimeout(() => app.mount('#app'), 1_000);
-    app.mount('#app');
+    setTimeout(() => app.mount('#app'), (loadTime ? parseInt(loadTime) : 0) * 1_000);
+    // app.mount('#app');
 })();

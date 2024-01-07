@@ -37,3 +37,7 @@ body::-webkit-scrollbar-thumb {
     background: hsl(0deg 0% 70%);
     border-radius: 5px;
 }
+
+:root {
+    color: #3f3d56;
+}

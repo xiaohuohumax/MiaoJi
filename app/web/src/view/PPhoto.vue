@@ -7,7 +7,7 @@
                 <NCard size="small" :bordered="false">
                     <img class="object-cover rounded-md" :src="photo.images[0]?.src" :alt="photo.images[0]?.alt">
                     <NSpace vertical>
-                        <div class="text-lg mt-2 group-hover:text-green-300">
+                        <div class="text-lg mt-2 hover:text-orange-500 dark:hover:text-green-300">
                             {{ photo.title }}
                         </div>
                         <div>

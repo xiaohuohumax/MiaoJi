@@ -1,5 +1,5 @@
 <template>
-    <NModal :show="show" :mask-closable="true" @mask-click="emit('update:show', false)" title="确认" :closable="true"
+    <NModal :show="show" :mask-closable="true" @mask-click="emit('update:show', false)" :closable="true"
         @close="emit('update:show', false)">
         <div class="max-w-full flex p-3 shadow-none" style="margin-top: calc(100svh / 6);">
             <NCard :title="t('layout.header.search.title')" style="width: 30rem;" class="flex-shrink" :bordered="false">
@@ -26,7 +26,7 @@
                                 <div class="cursor-pointer" v-for="doc, index in docs" :key="doc.number"
                                     @click="issueClick(doc)">
                                     <span class="mr-1">#{{ index + 1 }}</span>
-                                    <span class="font-bold hover:text-green-300">
+                                    <span class="font-bol hover:text-orange-500 dark:hover:text-green-300">
                                         {{ doc.title }}
                                     </span>
                                 </div>

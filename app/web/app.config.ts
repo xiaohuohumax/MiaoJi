@@ -16,7 +16,8 @@ export type AppConfig = DefaultLabel & {
         accessToken?: string
     },
     loopLoadLabelsTimeout: number,
-    selectDocPageSize: number
+    selectDocPageSize: number,
+    isUsePointBackground: boolean
 }
 
 const appConfig: AppConfig = {
@@ -46,7 +47,9 @@ const appConfig: AppConfig = {
     // 循环刷新全部标签时间间隔
     loopLoadLabelsTimeout: 30_60_000,
     // 文章查询数量 最多100
-    selectDocPageSize: 5
+    selectDocPageSize: 5,
+    // 是否开启背景特效
+    isUsePointBackground: true
 };
 
 export default appConfig;

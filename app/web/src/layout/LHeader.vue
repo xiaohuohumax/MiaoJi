@@ -1,17 +1,17 @@
 <template>
     <div class="sticky top-0 z-50">
-        <NCard size="small" class="container mx-auto" :bordered="false">
+        <NCard size="small" class="container mx-auto bg-white dark:bg-[#101014]" :bordered="false">
             <div class="flex justify-between items-center">
                 <div class="text-xl flex-shrink-0 group">
-                    <RouterLink to="/" title="首页" class="flex items-center font-bold">
-                        <img class="w-10 md:w-16 hover:scale-105 duration-100" src="/logo.png" :alt="appConfig.name">
-                        <span class="ml-2  group-hover:text-green-300">{{ appConfig.name }}</span>
+                    <RouterLink to="/" class="flex items-center font-bold">
+                        <img class="w-10 md:w-12 object-cover flex-grow-0" src="/logo.svg" :alt="appConfig.name">
+                        <span class="ml-2 group-hover:text-orange-500 dark:group-hover:text-green-300">{{ appConfig.name }}</span>
                     </RouterLink>
                 </div>
                 <div size="small" class="font-bold text-lg flex items-center">
                     <div class="group flex items-center cursor-pointer hover:scale-105 duration-100 mr-2"
                         @click="showSelect = !showSelect">
-                        <NIcon class="group-hover:text-green-300">
+                        <NIcon class="group-hover:text-orange-500 dark:group-hover:text-green-300">
                             <Search stroke-linecap="round" stroke-linejoin="round" :stroke-width="5" />
                         </NIcon>
                         <span class="hidden md:inline">{{ t('menu.search') }}</span>
@@ -19,7 +19,7 @@
                     <NPopover :overlap="false" placement="top-end" trigger="click" :show-arrow="false">
                         <template #trigger>
                             <div class="group flex items-center cursor-pointer hover:scale-105 duration-100 lg:hidden mr-2">
-                                <NIcon class="group-hover:text-green-300">
+                                <NIcon class="group-hover:text-orange-500 dark:group-hover:text-green-300">
                                     <ApplicationMenu stroke-linecap="round" stroke-linejoin="round" :stroke-width="5" />
                                 </NIcon>
                                 <span class="hidden md:inline">{{ t('menu.menu') }}</span>
@@ -30,7 +30,7 @@
                                 <template v-for="menu in appStore.menus" :key="menu.name">
                                     <RouterLink :to="menu.path" class="group flex items-center hover:scale-105 duration-100"
                                         v-if="appStore.hasLabels(menu.labels)">
-                                        <NIcon class="group-hover:text-green-300">
+                                        <NIcon class="group-hover:text-orange-500 dark:group-hover:text-green-300">
                                             <component :is="menu.icon" stroke-linecap="round" stroke-linejoin="round"
                                                 :stroke-width="5" />
                                         </NIcon>
@@ -44,7 +44,7 @@
                     <template v-for="menu in appStore.menus" :key="menu.name">
                         <div class="hidden lg:block mr-2" v-if="appStore.hasLabels(menu.labels)">
                             <RouterLink :to="menu.path" class="group flex items-center hover:scale-105 duration-100">
-                                <NIcon class="group-hover:text-green-300">
+                                <NIcon class="group-hover:text-orange-500 dark:group-hover:text-green-300">
                                     <component :is="menu.icon" stroke-linecap="round" stroke-linejoin="round"
                                         :stroke-width="5" />
                                 </NIcon>
@@ -55,7 +55,7 @@
                     <NPopover :overlap="false" placement="top-end" trigger="click" :show-arrow="false">
                         <template #trigger>
                             <div class="group flex items-center cursor-pointer hover:scale-105 duration-100 mr-2">
-                                <NIcon class="group-hover:text-green-300">
+                                <NIcon class="group-hover:text-orange-500 dark:group-hover:text-green-300">
                                     <Translate stroke-linecap="round" stroke-linejoin="round" :stroke-width="5" />
                                 </NIcon>
                                 <span class="hidden md:inline">{{ t('menu.lang') }}</span>
@@ -72,7 +72,7 @@
                     </NPopover>
                     <div @click="appStore.toggleTheme()"
                         class="group flex items-center cursor-pointer hover:scale-105 duration-100">
-                        <NIcon class="group-hover:text-green-300">
+                        <NIcon class="group-hover:text-orange-500 dark:group-hover:text-green-300">
                             <component :is="appStore.theme.icon" stroke-linecap="round" stroke-linejoin="round"
                                 :stroke-width="5" />
                         </NIcon>

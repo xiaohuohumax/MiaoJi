@@ -1,10 +1,16 @@
 # @miaoji/web
 
+## 0.5.0
+
+### Minor Changes
+
+- 添加背景特效 主题调整 首页加载调整
+
 ## 0.4.0
 
 ### Minor Changes
 
-- 添加i18n(中英) API接口优化 文章不匹配拦截跳转404
+- 添加 i18n(中英) API 接口优化 文章不匹配拦截跳转 404
 
 ### Patch Changes
 

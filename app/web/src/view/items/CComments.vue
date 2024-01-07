@@ -23,7 +23,7 @@
                         </a>
                         <NSpace vertical class="ml-2 flex-grow w-0">
                             <a target="_blank" :href="comment.user.html_url">
-                                <span class="font-bold text-xl hover:text-green-300">{{ comment.user.login }}</span>
+                                <span class="font-bold text-xl hover:text-orange-500 dark:hover:text-green-300">{{ comment.user.login }}</span>
                             </a>
                             <NSpace align="center">
                                 <NTime :time="new Date(comment.updated_at)" type="relative" />

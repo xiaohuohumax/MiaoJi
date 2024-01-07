@@ -2,9 +2,7 @@
     <NCard size="small" :bordered="false">
         <NSpace class="font-bold text-center min-h-80" justify="center" align="center">
             <div>
-                <p class="text-2xl">
-                    404 Not Found
-                </p>
+                <img src="/images/error_404.svg" class="max-w-64 md:max-w-96">
                 <p>{{ t('page.notFound.communication') }}</p>
             </div>
         </NSpace>

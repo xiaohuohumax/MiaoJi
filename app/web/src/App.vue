@@ -1,4 +1,5 @@
 <template>
+  <CPointBackground class="-z-50 fixed left-0 top-0 hidden sm:block" v-if="appConfig.isUsePointBackground"/>
   <NLoadingBarProvider>
     <NConfigProvider :theme-overrides="themeOverrides" :theme="appStore.theme.naive" :locale="tm('naiveUi.locale')"
       :date-locale="tm('naiveUi.dateLocale')">
@@ -16,6 +17,8 @@ import { useRouter } from 'vue-router';
 import { updateTitle } from '@miaoji/util';
 import { GlobalThemeOverrides, NConfigProvider, NGlobalStyle, NLoadingBarProvider, NMessageProvider } from 'naive-ui';
 import { useAppStore } from '@/store/app.store';
+import CPointBackground from '&/CPointBackground.vue';
+import appConfig from '#/app.config';
 import { uI18n } from '#/locales';
 
 const { t, tm, locale } = uI18n();
@@ -44,24 +47,23 @@ watch(() => appStore.theme, () => {
     appStore.theme.name == 'dark'
         ? htmlClassList.add('dark')
         : htmlClassList.remove('dark');
-});
+}, { immediate: true });
 
 // 初始加载
 onMounted(() => {
-    const loading = document.querySelector<HTMLDivElement>('.app-loading');
-    const loadingTime = import.meta.env.VITE_APP_LOADING_TIME || '5';
-    if (loading) {
-        loading?.classList.add('app-load-ok');
-        setTimeout(() => {
-            loading.style.display = 'none';
-        }, parseInt(loadingTime) * 1_000);
-    }
+    document.documentElement.classList.add('load-ok');
+    setTimeout(() => {
+        document.documentElement.classList.remove('loading');
+    }, 2_000);
 });
 
 const themeOverrides: GlobalThemeOverrides = {
     common: {
         fontFamily: 'ChillRoundGothic',
-        fontFamilyMono: 'ChillRoundGothic'
-    }
+        fontFamilyMono: 'ChillRoundGothic',
+    },
+    Card: {
+        color: 'transparent'
+    },
 };
 </script>
