@@ -1,5 +1,5 @@
 <template>
-  <CPointBackground class="-z-50 fixed left-0 top-0 hidden sm:block" v-if="appConfig.isUsePointBackground"/>
+  <CPointBackground class="-z-50 fixed left-0 top-0 hidden sm:block" v-if="appConfig.isUsePointBackground" />
   <NLoadingBarProvider>
     <NConfigProvider :theme-overrides="themeOverrides" :theme="appStore.theme.naive" :locale="tm('naiveUi.locale')"
       :date-locale="tm('naiveUi.dateLocale')">
