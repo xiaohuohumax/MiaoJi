@@ -2,35 +2,16 @@
     <NModal :show="show" :mask-closable="true" @mask-click="emit('update:show', false)" :closable="true"
         @close="emit('update:show', false)">
         <div class="max-w-full flex p-3 shadow-none" style="margin-top: calc(100svh / 6);">
-            <NCard :title="t('layout.header.search.title')" style="width: 36rem;" class="flex-shrink" :bordered="false">
+            <NCard :title="t('layout.header.search.title')" style="width: 30rem;" class="flex-shrink" :bordered="false">
                 <NSpace vertical size="large">
-                    <NInputGroup>
-                        <NSelect class="w-36" v-model:value="mode" size="large" :options="[
-                            {
-                                label: t('layout.header.search.radioLabel'),
-                                value: 'label',
-                            },
-                            {
-                                label: t('layout.header.search.radioDoc'),
-                                value: 'doc',
-                            },
-                            {
-                                label: t('layout.header.search.radioPhoto'),
-                                value: 'photo',
-                            }
-                        ]">
-                            <template #arrow>
-                                <transition name="slide-left">
-                                    <DocSearch v-if="mode == 'doc'" />
-                                    <Tag v-else-if="mode == 'label'" />
-                                    <PictureAlbum v-else />
-                                </transition>
-                            </template>
-                        </NSelect>
-                        <NInput size="large" v-model:value.trim="select" @keydown.enter="selectEnter" />
-                        <NButton type="success" size="large" @click="selectEnter">{{ t('comment.button.search') }}</NButton>
-                    </NInputGroup>
+                    <NInput size="large" v-model:value.trim="select" @keydown.enter="selectEnter" />
                     <NSpace justify="space-between">
+                        <NRadioGroup v-model:value="mode">
+                            <NRadioButton value="label">{{ t('layout.header.search.radioLabel') }}</NRadioButton>
+                            <NRadioButton value="doc">{{ t('layout.header.search.radioDoc') }}</NRadioButton>
+                            <NRadioButton value="photo">{{ t('layout.header.search.radioPhoto') }}</NRadioButton>
+                        </NRadioGroup>
+                        <NButton type="info" ghost @click="selectEnter">{{ t('comment.button.search') }}</NButton>
                     </NSpace>
                     <template v-if="mode == 'label'">
                         <NSpace v-if="labels.length > 0">
@@ -61,11 +42,10 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import { DocSearch, PictureAlbum, Tag } from '@icon-park/vue-next';
 import { Issue, Label } from '@miaoji/api';
 import { CLoading, watchLoading } from '@miaoji/components';
 import awaitTo from 'await-to-js';
-import { NButton, NCard, NInput, NInputGroup, NModal, NSelect, NSpace } from 'naive-ui';
+import { NButton, NCard, NInput, NModal, NRadioButton, NRadioGroup, NSpace } from 'naive-ui';
 import { issueApi } from '@/api';
 import { useAppStore } from '@/store/app.store';
 import CLabel from '&/CLabel.vue';

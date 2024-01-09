@@ -1,11 +1,5 @@
 # @miaoji/web
 
-## 0.5.1
-
-### Patch Changes
-
-- 全局搜索框样式修改
-
 ## 0.5.0
 
 ### Minor Changes
