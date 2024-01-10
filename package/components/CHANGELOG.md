@@ -1,10 +1,16 @@
 # @miaoji/components
 
+## 1.2.1
+
+### Patch Changes
+
+- 调整文件结构
+
 ## 1.2.0
 
 ### Minor Changes
 
-- 添加i18n(中英) API接口优化 文章不匹配拦截跳转404
+- 添加 i18n(中英) API 接口优化 文章不匹配拦截跳转 404
 
 ## 1.1.0
 

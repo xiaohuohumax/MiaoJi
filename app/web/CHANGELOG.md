@@ -1,5 +1,12 @@
 # @miaoji/web
 
+## 0.5.2
+
+### Patch Changes
+
+- Updated dependencies
+  - @miaoji/components@1.2.1
+
 ## 0.5.1
 
 ### Patch Changes
