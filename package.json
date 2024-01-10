@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "pnpm --filter @miaoji/web dev",
     "build": "pnpm --filter @miaoji/web build",
+    "label":"pnpm --filter @miaoji/label start",
     "lint": "eslint --fix --ext=.ts,.d.ts,.vue . && echo success 🎉🎉"
   },
   "keywords": [],

@@ -2,13 +2,13 @@
 
 **基于 `Github API` `Github Pages` `Issue` `Label` 实现的简单网站, 可用于搭建简单博客, 记录笔记等**
 
-### 在线访问
+### 🔗在线访问
 
 [Live Demo](https://xiaohuohumax.github.io/MiaoJi/)
 
 由于未添加 `Token`, 所以访问频次有限制(大概60次/每人/每小时), 详见[REST API](https://docs.github.com/zh/rest/using-the-rest-api/rate-limits-for-the-rest-api)
 
-## 功能
+## 📊功能
 
 + 文章笔记
 + 轮播图
@@ -29,7 +29,7 @@ pnpm dev
 pnpm build
 ```
 
-## 标签规则
+## 📏标签规则
 
 [标签规则](./doc/label.md)
 
@@ -45,3 +45,8 @@ pnpm build
 ## 📂配置文件
 
 [app.config.ts](./app/web/app.config.ts) 或者 [dist/app.config.ts](./app/web/dist/app.config.js)
+
+
+## 🧰标签生成辅助工具
+
+[工具 app/create-label](./app/create-label/README.md)

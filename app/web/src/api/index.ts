@@ -44,7 +44,7 @@ function handleError(err: any) {
 }
 
 const executor = RequestExecutor.create({
-    baseURL: 'https://api.github.com',
+    baseURL: appConfig.api.apiBaseUrl,
     timeout: 10_0000,
     headers: {
         Accept: 'application/json',

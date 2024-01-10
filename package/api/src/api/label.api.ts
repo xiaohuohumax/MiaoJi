@@ -38,14 +38,11 @@ export class LabelApi extends Api {
         return labels;
     }
     // 创建标签
-    createLabel(label: CreateLabelData, token: string = '') {
+    createLabel(label: CreateLabelData) {
         return this.request<AxiosResponse<Label>, CreateLabelData>({
             url: `/repos/${this.owner}/${this.repo}/labels`,
             method: 'POST',
             data: label,
-            headers: !token
-                ? { Authorization: 'Bearer ' + token }
-                : {}
         });
     }
 }
