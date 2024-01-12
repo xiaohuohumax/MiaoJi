@@ -45,4 +45,11 @@ export class LabelApi extends Api {
             data: label,
         });
     }
+    // 删除标签
+    deleteLabelByName(name: string) {
+        return this.request<AxiosResponse>({
+            url: `/repos/${this.owner}/${this.repo}/labels/${name}`,
+            method: 'DELETE'
+        });
+    }
 }

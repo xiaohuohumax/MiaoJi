@@ -1,5 +1,11 @@
 # @miaoji/api
 
+## 1.5.0
+
+### Minor Changes
+
+- 添加标签删除
+
 ## 1.4.0
 
 ### Minor Changes
