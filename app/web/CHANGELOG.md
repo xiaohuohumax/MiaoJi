@@ -1,5 +1,11 @@
 # @miaoji/web
 
+## 0.5.4
+
+### Patch Changes
+
+- 首页缓存失效 BUG 修复 更换 logo
+
 ## 0.5.3
 
 ### Patch Changes

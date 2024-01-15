@@ -128,16 +128,13 @@ function handleScroll() {
     }
 }
 
-onBeforeRouteLeave(() => {
-    oldSTop = document.documentElement.scrollTop;
-});
-
 onActivated(() => {
     window.scrollTo(0, oldSTop);
     window.addEventListener('scroll', handleScroll);
 });
 
 onBeforeRouteLeave(() => {
+    oldSTop = document.documentElement.scrollTop;
     window.removeEventListener('scroll', handleScroll);
 });
 </script>
