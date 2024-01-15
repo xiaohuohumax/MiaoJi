@@ -1,5 +1,5 @@
 node_modules
 dist
 *.local
-.vscode/*
+.vscode
 !.vscode/extensions.json

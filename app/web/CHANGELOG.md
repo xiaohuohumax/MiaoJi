@@ -1,5 +1,11 @@
 # @miaoji/web
 
+## 0.5.5
+
+### Patch Changes
+
+- 字体库常用字精简 banner边框修改
+
 ## 0.5.4
 
 ### Patch Changes
