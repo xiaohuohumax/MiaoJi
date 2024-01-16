@@ -1,10 +1,16 @@
 # @miaoji/web
 
+## 0.5.6
+
+### Patch Changes
+
+- env 名称修改 添加正式 blog 配置
+
 ## 0.5.5
 
 ### Patch Changes
 
-- 字体库常用字精简 banner边框修改
+- 字体库常用字精简 banner 边框修改
 
 ## 0.5.4
 

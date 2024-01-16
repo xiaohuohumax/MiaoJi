@@ -6,7 +6,7 @@ interface ImportMetaEnv {
     // Issue 仓库名称
     readonly VITE_ISSUE_REPO: string;
     // Issue 仓库持有者
-    readonly VITE_ISSUE_owner: string;
+    readonly VITE_ISSUE_OWNER: string;
     // 首次加载等待时间
     readonly VITE_APP_LOADING_TIME?: string;
     // 日志等级

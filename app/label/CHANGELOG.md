@@ -1,5 +1,11 @@
 # @miaoji/label
 
+## 0.2.1
+
+### Patch Changes
+
+- env 名称修改 添加正式 blog 配置
+
 ## 0.2.0
 
 ### Minor Changes

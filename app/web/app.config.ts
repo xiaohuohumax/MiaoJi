@@ -35,7 +35,7 @@ const appConfig: AppConfig = {
         // 仓库名称
         repo: import.meta.env.VITE_ISSUE_REPO,
         // 持有者
-        owner: import.meta.env.VITE_ISSUE_owner,
+        owner: import.meta.env.VITE_ISSUE_OWNER,
         // github token 只需提供访问issue权限即可 可有可无
         // (提升游客访问数量限制)
         accessToken: import.meta.env.VITE_GITHUB_TOKEN,

@@ -4,7 +4,7 @@ interface ImportMetaEnv {
     // Issue 仓库名称
     readonly VITE_ISSUE_REPO: string;
     // Issue 仓库持有者
-    readonly VITE_ISSUE_owner: string;
+    readonly VITE_ISSUE_OWNER: string;
     // Issue 标签创建权限 Token
     readonly VITE_GITHUB_TOKEN?: string
 }

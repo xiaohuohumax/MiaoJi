@@ -6,6 +6,7 @@
     "dev": "pnpm --filter @miaoji/web dev",
     "build": "pnpm --filter @miaoji/web build",
     "label":"pnpm --filter @miaoji/label start",
+    "label-blog":"pnpm --filter @miaoji/label start-blog",
     "lint": "eslint --fix --ext=.ts,.d.ts,.vue . && echo success 🎉🎉"
   },
   "keywords": [],

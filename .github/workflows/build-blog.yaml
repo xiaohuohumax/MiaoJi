@@ -1,12 +1,8 @@
-name: build-web
+# 构建正式blog
+
+name: build-blog
 
 on:
-  push:
-    # 版本更新
-    tags:
-      - "v*"
-  # 主线更新
-  # branches: [main]
   # 主动触发
   workflow_dispatch:
 
@@ -45,12 +41,10 @@ jobs:
         run: pnpm install
 
       - name: Build
-        run: pnpm build
+        run: pnpm build --mode=blog
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          # 私人令牌必须包含workflows权限
-          github_token: ${{ secrets.GH_PAGE_TOKEN }}
-          # 部署的文件目录
+          github_token: ${{ secrets.BLOG_GH_PAGE_TOKEN }}
           publish_dir: ./app/web/dist

@@ -96,7 +96,7 @@ const appConfig: AppConfig = {
         // 仓库名称
         repo: import.meta.env.VITE_ISSUE_REPO,
         // 持有者
-        owner: import.meta.env.VITE_ISSUE_owner,
+        owner: import.meta.env.VITE_ISSUE_OWNER,
         // github token Issue 标签创建权限
         accessToken: import.meta.env.VITE_GITHUB_TOKEN,
     },
