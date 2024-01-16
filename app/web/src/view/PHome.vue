@@ -14,7 +14,9 @@
                 </NSpace>
                 <!-- <CReactions :reactions="issue.reactions" /> -->
             </NSpace>
-            <CMarkdown :text="document.body" :id="document.number" :theme="appStore.theme.markdown" />
+            <CMarkdown @more-click="router.push({ path: `/doc/${document.number}` })" :use-more="true"
+                :more-btn-text="t('comment.button.more')" :text="document.body" :id="document.number"
+                :theme="appStore.theme.markdown" />
         </NCard>
         <CLoading :state="dState">
             <template #fail>

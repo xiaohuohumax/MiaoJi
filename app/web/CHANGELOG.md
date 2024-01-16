@@ -1,5 +1,16 @@
 # @miaoji/web
 
+## 0.6.0
+
+### Minor Changes
+
+- 首页展示支持显示部分<!-- more -->
+
+### Patch Changes
+
+- Updated dependencies
+  - @miaoji/components@1.3.0
+
 ## 0.5.6
 
 ### Patch Changes

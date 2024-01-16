@@ -1,5 +1,11 @@
 # @miaoji/components
 
+## 1.3.0
+
+### Minor Changes
+
+- 首页展示支持显示部分<!-- more -->
+
 ## 1.2.1
 
 ### Patch Changes
