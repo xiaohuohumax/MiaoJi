@@ -47,5 +47,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.BLOG_ACTIONS_DEPLOY_KEY }}
-          external_repository: xiaohuohu/blog.github.io
+          external_repository: xiaohuohumax/blog.github.io
           publish_dir: ./app/web/dist
+          allow_empty_commit: true
