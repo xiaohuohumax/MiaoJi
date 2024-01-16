@@ -46,5 +46,6 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.BLOG_GH_PAGE_TOKEN }}
+          deploy_key: ${{ secrets.BLOG_GH_PAGE_TOKEN }}
+          external_repository: xiaohuohu/blog
           publish_dir: ./app/web/dist
