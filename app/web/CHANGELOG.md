@@ -1,5 +1,11 @@
 # @miaoji/web
 
+## 0.6.2
+
+### Patch Changes
+
+- 配置文件名添加 hash 修复从缓存读取错误 bug
+
 ## 0.6.1
 
 ### Patch Changes

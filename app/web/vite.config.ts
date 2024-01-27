@@ -53,7 +53,7 @@ export default defineConfig(({ mode }) => {
                 output: {
                     entryFileNames({ name, isEntry }) {
                         return isEntry && name === 'appConfig'
-                            ? 'app.config.js'
+                            ? 'app.config.[hash].js'
                             : 'assets/[name]-[hash].js';
                     },
                 }
