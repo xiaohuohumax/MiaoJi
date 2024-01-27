@@ -1,1 +1,0 @@
-import{d as t,af as o,ag as a,j as s,ap as n,an as r}from"./index-4660fe55.js";const c={class:"text-center font-bold py-4"},d=t({__name:"COver",props:{context:{}},setup(p){return(e,l)=>(o(),a("div",c,[s(e.$slots,"default",{},()=>[n(r(e.context),1)])]))}});export{d as _};
