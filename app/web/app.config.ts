@@ -9,6 +9,10 @@ export type AppConfig = DefaultLabel & {
         name: string,
         url: string
     },
+    by: {
+        name: string,
+        repository: string,
+    },
     api: {
         apiBaseUrl: string,
         repo: string,
@@ -29,6 +33,11 @@ const appConfig: AppConfig = {
     repository,
     // 作者信息
     author,
+    // power by
+    by: {
+        name: 'MiaoJi(喵记)',
+        repository: 'https://github.com/xiaohuohumax/MiaoJi'
+    },
     api: {
         // github rest api 一般不变
         apiBaseUrl: 'https://api.github.com',

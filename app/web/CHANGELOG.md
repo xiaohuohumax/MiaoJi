@@ -1,5 +1,11 @@
 # @miaoji/web
 
+## 0.6.1
+
+### Patch Changes
+
+- 页眉显示信息修改
+
 ## 0.6.0
 
 ### Minor Changes
