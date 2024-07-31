@@ -1,5 +1,14 @@
 # @miaoji/label
 
+## 0.2.3
+
+### Patch Changes
+
+- 修复打包构建异常
+- Updated dependencies
+  - @miaoji/util@1.3.2
+  - @miaoji/api@1.5.2
+
 ## 0.2.2
 
 ### Patch Changes

@@ -26,8 +26,7 @@ export default defineConfig(({ mode }) => {
                         template: 'index.html',
                         injectOptions: {
                             data: {
-                                title: env.VITE_APP_NAME,
-                                logingTime: env.VITE_APP_LOADING_TIME
+                                title: env.VITE_APP_NAME
                             }
                         }
                     }

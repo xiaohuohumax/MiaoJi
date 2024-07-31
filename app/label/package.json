@@ -1,6 +1,6 @@
 {
   "name": "@miaoji/label",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "MiaoJi(喵记)标签辅助工具",
   "main": "index.ts",
   "type": "module",
@@ -10,8 +10,7 @@
     "url": "https://github.com/xiaohuohumax"
   },
   "scripts": {
-    "start": "vite-node src/index.ts",
-    "start-blog": "vite-node --mode=blog src/index.ts"
+    "start": "vite-node src/index.ts"
   },
   "keywords": [],
   "license": "MIT",

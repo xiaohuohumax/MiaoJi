@@ -1,5 +1,14 @@
 # @miaoji/web
 
+## 0.6.4
+
+### Patch Changes
+
+- 修复打包构建异常
+- Updated dependencies
+  - @miaoji/util@1.3.2
+  - @miaoji/api@1.5.2
+
 ## 0.6.3
 
 ### Patch Changes

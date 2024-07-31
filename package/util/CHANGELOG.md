@@ -1,5 +1,11 @@
 # @miaoji/util
 
+## 1.3.2
+
+### Patch Changes
+
+- 修复打包构建异常
+
 ## 1.3.1
 
 ### Patch Changes
