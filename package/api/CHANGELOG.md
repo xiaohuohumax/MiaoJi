@@ -1,5 +1,13 @@
 # @miaoji/api
 
+## 1.5.1
+
+### Patch Changes
+
+- 更新依赖版本至最新
+- Updated dependencies
+  - @miaoji/util@1.3.1
+
 ## 1.5.0
 
 ### Minor Changes

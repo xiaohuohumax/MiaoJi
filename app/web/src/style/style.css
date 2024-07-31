@@ -41,3 +41,9 @@ body::-webkit-scrollbar-thumb {
 :root {
     color: #3f3d56;
 }
+
+@media (min-width: 1536px) {
+    .container {
+        max-width: 1280px;
+    }
+}

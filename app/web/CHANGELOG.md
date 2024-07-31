@@ -1,5 +1,15 @@
 # @miaoji/web
 
+## 0.6.3
+
+### Patch Changes
+
+- 更新依赖版本至最新
+- Updated dependencies
+  - @miaoji/components@1.3.1
+  - @miaoji/util@1.3.1
+  - @miaoji/api@1.5.1
+
 ## 0.6.2
 
 ### Patch Changes

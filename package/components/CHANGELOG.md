@@ -1,5 +1,11 @@
 # @miaoji/components
 
+## 1.3.1
+
+### Patch Changes
+
+- 更新依赖版本至最新
+
 ## 1.3.0
 
 ### Minor Changes

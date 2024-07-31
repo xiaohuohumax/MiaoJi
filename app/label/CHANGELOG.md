@@ -1,5 +1,14 @@
 # @miaoji/label
 
+## 0.2.2
+
+### Patch Changes
+
+- 更新依赖版本至最新
+- Updated dependencies
+  - @miaoji/util@1.3.1
+  - @miaoji/api@1.5.1
+
 ## 0.2.1
 
 ### Patch Changes
