@@ -1,4 +1,4 @@
-import{v as ae,y as l,x as h,A as z,z as y,e as ne,r as le,C as te,B as M,p as se,t as ie,D as de,d as P,F as he,k as g,a0 as ge,P as be,b4 as ve,H as a}from"./index-Bd9XDiFr.js";import{r as I,c as ue,f as _}from"./Card-tnICAY0t.js";import{g as ke}from"./Space-BMzkxCai.js";const Ce={color:Object,type:{type:String,default:"default"},round:Boolean,size:{type:String,default:"medium"},closable:Boolean,disabled:{type:Boolean,default:void 0}},fe=ae("tag",`
+import{v as ae,y as l,x as h,A as z,z as y,e as ne,r as le,C as te,B as M,p as se,t as ie,D as de,d as P,F as he,k as g,a0 as ge,P as be,b4 as ve,H as a}from"./index-CyJLi7hy.js";import{r as I,c as ue,f as _}from"./Card-DpixUBK9.js";import{g as ke}from"./Space-8dEtra5P.js";const Ce={color:Object,type:{type:String,default:"default"},round:Boolean,size:{type:String,default:"medium"},closable:Boolean,disabled:{type:Boolean,default:void 0}},fe=ae("tag",`
  --n-close-margin: var(--n-close-margin-top) var(--n-close-margin-right) var(--n-close-margin-bottom) var(--n-close-margin-left);
  white-space: nowrap;
  position: relative;
