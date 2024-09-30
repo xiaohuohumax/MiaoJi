@@ -27,11 +27,11 @@ export type LabelUpdateParams = LabelCreateParams & {
 
 export class LabelApi extends Api {
   async page(params: LabelPageParams): Promise<Label[]> {
-    return this.meta.octokit.rest.issues.listLabelsForRepo({
+    return (await this.meta.octokit.rest.issues.listLabelsForRepo({
       owner: this.meta.owner,
       repo: this.meta.repo,
       ...params,
-    }).then(res => res.data)
+    })).data
   }
 
   async all(): Promise<Label[]> {
@@ -49,11 +49,11 @@ export class LabelApi extends Api {
   }
 
   async create(params: LabelCreateParams): Promise<Label> {
-    return this.meta.octokit.rest.issues.createLabel({
+    return (await this.meta.octokit.rest.issues.createLabel({
       owner: this.meta.owner,
       repo: this.meta.repo,
       ...params,
-    }).then(res => res.data)
+    })).data
   }
 
   async delete(name: string) {
@@ -65,18 +65,18 @@ export class LabelApi extends Api {
   }
 
   async get(name: string): Promise<Label> {
-    return this.meta.octokit.rest.issues.getLabel({
+    return (await this.meta.octokit.rest.issues.getLabel({
       owner: this.meta.owner,
       repo: this.meta.repo,
       name,
-    }).then(res => res.data)
+    })).data
   }
 
   async update(params: LabelUpdateParams): Promise<Label> {
-    return this.meta.octokit.rest.issues.updateLabel({
+    return (await this.meta.octokit.rest.issues.updateLabel({
       owner: this.meta.owner,
       repo: this.meta.repo,
       ...params,
-    }).then(res => res.data)
+    })).data
   }
 }

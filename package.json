@@ -22,7 +22,7 @@
     "build:watch:util": "pnpm util build:watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "commit": "pnpm lint:fix && git add . && cz"
+    "commit": "pnpm build && pnpm lint:fix && git add . && cz"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.7.3",

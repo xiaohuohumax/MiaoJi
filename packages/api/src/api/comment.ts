@@ -10,10 +10,10 @@ export type CommentPageParams = PageParams & {
 
 export class CommentApi extends Api {
   async page(params: CommentPageParams): Promise<Comment[]> {
-    return this.meta.octokit.rest.issues.listComments({
+    return (await this.meta.octokit.rest.issues.listComments({
       owner: this.meta.owner,
       repo: this.meta.repo,
       ...params,
-    }).then(res => res.data)
+    })).data
   }
 }

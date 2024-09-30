@@ -20,11 +20,11 @@ export type IssueSearchParams = PageParams & {
 
 export class IssueApi extends Api {
   async page(params: IssuePageParams): Promise<Issue[]> {
-    return this.meta.octokit.rest.issues.listForRepo({
+    return (await this.meta.octokit.rest.issues.listForRepo({
       owner: this.meta.owner,
       repo: this.meta.repo,
       ...params,
-    }).then(res => res.data as Issue[])
+    })).data as Issue[]
   }
 
   async search(params: IssueSearchParams): Promise<IssueSearch[]> {
@@ -34,18 +34,18 @@ export class IssueApi extends Api {
       ...Object.entries(params.commands).map(([k, v]) => `${k}:${v}`),
       params.keyword,
     ]
-    return this.meta.octokit.rest.search.issuesAndPullRequests({
+    return (await this.meta.octokit.rest.search.issuesAndPullRequests({
       page: params.page,
       per_page: params.per_page,
       q: qs.join(' '),
-    }).then(res => res.data.items)
+    })).data.items
   }
 
   async get(issue_number: number): Promise<Issue> {
-    return this.meta.octokit.rest.issues.get({
+    return (await this.meta.octokit.rest.issues.get({
       owner: this.meta.owner,
       repo: this.meta.repo,
       issue_number,
-    }).then(res => res.data as Issue)
+    })).data as Issue
   }
 }
