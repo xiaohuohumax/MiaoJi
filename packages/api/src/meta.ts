@@ -14,7 +14,10 @@ export class Meta {
   constructor(options: MetaOptions) {
     this.octokit = new Octokit({
       auth: options.token,
-      // retry: { enabled: false }
+      retry: {
+        doNotRetry: [400, 401, 404, 422, 451],
+      },
+      throttle: { enabled: false },
     })
 
     this.owner = options.owner

@@ -26,7 +26,7 @@ async function run() {
   app.use(i18n)
 
   const appStore = useAppStore()
-  await appStore.initLoad()
+  appStore.initLoad()
 
   app.use(router)
   app.mount('#app')

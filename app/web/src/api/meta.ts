@@ -17,11 +17,11 @@ class MetaAPI extends Meta {
       const e = error as RequestError
       if (e.status === 500 && error.message.includes('Failed to fetch')) {
         this.printMessage(i18nt('api.error.network'))
-        return
       }
-      if (e.response) {
+      else if (e.response) {
         this.handleError(e.response as OctokitResponse<{ message: string }>)
       }
+      throw error
     })
   }
 

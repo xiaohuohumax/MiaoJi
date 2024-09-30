@@ -12,7 +12,7 @@ import issueApi from '~/api/module/issue'
 import type { Label } from '~/api/module/label'
 import labelApi from '~/api/module/label'
 import appConfig from '~/app.config'
-import { lngList, useI18n } from '~/i18n'
+import { i18nt, lngList } from '~/i18n'
 import { IBrightnessDown, IMoonF } from '~/icons'
 import { RouteName } from '~/router/routes'
 
@@ -149,7 +149,6 @@ export const useAppStore = defineStore('app', {
   },
   getters: {
     menuOptions(state): MenuOption[] {
-      const { t } = useI18n()
       return state.dMenus.filter((menu) => {
         return menu.label
           ? state.labels.some(label => label.name === menu.label)
@@ -159,7 +158,7 @@ export const useAppStore = defineStore('app', {
           label: () => h(
             RouterLink,
             { to: { name: menu.routerName } },
-            { default: () => t(menu.name) },
+            { default: () => i18nt(menu.name) },
           ),
           key: menu.routerName,
         }
@@ -167,6 +166,9 @@ export const useAppStore = defineStore('app', {
     },
     theme(state) {
       return state.themes[state.themeIndex]
+    },
+    loadLabelsFinished(state) {
+      return state.labels.length > 0
     },
   },
   persist: {
