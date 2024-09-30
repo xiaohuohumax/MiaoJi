@@ -1,7 +1,7 @@
 {
   "name": "@xiaohuohumax/miaoji-web",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "private": true,
   "description": "MiaoJi web client",
   "author": {
@@ -25,6 +25,7 @@
     "@xiaohuohumax/miaoji-func-label": "workspace:^",
     "@xiaohuohumax/miaoji-util": "workspace:^",
     "await-to-js": "^3.0.0",
+    "markdown-it-emoji": "^3.0.0",
     "md-editor-v3": "^4.20.2",
     "naive-ui": "^2.39.0",
     "octokit": "^4.0.2",
@@ -37,6 +38,7 @@
   "devDependencies": {
     "@intlify/core-base": "^10.0.3",
     "@octokit/types": "^13.5.1",
+    "@types/markdown-it-emoji": "^3.0.1",
     "@vitejs/plugin-vue": "^5.1.4",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.11.1",

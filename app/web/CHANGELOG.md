@@ -1,5 +1,11 @@
 # @xiaohuohumax/miaoji-web
 
+## 1.1.0
+
+### Minor Changes
+
+- markdown 支持 emoji 解析
+
 ## 1.0.1
 
 ### Patch Changes

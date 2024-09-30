@@ -44,7 +44,9 @@ function issueToAlbum(issues: Issue[]): Album[] {
 <template>
   <NCard :bordered="false">
     <NSpace :vertical="true">
-      <CSubTitle :title="t('page.album.title')" />
+      <CSubTitle>
+        {{ t('page.album.title') }}
+      </CSubTitle>
       <CLoadPages :query-pages-func="queryPagesFunc">
         <template #default="{ datas }">
           <NGrid cols="1 s:2 m:3 l:3 xl:4" responsive="screen" :x-gap="12" :y-gap="12">

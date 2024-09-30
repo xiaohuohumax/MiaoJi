@@ -49,7 +49,9 @@ watch(() => props.issue, () => {
 <template>
   <NCard :bordered="false">
     <NSpace :vertical="true">
-      <CSubTitle :title="t('component.comment.title')" />
+      <CSubTitle>
+        {{ t('component.comment.title') }}
+      </CSubTitle>
       <div v-if="isHidden" class="text-center">
         {{ t('component.comment.hiddenComment') }}
       </div>

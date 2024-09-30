@@ -36,7 +36,7 @@ async function queryDataFunc(): Promise<Issue> {
       <CLoadData v-model:data="issue" :query-data-func="queryDataFunc">
         <template #success="{ data }">
           <NSpace :vertical="true">
-            <CTitle :title="data.title" />
+            <CTitle>{{ data.title }}</CTitle>
             <NSpace align="center">
               <CLink v-if="data.user" :href="data.user.html_url" target="_blank">
                 {{ data.user.login }}

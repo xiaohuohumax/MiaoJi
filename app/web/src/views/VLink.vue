@@ -58,7 +58,9 @@ const applyHref = computed(() => {
   <NSpace :vertical="true">
     <NCard :bordered="false">
       <NSpace :vertical="true">
-        <CSubTitle :title="t('page.link.title')" />
+        <CSubTitle>
+          {{ t('page.link.title') }}
+        </CSubTitle>
         <CLoadPages :query-pages-func="queryPagesFunc">
           <template #default="{ datas }">
             <NGrid cols="1 s:2 m:3 l:4 xl:5 2xl:6" responsive="screen" :x-gap="12" :y-gap="12">
@@ -69,7 +71,7 @@ const applyHref = computed(() => {
           </template>
         </CLoadPages>
         <CLink :href="applyHref" target="_blank">
-          <NButton class="w-full" quaternary>
+          <NButton class="w-full" secondary type="info">
             {{ t('page.link.toApply') }}
           </NButton>
         </CLink>

@@ -27,7 +27,7 @@ defineProps<Album>()
         </template>
       </NImage>
       <NSpace vertical>
-        <div class="text-lg mt-2 hover:text-orange-500 dark:hover:text-green-300">
+        <div class="text-lg">
           {{ issue.title }}
         </div>
         <CReactions :reaction="issue.reactions" :issue-url="issue.html_url" />

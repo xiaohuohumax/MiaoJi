@@ -1,13 +1,22 @@
 <script setup lang="ts">
-import { MdPreview } from 'md-editor-v3'
+import { full as emoji } from 'markdown-it-emoji'
+import { config, MdPreview } from 'md-editor-v3'
 import { useAppStore } from '~/store/app'
 import 'md-editor-v3/lib/style.css'
 
-defineProps<{
+export interface CMarkdownProps {
   content?: string | null
-  id: number
-}>()
+  id: number | string
+}
+
+defineProps<CMarkdownProps>()
 const appStore = useAppStore()
+
+config({
+  markdownItConfig: (md) => {
+    md.use(emoji)
+  },
+})
 </script>
 
 <template>

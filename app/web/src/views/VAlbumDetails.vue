@@ -44,7 +44,7 @@ async function queryDataFunc(): Promise<IssueImage> {
       <CLoadData v-model:data="issueImage" :query-data-func="queryDataFunc">
         <template #success="{ data: { issue, images } }">
           <NSpace :vertical="true">
-            <CTitle :title="issue.title" />
+            <CTitle>{{ issue.title }}</CTitle>
             <NSpace align="center">
               <CLink v-if="issue.user" :href="issue.user.html_url">
                 {{ issue.user.login }}

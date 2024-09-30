@@ -31,7 +31,9 @@ async function queryDataFunc(): Promise<Issue> {
   <NSpace :vertical="true">
     <NCard :bordered="false">
       <NSpace :vertical="true">
-        <CSubTitle :title="t('page.about.title')" />
+        <CSubTitle>
+          {{ t('page.about.title') }}
+        </CSubTitle>
         <CLoadData v-model:data="issue" :query-data-func="queryDataFunc">
           <template #success="{ data }">
             <CMarkdown :id="data.number" :content="data.body" />

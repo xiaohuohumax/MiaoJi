@@ -12,7 +12,9 @@ const appStore = useAppStore()
 <template>
   <NCard :bordered="false">
     <NSpace :vertical="true">
-      <CSubTitle :title="t('page.tag.title')" />
+      <CSubTitle>
+        {{ t('page.tag.title') }}
+      </CSubTitle>
       <CLabels v-if="appStore.labels.length > 0" :labels="appStore.labels" />
       <NEmpty v-else />
     </NSpace>

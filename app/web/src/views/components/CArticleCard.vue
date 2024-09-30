@@ -20,7 +20,7 @@ const config = markdown.parseConfig<ArticleMarkdownConfig>(props.issue.body || '
   <RouterLink :to="{ name: RouteName.Article, params: { id: issue.number } }">
     <NCard :bordered="false">
       <NSpace :vertical="true">
-        <h1 class="text-xl">
+        <h1 class="text-xl dark:text-green-300 text-orange-500">
           {{ issue.title }}
         </h1>
         <NSpace align="center">
