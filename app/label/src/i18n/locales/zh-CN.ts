@@ -54,6 +54,10 @@ const lng: I18nSchema = {
     func: {
       name: '功能标签',
       labels: {
+        article: {
+          name: '文章',
+          description: '文章功能标签',
+        },
         message: {
           name: '留言',
           description: '留言功能标签',

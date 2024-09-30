@@ -13,6 +13,7 @@
     "build": "pnpm api build && pnpm func-label build && pnpm util build && pnpm web build",
     "postinstall": "simple-git-hooks",
     "web": "pnpm --filter @xiaohuohumax/miaoji-web --",
+    "label": "pnpm --filter @xiaohuohumax/miaoji-label --",
     "api": "pnpm --filter @xiaohuohumax/miaoji-api --",
     "func-label": "pnpm --filter @xiaohuohumax/miaoji-func-label --",
     "util": "pnpm --filter @xiaohuohumax/miaoji-util --",

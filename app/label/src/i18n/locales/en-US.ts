@@ -54,6 +54,10 @@ const lng: I18nSchema = {
     func: {
       name: 'Function Labels',
       labels: {
+        article: {
+          name: 'Article',
+          description: 'Article function label',
+        },
         message: {
           name: 'Message',
           description: 'Message function label',

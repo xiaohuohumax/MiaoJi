@@ -55,6 +55,10 @@ declare global {
       func: {
         name: string
         labels: {
+          article: {
+            name: string
+            description: string
+          }
           message: {
             name: string
             description: string

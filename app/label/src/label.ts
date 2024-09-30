@@ -18,6 +18,11 @@ export const labelGroups: LabelGroup[] = [
     name: i18n.t('label:labelGroup.func.name'),
     labels: [
       {
+        name: i18n.t('label:labelGroup.func.labels.article.name'),
+        labelName: funcLabelsDefault.article,
+        description: i18n.t('label:labelGroup.func.labels.article.description'),
+      },
+      {
         name: i18n.t('label:labelGroup.func.labels.message.name'),
         labelName: funcLabelsDefault.message,
         description: i18n.t('label:labelGroup.func.labels.message.description'),
