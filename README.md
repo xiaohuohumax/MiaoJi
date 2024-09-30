@@ -50,9 +50,9 @@ pnpm build
 
 ## 🚀 快速开始
 
-+ [新建文章](/issues/new?title=Article%20Title&labels=func:article&body=%3C!--%0Aexcerpt:%20Article%20excerpt%0A--%3E%0A%0AArticle%20content)
-+ [新建相册](/issues/new?title=Album%20Title&labels=func:album&body=!%5B%5D())
-+ [新建历史](/issues/new?title=History%20Title&labels=func:history&body=Hostory%20content)
++ [新建文章](https://github.com/xiaohuohumax/MiaoJi/issues/new?title=Article%20Title&labels=func:article&body=%3C!--%0Aexcerpt:%20Article%20excerpt%0A--%3E%0A%0AArticle%20content)
++ [新建相册](https://github.com/xiaohuohumax/MiaoJi/issues/new?title=Album%20Title&labels=func:album&body=!%5B%5D())
++ [新建历史](https://github.com/xiaohuohumax/MiaoJi/issues/new?title=History%20Title&labels=func:history&body=Hostory%20content)
 
 ## ♻ 提交流程
 

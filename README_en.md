@@ -50,9 +50,9 @@ pnpm build
 
 ## 🚀 Quick Start
 
-+ [New Article](/issues/new?title=Article%20Title&labels=func:article&body=%3C!--%0Aexcerpt:%20Article%20excerpt%0A--%3E%0A%0AArticle%20content)
-+ [New Album](/issues/new?title=Album%20Title&labels=func:album&body=!%5B%5D())
-+ [New History](/issues/new?title=History%20Title&labels=func:history&body=Hostory%20content)
++ [New Article](https://github.com/xiaohuohumax/MiaoJi/issues/new?title=Article%20Title&labels=func:article&body=%3C!--%0Aexcerpt:%20Article%20excerpt%0A--%3E%0A%0AArticle%20content)
++ [New Album](https://github.com/xiaohuohumax/MiaoJi/issues/new?title=Album%20Title&labels=func:album&body=!%5B%5D())
++ [New History](https://github.com/xiaohuohumax/MiaoJi/issues/new?title=History%20Title&labels=func:history&body=Hostory%20content)
 
 ## ♻ Submission Process
 
