@@ -23,6 +23,7 @@ export class IssueApi extends Api {
     return (await this.meta.octokit.rest.issues.listForRepo({
       owner: this.meta.owner,
       repo: this.meta.repo,
+      state: 'all',
       ...params,
     })).data as Issue[]
   }
