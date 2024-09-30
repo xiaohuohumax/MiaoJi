@@ -1,41 +1,35 @@
-import { createApp } from 'vue';
-import { logger } from '@miaoji/util';
-import { updateTitle } from '@miaoji/util';
-import { createPinia } from 'pinia';
-import persistedstate from 'pinia-plugin-persistedstate';
-import appConfig from '#/app.config';
-import i18n from '#/locales';
-import App from './App.vue';
-import router from './router';
-import { useAppStore } from './store/app.store';
-import 'tailwindcss/lib/css/preflight.css';
-import '@/style/style.css';
+import { logger } from '@xiaohuohumax/miaoji-util'
+import { createPinia } from 'pinia'
+import persistedstate from 'pinia-plugin-persistedstate'
+import { createApp } from 'vue'
+import appConfig from './app.config'
+import App from './App.vue'
+import i18n from './i18n'
+import router from './router'
+import { useAppStore } from './store/app'
+import title from './util/title'
+import 'tailwindcss/lib/css/preflight.css'
+import './style/index.css'
 
-logger.setDefaultLevel(import.meta.env.VITE_LOGGER_LEVEL);
+async function run() {
+  logger.setDefaultLevel(import.meta.env.VITE_LOGGER_LEVEL)
+  logger.info(`Welcome to ${appConfig.appName}`)
+  logger.info(`Version: ${appConfig.version}`)
+  logger.info(`Homepage: ${appConfig.homepage}`)
 
-updateTitle({ pre: '🎉' + appConfig.name });
+  title.setTitle()
+  const app = createApp(App)
 
-logger.info('welcome use: ' + appConfig.name);
+  const pinia = createPinia()
+  pinia.use(persistedstate)
+  app.use(pinia)
+  app.use(i18n)
 
-(async () => {
-    const app = createApp(App);
+  const appStore = useAppStore()
+  await appStore.initLoad()
 
-    // pinia
-    const pinia = createPinia();
-    pinia.use(persistedstate);
-    app.use(pinia);
-    const appStore = useAppStore();
-    await (appStore.loadLabels(3, 1_000).catch(() => logger.error('加载标签失败!')));
-    appStore.loadBanners();
-    appStore.loopLoadLabels();
+  app.use(router)
+  app.mount('#app')
+}
 
-    // i18n
-    app.use(i18n);
-    // router
-    app.use(router);
-
-    const loadTime = import.meta.env.VITE_APP_LOADING_TIME;
-    // 等待
-    setTimeout(() => app.mount('#app'), (loadTime ? parseInt(loadTime) : 0) * 1_000);
-    // app.mount('#app');
-})();
+run().catch()

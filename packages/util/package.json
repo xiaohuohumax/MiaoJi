@@ -1,0 +1,50 @@
+{
+  "name": "@xiaohuohumax/miaoji-util",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "description": "MiaoJi utility library",
+  "author": {
+    "name": "xiaohuohumax",
+    "url": "https://github.com/xiaohuohumax"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/xiaohuohumax/MiaoJi#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiaohuohumax/MiaoJi.git"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    }
+  },
+  "main": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rimraf dist && rollup -c rollup.config.ts --configPlugin esbuild",
+    "build:watch": "pnpm build --watch"
+  },
+  "dependencies": {
+    "loglevel": "^1.9.2",
+    "markdown-it": "^14.1.0",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "@octokit/openapi-types": "^22.2.0",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@types/markdown-it": "^14.1.2",
+    "@types/yamljs": "^0.2.34",
+    "esbuild": "^0.24.0",
+    "rollup": "^4.22.4",
+    "rollup-plugin-dts": "^6.1.1",
+    "rollup-plugin-esbuild": "^6.1.1"
+  }
+}

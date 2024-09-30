@@ -1,42 +1,51 @@
 {
-  "name": "@miaoji/web",
-  "private": true,
-  "version": "0.6.4",
+  "name": "@xiaohuohumax/miaoji-web",
   "type": "module",
-  "repository": "https://github.com/xiaohuohumax/MiaoJi",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MiaoJi web client",
   "author": {
     "name": "xiaohuohumax",
     "url": "https://github.com/xiaohuohumax"
   },
+  "license": "MIT",
+  "homepage": "https://github.com/xiaohuohumax/MiaoJi/tree/main/app/web#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiaohuohumax/MiaoJi.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
+    "build:dev": "pnpm build --mode development",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@icon-park/vue-next": "^1.4.2",
-    "@intlify/core-base": "^9.13.1",
-    "@miaoji/api": "workspace:^",
-    "@miaoji/base": "workspace:^",
-    "@miaoji/components": "workspace:^",
-    "@miaoji/util": "workspace:^",
+    "@xiaohuohumax/miaoji-api": "workspace:^",
+    "@xiaohuohumax/miaoji-func-label": "workspace:^",
+    "@xiaohuohumax/miaoji-util": "workspace:^",
     "await-to-js": "^3.0.0",
-    "axios": "^1.7.2",
+    "md-editor-v3": "^4.20.2",
     "naive-ui": "^2.39.0",
-    "pinia": "^2.2.0",
+    "octokit": "^4.0.2",
+    "pinia": "^2.2.2",
     "pinia-plugin-persistedstate": "^3.2.1",
-    "vue": "^3.4.34",
-    "vue-i18n": "^9.13.1",
-    "vue-router": "^4.4.0"
+    "vue": "^3.5.8",
+    "vue-i18n": "^10.0.3",
+    "vue-router": "^4.4.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.1.1",
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.40",
-    "tailwindcss": "^3.4.7",
-    "typescript": "^5.5.4",
-    "vite": "^5.3.5",
-    "vite-plugin-html": "3.0.6",
-    "vue-tsc": "^2.0.29"
+    "@intlify/core-base": "^10.0.3",
+    "@octokit/types": "^13.5.1",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.11.1",
+    "globals": "^15.9.0",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "vite": "^5.4.7",
+    "vite-svg-loader": "^5.1.0",
+    "vue-component-type-helpers": "^2.1.6",
+    "vue-tsc": "^2.1.6"
   }
 }

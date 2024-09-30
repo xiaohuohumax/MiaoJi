@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --dark-color: #101010;
+  --light-color: #f0f0f0;
+}
+
+/* tailwindcss 与 naive-ui 基础样式冲突 */
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  background-color: var(--n-color);
+}
+
+img,
+video {
+  height: initial;
+}
+
+/* 字体: 寒蝉圆黑体 */
+@font-face {
+  font-family: ChillRoundGothic;
+  src: url(/font/ChillRoundGothic_Regular.otf);
+}
+
+body,
+.md-editor,
+:root {
+  font-family: ChillRoundGothic !important;
+}
+
+/* 滚动条修改 */
+body::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: hsl(0deg 0% 70%);
+  border-radius: 5px;
+}
+
+html.loading body {
+  overflow: hidden;
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+ol,
+ul,
+menu {
+  list-style: initial !important;
+}
+
+.n-card {
+  background-color: var(--light-color);
+}
+
+html.dark .n-card {
+  background-color: var(--dark-color);
+}
+
+@keyframes card {
+  0% {
+    opacity: 0;
+    transform: translateY(1em);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.n-card {
+  animation: card .6s ease-in;
+}
+
+.n-icon {
+  display: initial !important;
+}

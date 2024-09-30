@@ -1,28 +1,35 @@
 {
-  "name": "@miaoji/label",
-  "version": "0.2.3",
-  "description": "MiaoJi(喵记)标签辅助工具",
-  "main": "index.ts",
+  "name": "@xiaohuohumax/miaoji-label",
   "type": "module",
-  "repository": "https://github.com/xiaohuohumax/MiaoJi",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MiaoJi Label Tool",
   "author": {
     "name": "xiaohuohumax",
     "url": "https://github.com/xiaohuohumax"
   },
+  "license": "MIT",
+  "homepage": "https://github.com/xiaohuohumax/MiaoJi/tree/main/app/label#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiaohuohumax/MiaoJi.git"
+  },
   "scripts": {
     "start": "vite-node src/index.ts"
   },
-  "keywords": [],
-  "license": "MIT",
   "dependencies": {
-    "@inquirer/prompts": "^5.3.6",
-    "@miaoji/api": "workspace:^",
-    "@miaoji/base": "workspace:^",
-    "@miaoji/util": "workspace:^",
-    "@types/node": "^22.0.0",
+    "@inquirer/prompts": "^6.0.1",
+    "@octokit/types": "^13.5.1",
+    "@types/i18n": "^0.13.12",
+    "@types/node": "^22.7.4",
+    "@xiaohuohumax/miaoji-api": "workspace:^",
+    "@xiaohuohumax/miaoji-func-label": "workspace:^",
+    "@xiaohuohumax/miaoji-util": "workspace:^",
     "await-to-js": "^3.0.0",
-    "axios": "^1.7.2",
-    "typescript": "^5.5.4",
-    "vite-node": "^2.0.4"
+    "i18next": "^23.15.1",
+    "octokit": "^4.0.2",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.10",
+    "vite-node": "^1.5.2"
   }
 }

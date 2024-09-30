@@ -2,14 +2,19 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "paths": {
+      "~/*": [
+        "./src/*"
+      ]
+    },
+    "resolveJsonModule": true,
     "types": [
       "vite/client"
-    ],
-    "moduleResolution": "Bundler"
+    ]
   },
   "include": [
-    "src/**/*.ts",
-    "app.config.ts",
-    "types/**/*.d.ts"
-  ],
+    "src",
+    "vite.config.ts"
+  ]
 }

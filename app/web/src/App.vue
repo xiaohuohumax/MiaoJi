@@ -1,8 +1,63 @@
+<script setup lang="ts">
+import type { GlobalThemeOverrides } from 'naive-ui'
+import CPointBackground from '@/CPointBackground.vue'
+import { NConfigProvider, NGlobalStyle, NLoadingBarProvider, NMessageProvider } from 'naive-ui'
+import { onMounted, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { useI18n } from '~/i18n'
+import { useAppStore } from './store/app'
+import title from './util/title'
+
+const appStore = useAppStore()
+const { t, tm, locale } = useI18n()
+const route = useRoute()
+const router = useRouter()
+
+router.beforeEach(({ meta }, _from, next) => {
+  title.setTitle(meta.title && t(meta.title))
+  next()
+})
+
+watch(() => appStore.language, () => {
+  const language = appStore.language
+  locale.value = language
+  route.meta.title && title.setTitle(t(route.meta.title))
+  document.documentElement.lang = language
+}, { immediate: true })
+
+watch(() => appStore.theme, () => {
+  const htmlClassList = document.documentElement.classList
+  appStore.theme.name === 'dark'
+    ? htmlClassList.add('dark')
+    : htmlClassList.remove('dark')
+}, { immediate: true })
+
+// 初始加载
+onMounted(() => {
+  document.documentElement.classList.add('load-ok')
+  setTimeout(() => {
+    document.documentElement.classList.remove('loading')
+  }, 1500)
+})
+
+const themeOverrides: GlobalThemeOverrides = {
+  common: {
+    fontFamily: 'ChillRoundGothic',
+    fontFamilyMono: 'ChillRoundGothic',
+  },
+  Card: {
+    color: 'transparent',
+  },
+}
+</script>
+
 <template>
-  <CPointBackground class="-z-50 fixed left-0 top-0 hidden sm:block" v-if="appConfig.isUsePointBackground" />
+  <CPointBackground class="-z-50 fixed left-0 top-0 hidden sm:block opacity-60" />
   <NLoadingBarProvider>
-    <NConfigProvider :theme-overrides="themeOverrides" :theme="appStore.theme.naive" :locale="tm('naiveUi.locale')"
-      :date-locale="tm('naiveUi.dateLocale')">
+    <NConfigProvider
+      :theme-overrides="themeOverrides" :theme="appStore.theme.naiveTheme" :locale="tm('naiveUi.locale')"
+      :date-locale="tm('naiveUi.dateLocale')"
+    >
       <NGlobalStyle />
       <NMessageProvider>
         <RouterView />
@@ -10,60 +65,3 @@
     </NConfigProvider>
   </NLoadingBarProvider>
 </template>
-<script setup lang="ts">
-import { onMounted, watch } from 'vue';
-import { useRoute } from 'vue-router';
-import { useRouter } from 'vue-router';
-import { updateTitle } from '@miaoji/util';
-import { GlobalThemeOverrides, NConfigProvider, NGlobalStyle, NLoadingBarProvider, NMessageProvider } from 'naive-ui';
-import { useAppStore } from '@/store/app.store';
-import CPointBackground from '&/CPointBackground.vue';
-import appConfig from '#/app.config';
-import { uI18n } from '#/locales';
-
-const { t, tm, locale } = uI18n();
-
-const appStore = useAppStore();
-const route = useRoute();
-const router = useRouter();
-
-// 设置标题
-router.beforeEach(({ meta }, _from, next) => {
-    meta?.title && updateTitle({ title: t(meta.title), after: '' });
-    next();
-});
-
-// 监听语言变化
-watch(() => appStore.lang, () => {
-    const lang = appStore.lang;
-    locale.value = lang;
-    route.meta.title && updateTitle({ title: t(route.meta.title) });
-    document.documentElement.lang = lang;
-}, { immediate: true });
-
-// 主题
-const htmlClassList = document.documentElement.classList;
-watch(() => appStore.theme, () => {
-    appStore.theme.name == 'dark'
-        ? htmlClassList.add('dark')
-        : htmlClassList.remove('dark');
-}, { immediate: true });
-
-// 初始加载
-onMounted(() => {
-    document.documentElement.classList.add('load-ok');
-    setTimeout(() => {
-        document.documentElement.classList.remove('loading');
-    }, 2_000);
-});
-
-const themeOverrides: GlobalThemeOverrides = {
-    common: {
-        fontFamily: 'ChillRoundGothic',
-        fontFamilyMono: 'ChillRoundGothic',
-    },
-    Card: {
-        color: 'transparent'
-    },
-};
-</script>

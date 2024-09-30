@@ -1,14 +1,11 @@
-# MiaoJi(喵记)标签辅助工具
+## MiaoJi(喵记) 标签工具
 
-**此工具用于快速创建 MiaoJi(喵记) Issue 标签**
+[中文](README.md) | [English](README_en.md)
+
+这是MiaoJi(喵记)的标签工具，用于快速生成功能标签。
 
 ## 使用
 
-1. 修改环境变量 (仓库, 拥有者, Token等)
-2. 修改[配置](./app.config.ts)自定义标签 (名称, 描述, 颜色等)
-3. 执行脚本
-
-```
-pnpm i
-pnpm start
-```
+1. 设置 `./env/.env` `VITE_GITHUB_TOKEN` 环境变量，用于访问 GitHub API。注意：Token 权限至少包含 `Labels` 的读写权限。
+2. 安装依赖 `pnpm install`。
+3. 运行 `pnpm start` 启动工具。

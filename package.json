@@ -1,23 +1,47 @@
 {
   "name": "miaoji",
-  "version": "0.0.0",
-  "description": "",
-  "scripts": {
-    "dev": "pnpm --filter @miaoji/web dev",
-    "build": "pnpm --filter @miaoji/web build",
-    "label": "pnpm --filter @miaoji/label start",
-    "lint": "eslint --fix --ext=.ts,.d.ts,.vue . && echo success 🎉🎉",
-    "clear": "rimraf node_modules && rimraf -g **/node_modules"
-  },
-  "keywords": [],
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@9.0.4",
+  "description": "A simple blog implemented based on Github REST API, Issues, Labels, and Github Pages.",
   "author": "xiaohuohumax",
   "license": "MIT",
+  "keywords": [],
+  "scripts": {
+    "dev": "pnpm web dev",
+    "build": "pnpm api build && pnpm func-label build && pnpm util build && pnpm web build",
+    "postinstall": "simple-git-hooks",
+    "web": "pnpm --filter @xiaohuohumax/miaoji-web --",
+    "api": "pnpm --filter @xiaohuohumax/miaoji-api --",
+    "func-label": "pnpm --filter @xiaohuohumax/miaoji-func-label --",
+    "util": "pnpm --filter @xiaohuohumax/miaoji-util --",
+    "build:watch": "concurrently \"pnpm build:watch:api\" \"pnpm build:watch:func-label\" \"pnpm build:watch:util\"",
+    "build:watch:api": "pnpm api build:watch",
+    "build:watch:func-label": "pnpm func-label build:watch",
+    "build:watch:util": "pnpm util build:watch",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "commit": "pnpm lint:fix && git add . && cz"
+  },
   "devDependencies": {
-    "@changesets/cli": "^2.27.7",
-    "@types/node": "^22.0.0",
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
-    "eslint": "^9.8.0",
-    "eslint-plugin-simple-import-sort": "^12.1.1",
-    "eslint-plugin-vue": "^9.27.0"
+    "@antfu/eslint-config": "^3.7.3",
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.8",
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "commitizen": "^4.3.1",
+    "concurrently": "^9.0.1",
+    "cz-git": "^1.9.4",
+    "rimraf": "^6.0.1",
+    "simple-git-hooks": "^2.11.1"
+  },
+  "simple-git-hooks": {
+    "commit-msg": "pnpm commitlint --edit $1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
   }
 }

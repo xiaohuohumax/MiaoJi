@@ -1,0 +1,44 @@
+{
+  "name": "@xiaohuohumax/miaoji-func-label",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "description": "MiaoJi function label library",
+  "author": {
+    "name": "xiaohuohumax",
+    "url": "https://github.com/xiaohuohumax"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/xiaohuohumax/MiaoJi#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiaohuohumax/MiaoJi.git"
+  },
+  "keywords": [],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    }
+  },
+  "main": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rimraf dist && rollup -c rollup.config.ts --configPlugin esbuild",
+    "build:watch": "pnpm build --watch"
+  },
+  "devDependencies": {
+    "@octokit/openapi-types": "^22.2.0",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "esbuild": "^0.24.0",
+    "rollup": "^4.22.4",
+    "rollup-plugin-dts": "^6.1.1",
+    "rollup-plugin-esbuild": "^6.1.1"
+  }
+}

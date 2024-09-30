@@ -1,5 +1,4 @@
 node_modules
-dist
 *.local
-.vscode
-!.vscode/extensions.json
+dist
+todo.md

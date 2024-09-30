@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "editorconfig.editorconfig",
+    "streetsidesoftware.code-spell-checker",
+    "usernamehw.errorlens",
+    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint",
+    "vue.volar"
+  ]
+}
