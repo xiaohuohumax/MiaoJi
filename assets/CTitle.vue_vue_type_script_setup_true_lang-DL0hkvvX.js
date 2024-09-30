@@ -1,1 +1,0 @@
-import{e as t,ag as a,ah as s,as as o}from"./index-lt-l7Tnr.js";const n={class:"text-2xl mb-2 dark:text-green-300 text-orange-500"},c=t({__name:"CTitle",props:{title:{}},setup(r){return(e,p)=>(a(),s("h1",n,o(e.title),1))}});export{c as _};
