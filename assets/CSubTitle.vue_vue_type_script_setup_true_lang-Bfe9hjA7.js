@@ -1,1 +1,0 @@
-import{e as t,ag as a,ah as s,as as o}from"./index-CyJLi7hy.js";const n={class:"text-lg mb-2 dark:text-green-300 text-orange-500"},c=t({__name:"CSubTitle",props:{title:{}},setup(r){return(e,p)=>(a(),s("h2",n,o(e.title),1))}});export{c as _};
