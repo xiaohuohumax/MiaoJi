@@ -4,7 +4,7 @@ import { NButton, NEmpty, NIcon, NSpace } from 'naive-ui'
 import { ref } from 'vue'
 import appConfig from '~/app.config'
 import { useI18n } from '~/i18n'
-import { IAperture } from '~/icons'
+import { IAperture, IMinusCircle } from '~/icons'
 
 export type State = 'init' | 'loading' | 'error' | 'more' | 'over' | 'empty'
 export interface QueryFuncRes<D> {
@@ -88,9 +88,13 @@ defineExpose({
       </slot>
     </div>
     <slot v-else-if="s === 'over'" name="over">
-      <p class="text-center">
-        {{ t('component.loadPages.over') }}
-      </p>
+      <NEmpty :description="t('component.loadPages.over')">
+        <template #icon>
+          <NIcon>
+            <IMinusCircle />
+          </NIcon>
+        </template>
+      </NEmpty>
     </slot>
     <slot v-else-if="s === 'empty'" name="empty">
       <NEmpty class="p-4" />

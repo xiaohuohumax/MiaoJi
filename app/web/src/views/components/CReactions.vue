@@ -37,7 +37,7 @@ const reactions = Object.entries(props.reaction || {}).map(([key, value]) => {
 
 <template>
   <NSpace>
-    <CLink v-for="r in reactions" :key="r.count" :href="issueUrl" @click.stop>
+    <CLink v-for="r in reactions" :key="r.count" :href="issueUrl" target="_blank" @click.stop>
       <NTag :bordered="false" :checkable="true" class="bg-transparent">
         {{ r.icon }} {{ r.count }}
       </NTag>

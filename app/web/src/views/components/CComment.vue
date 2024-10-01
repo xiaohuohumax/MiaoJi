@@ -74,7 +74,7 @@ watch(() => props.issue, () => {
               </template>
               <template #description>
                 <NSpace align="center">
-                  <NTime :time="new Date(comment.created_at)" />
+                  <NTime :time="new Date(comment.created_at)" type="relative" />
                   <CReactions :reaction="comment.reactions" :issue-url="comment.issue_url" />
                 </NSpace>
                 <CMarkdown :id="comment.id" :content="comment.body" />

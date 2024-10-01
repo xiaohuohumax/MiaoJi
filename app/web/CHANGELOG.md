@@ -1,5 +1,11 @@
 # @xiaohuohumax/miaoji-web
 
+## 1.1.1
+
+### Patch Changes
+
+- 部分界面细节调整
+
 ## 1.1.0
 
 ### Minor Changes

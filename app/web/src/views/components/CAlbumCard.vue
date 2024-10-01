@@ -1,6 +1,7 @@
 <script setup lang='ts'>
 import type { markdown } from '@xiaohuohumax/miaoji-util'
-import { NCard, NIcon, NImage, NSpace } from 'naive-ui'
+import CLink from '@/CLink.vue'
+import { NCard, NIcon, NImage, NSpace, NTime } from 'naive-ui'
 import type { Issue } from '~/api/module/issue'
 import { IAperture } from '~/icons'
 import { RouteName } from '~/router/routes'
@@ -26,10 +27,16 @@ defineProps<Album>()
           </div>
         </template>
       </NImage>
-      <NSpace vertical>
+      <NSpace vertical size="small">
         <div class="text-lg">
           {{ issue.title }}
         </div>
+        <NSpace>
+          <CLink :href="issue.user?.html_url" target="_blank">
+            {{ issue.user?.login }}
+          </CLink>
+          <NTime :time="new Date(issue.updated_at)" type="relative" />
+        </NSpace>
         <CReactions :reaction="issue.reactions" :issue-url="issue.html_url" />
       </NSpace>
     </NCard>

@@ -63,6 +63,7 @@ onBeforeRouteLeave(() => {
       <template #default="{ datas }">
         <NSpace :vertical="true">
           <CDocCard v-for="issue in datas" :key="issue.number" :issue="issue" />
+          <div class="mt-4" />
         </NSpace>
       </template>
     </CLoadPages>
