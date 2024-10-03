@@ -1,1 +1,0 @@
-import{_ as t}from"./_plugin-vue_export-helper-CHINyzN0.js";import{ag as r,ah as o,l as s}from"./index-Bwq5MEXp.js";const a={},n={class:"text-lg mb-2 dark:text-green-300 text-orange-500"};function c(e,l){return r(),o("h2",n,[s(e.$slots,"default")])}const m=t(a,[["render",c]]);export{m as C};
