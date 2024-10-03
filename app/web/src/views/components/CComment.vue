@@ -1,10 +1,11 @@
 <script setup lang='ts'>
-import type { Issue, Label } from '@xiaohuohumax/miaoji-api'
+import type { Issue } from '@xiaohuohumax/miaoji-api'
 import type { ComponentExposed } from 'vue-component-type-helpers'
 import type { QueryFuncRes } from './CLoadPages.vue'
 import CLink from '@/CLink.vue'
+import CRelativeTime from '@/CRelativeTime.vue'
 import CSubTitle from '@/CSubTitle.vue'
-import { NButton, NCard, NImage, NSpace, NThing, NTime } from 'naive-ui'
+import { NButton, NCard, NImage, NSpace, NThing } from 'naive-ui'
 import { computed, nextTick, useTemplateRef, watch } from 'vue'
 import type { Comment } from '~/api/module/comment'
 import commentApi from '~/api/module/comment'
@@ -20,7 +21,7 @@ const props = defineProps<{
 }>()
 
 const { t } = useI18n()
-const isHidden = computed(() => props.issue && hasFuncLabel(props.issue.labels as Label[], appConfig.funcLabels.hiddenComment))
+const isHidden = computed(() => props.issue && hasFuncLabel(props.issue.labels, appConfig.funcLabels.hiddenComment))
 const loadPagesRef = useTemplateRef<ComponentExposed<typeof CLoadPages>>('loadPagesRef')
 
 async function queryPagesFunc(page: number, perPage: number): Promise<QueryFuncRes<Comment>> {
@@ -74,7 +75,7 @@ watch(() => props.issue, () => {
               </template>
               <template #description>
                 <NSpace align="center">
-                  <NTime :time="new Date(comment.created_at)" type="relative" />
+                  <CRelativeTime :updated-at="comment.created_at" />
                   <CReactions :reaction="comment.reactions" :issue-url="comment.issue_url" />
                 </NSpace>
                 <CMarkdown :id="comment.id" :content="comment.body" />

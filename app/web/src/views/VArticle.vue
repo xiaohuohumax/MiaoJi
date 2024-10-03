@@ -1,9 +1,9 @@
 <script setup lang='ts'>
-import type { Label } from '@xiaohuohumax/miaoji-api'
-import CLink from '@/CLink.vue'
+import CAuthor from '@/CAuthor.vue'
+import CRelativeTime from '@/CRelativeTime.vue'
 import CLabels from '@/CTags.vue'
 import CTitle from '@/CTitle.vue'
-import { NCard, NSpace, NTime } from 'naive-ui'
+import { NCard, NSpace } from 'naive-ui'
 import { ref } from 'vue'
 import type { Issue } from '~/api/module/issue'
 import issueApi from '~/api/module/issue'
@@ -38,13 +38,11 @@ async function queryDataFunc(): Promise<Issue> {
           <NSpace :vertical="true">
             <CTitle>{{ data.title }}</CTitle>
             <NSpace align="center">
-              <CLink v-if="data.user" :href="data.user.html_url" target="_blank">
-                {{ data.user.login }}
-              </CLink>
-              <NTime :time="new Date(data.updated_at)" type="relative" />
-              <CLabels :labels="data.labels as Label[]" />
-              <CReactions :reaction="data.reactions" :issue-url="data.html_url" />
+              <CAuthor :user="data.user" />
+              <CRelativeTime :updated-at="data.updated_at" />
               <CEditAtGithub :url="data.html_url" />
+              <CLabels :labels="data.labels" />
+              <CReactions :reaction="data.reactions" :issue-url="data.html_url" />
             </NSpace>
             <CMarkdown :id="data.number" :content="data.body" />
           </NSpace>

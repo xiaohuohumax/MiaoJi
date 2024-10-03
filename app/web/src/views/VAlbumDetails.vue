@@ -1,10 +1,10 @@
 <script setup lang='ts'>
-import type { Label } from '@xiaohuohumax/miaoji-api'
-import CLink from '@/CLink.vue'
+import CAuthor from '@/CAuthor.vue'
+import CRelativeTime from '@/CRelativeTime.vue'
 import CLabels from '@/CTags.vue'
 import CTitle from '@/CTitle.vue'
 import { markdown } from '@xiaohuohumax/miaoji-util'
-import { NCard, NIcon, NImage, NSpace, NTime } from 'naive-ui'
+import { NCard, NIcon, NImage, NSpace } from 'naive-ui'
 import { ref } from 'vue'
 import type { Issue } from '~/api/module/issue'
 import issueApi from '~/api/module/issue'
@@ -13,6 +13,7 @@ import { useAppStore } from '~/store/app'
 import title from '~/util/title'
 import CReactions from '~/views/components/CReactions.vue'
 import CComment from './components/CComment.vue'
+import CEditAtGithub from './components/CEditAtGithub.vue'
 import CLoadData from './components/CLoadData.vue'
 
 interface IssueImage {
@@ -46,11 +47,10 @@ async function queryDataFunc(): Promise<IssueImage> {
           <NSpace :vertical="true">
             <CTitle>{{ issue.title }}</CTitle>
             <NSpace align="center">
-              <CLink v-if="issue.user" :href="issue.user.html_url">
-                {{ issue.user.login }}
-              </CLink>
-              <NTime :time="new Date(issue.updated_at)" type="relative" />
-              <CLabels :labels="issue.labels as Label[]" />
+              <CAuthor :user="issue.user" />
+              <CRelativeTime :updated-at="issue.updated_at" />
+              <CEditAtGithub :url="issue.html_url" />
+              <CLabels :labels="issue.labels" />
               <CReactions :reaction="issue.reactions" :issue-url="issue.html_url" />
             </NSpace>
             <NImage v-for="image in images" :key="image.src" class="md:w-3/4" :src="image.src" :alt="image.alt" lazy>

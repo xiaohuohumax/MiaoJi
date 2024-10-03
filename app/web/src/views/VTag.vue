@@ -15,7 +15,7 @@ const appStore = useAppStore()
       <CSubTitle>
         {{ t('page.tag.title') }}
       </CSubTitle>
-      <CLabels v-if="appStore.labels.length > 0" :labels="appStore.labels" />
+      <CLabels v-if="appStore.labels.length > 0" :labels="appStore.labels" :show-icon="false" />
       <NEmpty v-else />
     </NSpace>
   </NCard>

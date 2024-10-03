@@ -1,5 +1,11 @@
 # @xiaohuohumax/miaoji-web
 
+## 1.2.0
+
+### Minor Changes
+
+- 添加图标装饰以及部分界面细节调整
+
 ## 1.1.1
 
 ### Patch Changes

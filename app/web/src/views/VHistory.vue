@@ -1,8 +1,8 @@
 <script setup lang='ts'>
-import type { Label } from '@xiaohuohumax/miaoji-api'
 import type { QueryFuncRes } from './components/CLoadPages.vue'
+import CRelativeTime from '@/CRelativeTime.vue'
 import CSubTitle from '@/CSubTitle.vue'
-import { NCard, NSpace, NTime, NTimeline, NTimelineItem } from 'naive-ui'
+import { NCard, NSpace, NTimeline, NTimelineItem } from 'naive-ui'
 import type { Issue } from '~/api/module/issue'
 import issueApi from '~/api/module/issue'
 import appConfig from '~/app.config'
@@ -25,7 +25,7 @@ async function queryPagesFunc(page: number, perPage: number): Promise<QueryFuncR
 }
 
 function getHistoryColor(issue: Issue) {
-  for (const { name, color } of issue.labels as Label[]) {
+  for (const { name, color } of issue.labels) {
     if (name.startsWith(appConfig.funcLabels.history) && name !== appConfig.funcLabels.history) {
       return `#${color}`
     }
@@ -51,16 +51,7 @@ function getHistoryColor(issue: Issue) {
               <template #footer>
                 <NSpace vertical size="small">
                   <CReactions :reaction="issue.reactions" :issue-url="issue.html_url" />
-                  <NSpace>
-                    <span>
-                      {{ t('common.createdAt') }}
-                      <NTime :time="new Date(issue.created_at)" />
-                    </span>
-                    <span>
-                      {{ t('common.updatedAt') }}
-                      <NTime :time="new Date(issue.updated_at)" type="relative" />
-                    </span>
-                  </NSpace>
+                  <CRelativeTime :updated-at="issue.created_at" />
                   <CMarkdown :id="issue.number" :content="issue.body" />
                 </NSpace>
               </template>

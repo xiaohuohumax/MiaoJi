@@ -1,9 +1,10 @@
 <script setup lang='ts'>
+import CAuthor from '@/CAuthor.vue'
+import CRelativeTime from '@/CRelativeTime.vue'
 import CLabels from '@/CTags.vue'
 import { markdown } from '@xiaohuohumax/miaoji-util'
-import { NCard, NSpace, NTime } from 'naive-ui'
+import { NCard, NSpace } from 'naive-ui'
 import type { Issue } from '~/api/module/issue'
-import type { Label } from '~/api/module/label'
 import { RouteName } from '~/router/routes'
 import CMarkdown from '~/views/components/CMarkdown.vue'
 import CReactions from './CReactions.vue'
@@ -24,8 +25,9 @@ const config = markdown.parseConfig<ArticleMarkdownConfig>(props.issue.body || '
           {{ issue.title }}
         </h1>
         <NSpace align="center">
-          <NTime :time="new Date(issue.updated_at)" type="relative" />
-          <CLabels :labels="issue.labels as Label[]" />
+          <CAuthor :user="issue.user" />
+          <CRelativeTime :updated-at="issue.updated_at" />
+          <CLabels :labels="issue.labels" />
           <CReactions :reaction="issue.reactions" :issue-url="issue.html_url" />
         </NSpace>
         <CMarkdown :id="issue.number" :content="config.excerpt" />
