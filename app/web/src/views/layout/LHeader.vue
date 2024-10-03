@@ -119,11 +119,7 @@ watch(() => route.name, () => {
 }
 
 ::v-deep(.n-menu .n-menu-item-content--selected .n-menu-item-content-header a){
-  color: rgb(249 115 22) !important;
-}
-
-html.dark .header ::v-deep(.n-menu .n-menu-item-content--selected .n-menu-item-content-header a){
-  color: rgb(134 239 172) !important;
+  color: var(--text-color) !important;
 }
 
 /* .header .n-card {

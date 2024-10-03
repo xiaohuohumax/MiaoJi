@@ -15,6 +15,7 @@ const router = createRouter({
 
 router.beforeEach((to, _, next) => {
   logger.debug('Router:', to)
+  window.$loadingBar?.start()
   const appStore = useAppStore()
   const { label } = to.meta
   if (label && !appStore.hasLabel(label)) {
@@ -22,5 +23,7 @@ router.beforeEach((to, _, next) => {
   }
   next()
 })
+
+router.afterEach(() => window.$loadingBar?.finish())
 
 export default router

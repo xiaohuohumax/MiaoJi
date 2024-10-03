@@ -3,8 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --dark-color: #101010;
-  --light-color: #f0f0f0;
+  --text-color: rgb(249 115 22);
+  --bg-color: #f0f0f0;
+}
+
+html.dark:root{
+  --text-color: rgb(134 239 172);
+  --bg-color: #101010;
 }
 
 /* tailwindcss 与 naive-ui 基础样式冲突 */
@@ -60,11 +65,7 @@ menu {
 }
 
 .n-card {
-  background-color: var(--light-color);
-}
-
-html.dark .n-card {
-  background-color: var(--dark-color);
+  background-color: var(--bg-color);
 }
 
 @keyframes card {
@@ -86,3 +87,7 @@ html.dark .n-card {
 .n-icon {
   display: initial !important;
 }
+
+.n-loading-bar-container .n-loading-bar:not(.n-loading-bar--error){
+  background-color: var(--text-color) !important;
+ }

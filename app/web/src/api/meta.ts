@@ -12,7 +12,7 @@ class MetaAPI extends Meta {
     this.octokit.hook.before('request', (options) => {
       logger.debug(`Request: ${options.method} ${options.url}`)
     })
-    this.octokit.hook.after('request', response => this.handleError(response))
+    // this.octokit.hook.after('request', response => this.handleError(response))
     this.octokit.hook.error('request', (error) => {
       const e = error as RequestError
       if (e.status === 500 && error.message.includes('Failed to fetch')) {
@@ -21,6 +21,7 @@ class MetaAPI extends Meta {
       else if (e.response) {
         this.handleError(e.response as OctokitResponse<{ message: string }>)
       }
+      window.$loadingBar?.error()
       throw error
     })
   }

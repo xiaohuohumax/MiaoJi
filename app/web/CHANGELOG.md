@@ -1,5 +1,11 @@
 # @xiaohuohumax/miaoji-web
 
+## 1.4.0
+
+### Minor Changes
+
+- 顶部添加进度条
+
 ## 1.3.0
 
 ### Minor Changes
