@@ -48,7 +48,7 @@ watch(() => props.issue, () => {
 </script>
 
 <template>
-  <NCard :bordered="false">
+  <NCard size="small">
     <NSpace :vertical="true">
       <CSubTitle>
         {{ t('component.comment.title') }}

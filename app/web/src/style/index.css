@@ -9,7 +9,7 @@
 
 html.dark:root{
   --text-color: rgb(134 239 172);
-  --bg-color: #101010;
+  --bg-color: #18181c;
 }
 
 /* tailwindcss 与 naive-ui 基础样式冲突 */
@@ -64,24 +64,19 @@ menu {
   list-style: initial !important;
 }
 
-.n-card {
-  background-color: var(--bg-color);
-}
-
 @keyframes card {
   0% {
     opacity: 0;
-    transform: translateY(1em);
   }
 
   100% {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
 .n-card {
-  animation: card .6s ease-in;
+  animation: card .3s ease-in;
+  background-color: var(--bg-color);
 }
 
 .n-icon {
@@ -90,4 +85,4 @@ menu {
 
 .n-loading-bar-container .n-loading-bar:not(.n-loading-bar--error){
   background-color: var(--text-color) !important;
- }
+}

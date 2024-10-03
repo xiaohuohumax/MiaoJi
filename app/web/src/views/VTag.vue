@@ -10,13 +10,15 @@ const appStore = useAppStore()
 </script>
 
 <template>
-  <NCard :bordered="false">
-    <NSpace :vertical="true">
+  <NSpace :vertical="true">
+    <NCard size="small">
       <CSubTitle>
         {{ t('page.tag.title') }}
       </CSubTitle>
+    </NCard>
+    <NCard size="small">
       <CLabels v-if="appStore.labels.length > 0" :labels="appStore.labels" :show-icon="false" />
       <NEmpty v-else />
-    </NSpace>
-  </NCard>
+    </NCard>
+  </NSpace>
 </template>

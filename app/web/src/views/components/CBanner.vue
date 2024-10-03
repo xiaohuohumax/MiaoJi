@@ -18,7 +18,7 @@ const appStore = useAppStore()
         />
       </div>
     </NCarousel>
-    <NCard :bordered="false" class="absolute w-full h-full top-0 left-0 -z-10" />
+    <NCard class="absolute w-full h-full top-0 left-0 -z-10" />
   </div>
 </template>
 

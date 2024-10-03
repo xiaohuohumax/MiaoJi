@@ -1,5 +1,11 @@
 # @xiaohuohumax/miaoji-web
 
+## 1.4.1
+
+### Minor Changes
+
+- 样式布局调整
+
 ## 1.4.0
 
 ### Minor Changes

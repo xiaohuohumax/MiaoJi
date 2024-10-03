@@ -34,11 +34,13 @@ function getHistoryColor(issue: Issue) {
 </script>
 
 <template>
-  <NCard :bordered="false">
-    <NSpace :vertical="true">
+  <NSpace :vertical="true">
+    <NCard size="small">
       <CSubTitle>
         {{ t('page.history.title') }}
       </CSubTitle>
+    </NCard>
+    <NCard size="small">
       <CLoadPages :query-pages-func="queryPagesFunc">
         <template #default="{ datas }">
           <NTimeline>
@@ -59,6 +61,6 @@ function getHistoryColor(issue: Issue) {
           </NTimeline>
         </template>
       </CLoadPages>
-    </NSpace>
-  </NCard>
+    </NCard>
+  </NSpace>
 </template>

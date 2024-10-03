@@ -85,7 +85,7 @@ watch(() => mode.value, () => {
   </CLink>
   <NModal :show="show" :mask-closable="true" display-directive="show" @mask-click="show = false">
     <div class="flex" style="margin-top: calc(100svh / 6);">
-      <NCard aria-modal="true" :bordered="false">
+      <NCard aria-modal="true">
         <NSpace :vertical="true">
           <NInputGroup>
             <NSelect

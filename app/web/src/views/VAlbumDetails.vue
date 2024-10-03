@@ -41,7 +41,7 @@ async function queryDataFunc(): Promise<IssueImage> {
 
 <template>
   <NSpace :vertical="true">
-    <NCard :bordered="false">
+    <NCard>
       <CLoadData v-model:data="issueImage" :query-data-func="queryDataFunc">
         <template #success="{ data: { issue, images } }">
           <NSpace :vertical="true">

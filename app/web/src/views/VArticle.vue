@@ -32,7 +32,7 @@ async function queryDataFunc(): Promise<Issue> {
 
 <template>
   <NSpace :vertical="true">
-    <NCard :bordered="false">
+    <NCard size="small">
       <CLoadData v-model:data="issue" :query-data-func="queryDataFunc">
         <template #success="{ data }">
           <NSpace :vertical="true">

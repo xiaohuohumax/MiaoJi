@@ -1,33 +1,39 @@
 <script setup lang='ts'>
-import type { markdown } from '@xiaohuohumax/miaoji-util'
 import CAuthor from '@/CAuthor.vue'
 import CRelativeTime from '@/CRelativeTime.vue'
+import { markdown } from '@xiaohuohumax/miaoji-util'
 import { NCard, NIcon, NImage, NSpace } from 'naive-ui'
+import { computed } from 'vue'
 import type { Issue } from '~/api/module/issue'
 import { IAperture } from '~/icons'
 import { RouteName } from '~/router/routes'
 import CReactions from './CReactions.vue'
 
-export interface Album {
-  images: markdown.MarkdownImage[]
+const props = defineProps<{
   issue: Issue
-}
+}>()
 
-defineProps<Album>()
+const images = computed(() => {
+  return props.issue.body
+    ? markdown.parseImages(props.issue.body)
+    : []
+})
 </script>
 
 <template>
   <RouterLink :to="{ name: RouteName.AlbumDetail, params: { id: issue.number } }">
-    <NCard size="small" :bordered="false">
-      <NImage :src="images[0].src" :alt="images[0].alt" :preview-disabled="true" lazy>
-        <template #placeholder>
-          <div class="text-center p-2">
-            <NIcon size="30">
-              <IAperture class="animate-spin inline-block" />
-            </NIcon>
-          </div>
-        </template>
-      </NImage>
+    <NCard size="small" class="hover:scale-[1.02] transition-transform duration-200 ease-in-out">
+      <template v-if="images.length > 0" #cover>
+        <NImage class="w-full" :src="images[0].src" :alt="images[0].alt" :preview-disabled="true" lazy>
+          <template #placeholder>
+            <div class="flex items-center justify-center w-full py-20">
+              <NIcon size="30">
+                <IAperture class="animate-spin inline-block" />
+              </NIcon>
+            </div>
+          </template>
+        </NImage>
+      </template>
       <NSpace vertical size="small">
         <div class="text-lg">
           {{ issue.title }}

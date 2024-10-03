@@ -29,18 +29,18 @@ async function queryDataFunc(): Promise<Issue> {
 
 <template>
   <NSpace :vertical="true">
-    <NCard :bordered="false">
-      <NSpace :vertical="true">
-        <CSubTitle>
-          {{ t('page.about.title') }}
-        </CSubTitle>
-        <CLoadData v-model:data="issue" :query-data-func="queryDataFunc">
-          <template #success="{ data }">
-            <CMarkdown :id="data.number" :content="data.body" />
-            <CReactions :reaction="data.reactions" :issue-url="data.html_url" />
-          </template>
-        </CLoadData>
-      </NSpace>
+    <NCard size="small">
+      <CSubTitle>
+        {{ t('page.about.title') }}
+      </CSubTitle>
+    </NCard>
+    <NCard size="small">
+      <CLoadData v-model:data="issue" :query-data-func="queryDataFunc">
+        <template #success="{ data }">
+          <CMarkdown :id="data.number" :content="data.body" />
+          <CReactions :reaction="data.reactions" :issue-url="data.html_url" />
+        </template>
+      </CLoadData>
     </NCard>
   </NSpace>
 </template>

@@ -19,7 +19,7 @@ const config = markdown.parseConfig<ArticleMarkdownConfig>(props.issue.body || '
 
 <template>
   <RouterLink :to="{ name: RouteName.Article, params: { id: issue.number } }">
-    <NCard :bordered="false">
+    <NCard size="small" class="hover:scale-[1.02] transition-transform duration-200 ease-in-out">
       <NSpace :vertical="true">
         <h1 class="text-xl dark:text-green-300 text-orange-500">
           {{ issue.title }}

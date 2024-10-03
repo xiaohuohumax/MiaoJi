@@ -47,12 +47,13 @@ const themeOverrides: GlobalThemeOverrides = {
   },
   Card: {
     color: 'transparent',
+    borderColor: 'transparent',
   },
 }
 </script>
 
 <template>
-  <CPointBackground class="-z-50 fixed left-0 top-0 hidden sm:block opacity-60" />
+  <CPointBackground class="-z-20 fixed left-0 top-0 hidden sm:block opacity-60" />
   <NLoadingBarProvider>
     <NConfigProvider
       :theme-overrides="themeOverrides" :theme="appStore.theme.naiveTheme" :locale="tm('naiveUi.locale')"

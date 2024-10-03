@@ -33,7 +33,7 @@ watch(() => route.name, () => {
 <template>
   <div class="header sticky top-0 z-50 font-bold">
     <div class="container mx-auto px-2">
-      <NCard size="small" :bordered="false" class="rounded-t-none">
+      <NCard size="small" class="rounded-t-none">
         <NSpace justify="space-between" align="center">
           <div class="text-lg">
             <RouterLink :to="{ name: RouteName.Home }" class="flex items-center group">
@@ -67,7 +67,7 @@ watch(() => route.name, () => {
               <IMenu :size="30" @click="toggleDrawer" />
             </CLink>
             <div v-show="drawer" class="absolute left-0 top-full w-full h-screen">
-              <NCard :bordered="false" class="h-full mt-2">
+              <NCard class="h-full mt-2">
                 <NSpace :vertical="true">
                   <NMenu v-model:value="menu" :options="appStore.menuOptions" :root-indent="8" :indent="8" />
                   <NDivider />
