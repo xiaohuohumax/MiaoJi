@@ -1,8 +1,8 @@
 <script setup lang='ts'>
 import CLink from '@/CLink.vue'
 import { NButton, NCard, NDivider, NIcon, NMenu, NSpace } from 'naive-ui'
-import { ref } from 'vue'
-import { RouterLink, useRouter } from 'vue-router'
+import { ref, watch } from 'vue'
+import { RouterLink, useRoute, useRouter } from 'vue-router'
 import appConfig from '~/app.config'
 import { IGithubCircle, IMenu, IWorld } from '~/icons'
 import { RouteName } from '~/router/routes'
@@ -11,7 +11,9 @@ import CHeaderSelect from '../components/CHeaderSearch.vue'
 
 const appStore = useAppStore()
 const router = useRouter()
+const route = useRoute()
 const drawer = ref(false)
+const menu = ref<string>('')
 
 function toggleDrawer() {
   drawer.value = !drawer.value
@@ -22,6 +24,10 @@ router.beforeEach((_to, _from, next) => {
   drawer.value = false
   next()
 })
+
+watch(() => route.name, () => {
+  menu.value = route.name as string
+}, { immediate: true })
 </script>
 
 <template>
@@ -30,16 +36,16 @@ router.beforeEach((_to, _from, next) => {
       <NCard size="small" :bordered="false" class="rounded-t-none">
         <NSpace justify="space-between" align="center">
           <div class="text-lg">
-            <RouterLink :to="{ name: RouteName.Home }" class="flex items-center">
+            <RouterLink :to="{ name: RouteName.Home }" class="flex items-center group">
               <img class="w-6 md:w-8 object-cover flex-grow-0" src="/logo.svg?url" :alt="appConfig.appName">
-              <span class="ml-2">{{ appConfig.appName }}</span>
+              <span class="ml-2 group-hover:text-orange-500 dark:group-hover:text-green-300">{{ appConfig.appName }}</span>
             </RouterLink>
           </div>
           <div class="flex items-center">
             <CHeaderSelect />
             <div class="hidden md:block">
               <NSpace align="center">
-                <NMenu :options="appStore.menuOptions" mode="horizontal" />
+                <NMenu v-model:value="menu" :options="appStore.menuOptions" mode="horizontal" />
                 <CLink @click="appStore.toggleLanguage">
                   <NIcon :size="20">
                     <IWorld />
@@ -63,7 +69,7 @@ router.beforeEach((_to, _from, next) => {
             <div v-show="drawer" class="absolute left-0 top-full w-full h-screen">
               <NCard :bordered="false" class="h-full mt-2">
                 <NSpace :vertical="true">
-                  <NMenu :options="appStore.menuOptions" :root-indent="8" :indent="8" />
+                  <NMenu v-model:value="menu" :options="appStore.menuOptions" :root-indent="8" :indent="8" />
                   <NDivider />
                   <NButton size="large" class="w-full" tertiary @click="appStore.toggleTheme">
                     <NIcon :size="24">
@@ -110,6 +116,14 @@ router.beforeEach((_to, _from, next) => {
 ::v-deep(.n-menu .n-menu-item-content.n-menu-item-content--selected::before),
 ::v-deep(.n-menu .n-menu-item-content:hover::before) {
   background: none !important;
+}
+
+::v-deep(.n-menu .n-menu-item-content--selected .n-menu-item-content-header a){
+  color: rgb(249 115 22) !important;
+}
+
+html.dark .header ::v-deep(.n-menu .n-menu-item-content--selected .n-menu-item-content-header a){
+  color: rgb(134 239 172) !important;
 }
 
 /* .header .n-card {

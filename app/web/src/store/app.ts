@@ -157,7 +157,10 @@ export const useAppStore = defineStore('app', {
         return {
           label: () => h(
             RouterLink,
-            { to: { name: menu.routerName } },
+            {
+              to: { name: menu.routerName },
+              class: 'hover:!text-orange-500 dark:hover:!text-green-300',
+            },
             { default: () => i18nt(menu.name) },
           ),
           key: menu.routerName,

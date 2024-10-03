@@ -1,5 +1,11 @@
 # @xiaohuohumax/miaoji-web
 
+## 1.3.0
+
+### Minor Changes
+
+- 顶部菜单样式修正
+
 ## 1.2.0
 
 ### Minor Changes
