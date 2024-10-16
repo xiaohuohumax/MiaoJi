@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --text-color: rgb(249 115 22);
+  --text-color: #f97316;
   --bg-color: #f0f0f0;
 }
 
 html.dark:root{
-  --text-color: rgb(134 239 172);
+  --text-color: #86efac;
   --bg-color: #18181c;
 }
 
@@ -44,7 +44,7 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-  background: hsl(0deg 0% 70%);
+  background: #b3b3b3;
   border-radius: 5px;
 }
 

@@ -45,9 +45,17 @@ const themeOverrides: GlobalThemeOverrides = {
     fontFamily: 'ChillRoundGothic',
     fontFamilyMono: 'ChillRoundGothic',
   },
+  Menu: {
+    itemTextColorActiveHoverHorizontal: 'var(--text-color)',
+    itemTextColorHoverHorizontal: 'var(--text-color)',
+    itemTextColorActiveHorizontal: 'var(--text-color)',
+  },
   Card: {
     color: 'transparent',
     borderColor: 'transparent',
+  },
+  BackTop: {
+    iconColorHover: 'var(--text-color)',
   },
 }
 </script>

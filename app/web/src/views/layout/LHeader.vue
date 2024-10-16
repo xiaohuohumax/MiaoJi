@@ -7,6 +7,7 @@ import appConfig from '~/app.config'
 import { IGithubCircle, IMenu, IWorld } from '~/icons'
 import { RouteName } from '~/router/routes'
 import { useAppStore } from '~/store/app'
+import { useIsMdScreen } from '~/use/media-query'
 import CHeaderSelect from '../components/CHeaderSearch.vue'
 
 const appStore = useAppStore()
@@ -28,6 +29,8 @@ router.beforeEach((_to, _from, next) => {
 watch(() => route.name, () => {
   menu.value = route.name as string
 }, { immediate: true })
+
+const isMdScreen = useIsMdScreen()
 </script>
 
 <template>
@@ -43,7 +46,7 @@ watch(() => route.name, () => {
           </div>
           <div class="flex items-center">
             <CHeaderSelect />
-            <div class="hidden md:block">
+            <div v-if="isMdScreen">
               <NSpace align="center">
                 <NMenu v-model:value="menu" :options="appStore.menuOptions" mode="horizontal" />
                 <CLink @click="appStore.toggleLanguage">
@@ -63,7 +66,7 @@ watch(() => route.name, () => {
                 </CLink>
               </NSpace>
             </div>
-            <CLink class="block md:hidden">
+            <CLink v-else>
               <IMenu :size="30" @click="toggleDrawer" />
             </CLink>
             <div v-show="drawer" class="absolute left-0 top-full w-full h-screen">
@@ -117,18 +120,4 @@ watch(() => route.name, () => {
 ::v-deep(.n-menu .n-menu-item-content:hover::before) {
   background: none !important;
 }
-
-::v-deep(.n-menu .n-menu-item-content--selected .n-menu-item-content-header a){
-  color: var(--text-color) !important;
-}
-
-/* .header .n-card {
-  background-image: radial-gradient(transparent 3px, #ffffff 10px);
-  backdrop-filter: saturate(80%) blur(1px);
-  background-size: 6px 6px;
-}
-
-html.dark .header .n-card {
-  background-image: radial-gradient(transparent 3px, rgb(16, 16, 20) 3px);
-} */
 </style>
