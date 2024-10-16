@@ -1,5 +1,11 @@
 # @xiaohuohumax/miaoji-web
 
+## 1.5.0
+
+### Minor Changes
+
+- markdown 添加 github 风格 alerts
+
 ## 1.4.1
 
 ### Minor Changes

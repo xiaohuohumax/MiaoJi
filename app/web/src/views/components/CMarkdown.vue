@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import { full as emoji } from 'markdown-it-emoji'
+import MarkdownItGitHubAlerts from 'markdown-it-github-alerts'
 import { config, MdPreview } from 'md-editor-v3'
 import { useAppStore } from '~/store/app'
 import 'md-editor-v3/lib/style.css'
+import 'markdown-it-github-alerts/styles/github-colors-light.css'
+import 'markdown-it-github-alerts/styles/github-colors-dark-class.css'
+import 'markdown-it-github-alerts/styles/github-base.css'
 
 export interface CMarkdownProps {
   content?: string | null
@@ -15,6 +19,7 @@ const appStore = useAppStore()
 config({
   markdownItConfig: (md) => {
     md.use(emoji)
+    md.use(MarkdownItGitHubAlerts)
   },
 })
 </script>
