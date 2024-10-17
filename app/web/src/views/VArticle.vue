@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import CAuthor from '@/CAuthor.vue'
 import CRelativeTime from '@/CRelativeTime.vue'
-import CLabels from '@/CTags.vue'
+import CTags from '@/CTags.vue'
 import CTitle from '@/CTitle.vue'
 import { NCard, NSpace } from 'naive-ui'
 import { ref } from 'vue'
@@ -41,7 +41,7 @@ async function queryDataFunc(): Promise<Issue> {
               <CAuthor :user="data.user" />
               <CRelativeTime :updated-at="data.updated_at" />
               <CEditAtGithub :url="data.html_url" />
-              <CLabels :labels="data.labels" />
+              <CTags :labels="data.labels" />
               <CReactions :reaction="data.reactions" :issue-url="data.html_url" />
             </NSpace>
             <CMarkdown :id="data.number" :content="data.body" />

@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import CAuthor from '@/CAuthor.vue'
 import CRelativeTime from '@/CRelativeTime.vue'
-import CLabels from '@/CTags.vue'
+import CTags from '@/CTags.vue'
 import CTitle from '@/CTitle.vue'
 import { markdown } from '@xiaohuohumax/miaoji-util'
 import { NCard, NIcon, NImage, NSpace } from 'naive-ui'
@@ -50,7 +50,7 @@ async function queryDataFunc(): Promise<IssueImage> {
               <CAuthor :user="issue.user" />
               <CRelativeTime :updated-at="issue.updated_at" />
               <CEditAtGithub :url="issue.html_url" />
-              <CLabels :labels="issue.labels" />
+              <CTags :labels="issue.labels" />
               <CReactions :reaction="issue.reactions" :issue-url="issue.html_url" />
             </NSpace>
             <NImage v-for="image in images" :key="image.src" class="md:w-3/4" :src="image.src" :alt="image.alt" lazy>

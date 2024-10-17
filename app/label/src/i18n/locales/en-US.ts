@@ -116,6 +116,10 @@ const lng: I18nSchema = {
           name: 'Hide Comment',
           description: 'Hide comment function label',
         },
+        pin: {
+          name: 'Pin',
+          description: 'Pin function label',
+        },
       },
     },
   },

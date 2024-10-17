@@ -17,7 +17,7 @@ const appConfig: AppConfig = {
   version,
   homepage,
   repository: `https://github.com/${import.meta.env.VITE_OWNER}/${import.meta.env.VITE_REPO}`,
-  perPage: 10,
+  perPage: 15,
   funcLabels: funcLabelsDefault,
   funcLabelPrefix,
 }

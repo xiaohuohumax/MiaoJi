@@ -116,6 +116,10 @@ const lng: I18nSchema = {
           name: '隐藏评论',
           description: '隐藏评论功能标签',
         },
+        pin: {
+          name: '置顶',
+          description: '置顶功能标签',
+        },
       },
     },
   },

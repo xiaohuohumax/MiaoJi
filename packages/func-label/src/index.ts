@@ -7,6 +7,7 @@ export interface FuncLabels {
   banner: string
   history: string
   album: string
+  pin: string
 }
 
 export const funcLabelPrefix = 'func:'
@@ -20,4 +21,5 @@ export const funcLabelsDefault: FuncLabels = {
   banner: `${funcLabelPrefix}banner`,
   history: `${funcLabelPrefix}history`,
   album: `${funcLabelPrefix}album`,
+  pin: `${funcLabelPrefix}pin`,
 }

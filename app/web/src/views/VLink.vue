@@ -8,18 +8,37 @@ import type { Issue } from '~/api/module/issue'
 import issueApi from '~/api/module/issue'
 import appConfig from '~/app.config'
 import { useI18n } from '~/i18n'
+import { hasFuncLabel } from '~/util/label'
 import CLinkCard from './components/CLinkCard.vue'
 import CLoadPages from './components/CLoadPages.vue'
 
 const { t } = useI18n()
 async function queryPagesFunc(page: number, perPage: number): Promise<QueryFuncRes<Issue>> {
+  const labels = [appConfig.funcLabels.link]
+  const datas: Issue[] = []
+
+  if (page === 1) {
+    const pinLabels = labels.concat(appConfig.funcLabels.pin)
+    const pinData = await issueApi.all({
+      labels: pinLabels.join(','),
+    })
+    datas.push(...pinData)
+  }
+
   const data = await issueApi.page({
     page,
     per_page: perPage,
-    labels: appConfig.funcLabels.link,
+    labels: labels.join(','),
   })
+  for (const issue of data) {
+    if (hasFuncLabel(issue.labels, appConfig.funcLabels.pin)) {
+      continue
+    }
+    datas.push(issue)
+  }
+
   return {
-    datas: data,
+    datas,
     hasNext: data.length === perPage,
   }
 }

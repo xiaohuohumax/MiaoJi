@@ -1,9 +1,12 @@
 <script setup lang='ts'>
 import CLink from '@/CLink.vue'
 import { markdown } from '@xiaohuohumax/miaoji-util'
-import { NCard, NImage, NThing } from 'naive-ui'
+import { NCard, NIcon, NImage, NThing } from 'naive-ui'
 import { computed } from 'vue'
 import type { Issue } from '~/api/module/issue'
+import appConfig from '~/app.config'
+import { IHashtag } from '~/icons'
+import { hasFuncLabel } from '~/util/label'
 
 const props = defineProps<{
   issue: Issue
@@ -31,11 +34,15 @@ const link = computed(() => {
     href: links[0].href,
   }
 })
+const isPin = computed(() => hasFuncLabel(props.issue.labels, appConfig.funcLabels.pin))
 </script>
 
 <template>
   <CLink :href="link.href" target="_blank">
-    <NCard size="small" class="hover:scale-[1.02] transition-transform duration-200 ease-in-out">
+    <NCard size="small" class="relative hover:scale-[1.02] transition-transform duration-200 ease-in-out">
+      <NIcon v-if="isPin" class="absolute top-0 right-0 z-30 font-bold dark:text-green-300 text-orange-500" :size="24">
+        <IHashtag />
+      </NIcon>
       <NThing>
         <template #avatar>
           <NImage :src="issue.user?.avatar_url" class="w-16 h-16 rounded-md" />

@@ -7,7 +7,8 @@ import { onBeforeRouteLeave } from 'vue-router'
 import type { Issue } from '~/api/module/issue'
 import issueApi from '~/api/module/issue'
 import appConfig from '~/app.config'
-import CDocCard from '~/views/components/CArticleCard.vue'
+import { hasFuncLabel } from '~/util/label'
+import CArticleCard from '~/views/components/CArticleCard.vue'
 import CBanner from './components/CBanner.vue'
 import CLoadPages from './components/CLoadPages.vue'
 
@@ -17,16 +18,33 @@ const loadPagesRef = useTemplateRef<ComponentExposed<typeof CLoadPages>>('loadPa
 
 async function queryPagesFunc(page: number, perPage: number): Promise<QueryFuncRes<Issue>> {
   const labels = [appConfig.funcLabels.article]
+  const datas: Issue[] = []
   if (props.label) {
     labels.push(props.label)
   }
+
+  if (page === 1) {
+    const pinLabels = labels.concat(appConfig.funcLabels.pin)
+    const pinData = await issueApi.all({
+      labels: pinLabels.join(','),
+    })
+    datas.push(...pinData)
+  }
+
   const data = await issueApi.page({
     page,
     per_page: perPage,
     labels: labels.join(','),
   })
+  for (const issue of data) {
+    if (hasFuncLabel(issue.labels, appConfig.funcLabels.pin)) {
+      continue
+    }
+    datas.push(issue)
+  }
+
   return {
-    datas: data,
+    datas,
     hasNext: data.length === perPage,
   }
 }
@@ -62,7 +80,7 @@ onBeforeRouteLeave(() => {
     <CLoadPages ref="loadPagesRef" :query-pages-func="queryPagesFunc">
       <template #default="{ datas }">
         <NSpace :vertical="true">
-          <CDocCard v-for="issue in datas" :key="issue.number" :issue="issue" />
+          <CArticleCard v-for="issue in datas" :key="issue.number" :issue="issue" />
           <div class="mt-4" />
         </NSpace>
       </template>

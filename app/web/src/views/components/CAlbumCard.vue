@@ -5,8 +5,10 @@ import { markdown } from '@xiaohuohumax/miaoji-util'
 import { NCard, NIcon, NImage, NSpace } from 'naive-ui'
 import { computed } from 'vue'
 import type { Issue } from '~/api/module/issue'
-import { IAperture } from '~/icons'
+import appConfig from '~/app.config'
+import { IAperture, IHashtag } from '~/icons'
 import { RouteName } from '~/router/routes'
+import { hasFuncLabel } from '~/util/label'
 import CReactions from './CReactions.vue'
 
 const props = defineProps<{
@@ -18,11 +20,16 @@ const images = computed(() => {
     ? markdown.parseImages(props.issue.body)
     : []
 })
+
+const isPin = computed(() => hasFuncLabel(props.issue.labels, appConfig.funcLabels.pin))
 </script>
 
 <template>
   <RouterLink :to="{ name: RouteName.AlbumDetail, params: { id: issue.number } }">
-    <NCard size="small" class="hover:scale-[1.02] transition-transform duration-200 ease-in-out">
+    <NCard size="small" class="relative hover:scale-[1.02] transition-transform duration-200 ease-in-out">
+      <NIcon v-if="isPin" class="absolute top-0 right-0 z-30 font-bold dark:text-green-300 text-orange-500" :size="24">
+        <IHashtag />
+      </NIcon>
       <template v-if="images.length > 0" #cover>
         <NImage class="w-full" :src="images[0].src" :alt="images[0].alt" :preview-disabled="true" lazy>
           <template #placeholder>

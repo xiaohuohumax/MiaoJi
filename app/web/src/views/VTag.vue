@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import CSubTitle from '@/CSubTitle.vue'
-import CLabels from '@/CTags.vue'
+import CTags from '@/CTags.vue'
 import { NCard, NEmpty, NSpace } from 'naive-ui'
 import { useI18n } from '~/i18n'
 import { useAppStore } from '~/store/app'
@@ -17,7 +17,7 @@ const appStore = useAppStore()
       </CSubTitle>
     </NCard>
     <NCard size="small">
-      <CLabels v-if="appStore.labels.length > 0" :labels="appStore.labels" :show-icon="false" />
+      <CTags v-if="appStore.labels.length > 0" :labels="appStore.labels" :show-icon="false" />
       <NEmpty v-else />
     </NCard>
   </NSpace>

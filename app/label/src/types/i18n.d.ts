@@ -117,6 +117,10 @@ declare global {
             name: string
             description: string
           }
+          pin: {
+            name: string
+            description: string
+          }
         }
       }
     }

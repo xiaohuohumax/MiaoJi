@@ -13,6 +13,8 @@ export type IssuePageParams = PageParams & {
   labels: string
 }
 
+export type IssueAllParams = Omit<IssuePageParams, 'page' | 'per_page'>
+
 export type IssueSearchParams = PageParams & {
   keyword: string
   commands: Record<string, string>
@@ -26,6 +28,24 @@ export class IssueApi extends Api {
       state: 'all',
       ...params,
     })).data as Issue[]
+  }
+
+  async all(params: IssueAllParams): Promise<Issue[]> {
+    const issues: Issue[] = []
+    let page = 1
+    const per_page = 100
+    for (; ;) {
+      const data = await this.page({
+        ...params,
+        page: page++,
+        per_page,
+      })
+      issues.push(...data)
+      if (data.length < per_page) {
+        break
+      }
+    }
+    return issues
   }
 
   async search(params: IssueSearchParams): Promise<IssueSearch[]> {

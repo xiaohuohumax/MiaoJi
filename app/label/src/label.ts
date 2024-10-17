@@ -97,6 +97,11 @@ export const labelGroups: LabelGroup[] = [
         labelName: funcLabelsDefault.hiddenComment,
         description: i18n.t('label:labelGroup.util.labels.hiddenComment.description'),
       },
+      {
+        name: i18n.t('label:labelGroup.util.labels.pin.name'),
+        labelName: funcLabelsDefault.pin,
+        description: i18n.t('label:labelGroup.util.labels.pin.description'),
+      },
     ],
   },
 ]

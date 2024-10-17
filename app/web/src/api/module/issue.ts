@@ -1,4 +1,4 @@
-import type { Issue, IssuePageParams } from '@xiaohuohumax/miaoji-api'
+import type { Issue, IssueAllParams, IssuePageParams } from '@xiaohuohumax/miaoji-api'
 import { IssueApi as Api } from '@xiaohuohumax/miaoji-api'
 import { useAppStore } from '~/store/app'
 import meta from '../meta'
@@ -9,6 +9,13 @@ class IssueApi extends Api {
   public async page(params: IssuePageParams): Promise<Issue[]> {
     const appStore = useAppStore()
     const data = await super.page(params)
+    appStore.updateIssueCaches(data)
+    return data
+  }
+
+  public async all(params: IssueAllParams): Promise<Issue[]> {
+    const appStore = useAppStore()
+    const data = await super.all(params)
     appStore.updateIssueCaches(data)
     return data
   }
