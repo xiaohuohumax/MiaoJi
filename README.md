@@ -21,21 +21,22 @@
 
 ## 🔖 标签说明
 
-|标签名|说明|
-|---|---|
-|`func:article`|文章|
-|`func:album`|相册|
-|`func:about`|博客介绍|
-|`func:banner`|首页轮播图|
-|`func:message`|留言板|
-|`func:link`|友情链接|
-|`func:history`|更新历史|
-|`func:history:warning`|更新历史-警告|
-|`func:history:info`|更新历史-信息|
-|`func:history:success`|更新历史-成功|
-|`func:history:error`|更新历史-错误|
-|`func:history:default`|更新历史-默认|
-|`func:hidden-comment`|隐藏评论|
+| 标签名                 | 说明          |
+| ---------------------- | ------------- |
+| `func:article`         | 文章          |
+| `func:album`           | 相册          |
+| `func:about`           | 博客介绍      |
+| `func:banner`          | 首页轮播图    |
+| `func:message`         | 留言板        |
+| `func:link`            | 友情链接      |
+| `func:history`         | 更新历史      |
+| `func:history:warning` | 更新历史-警告 |
+| `func:history:info`    | 更新历史-信息 |
+| `func:history:success` | 更新历史-成功 |
+| `func:history:error`   | 更新历史-错误 |
+| `func:history:default` | 更新历史-默认 |
+| `func:hidden-comment`  | 隐藏评论      |
+| `func:pin`             | 置顶          |
 
 ## 📦 启动项目
 

@@ -21,21 +21,22 @@ By adding specific labels to each Issue, these Issues can be categorized into co
 
 ## 🔖 Label Description
 
-| Label Name               | Description                        |
-|-------------------------|-----------------------------------|
-| `func:article`         | Article                           |
-| `func:album`           | Album                             |
-| `func:about`           | Blog Introduction                 |
-| `func:banner`          | Homepage Carousel                 |
-| `func:message`         | Message Board                     |
-| `func:link`            | Friend Links                      |
-| `func:history`         | Update History                    |
-| `func:history:warning`  | Update History - Warning          |
-| `func:history:info`    | Update History - Info             |
-| `func:history:success`  | Update History - Success          |
-| `func:history:error`    | Update History - Error            |
-| `func:history:default`  | Update History - Default          |
-| `func:hidden-comment`   | Hidden Comments                   |
+| Label Name             | Description              |
+| ---------------------- | ------------------------ |
+| `func:article`         | Article                  |
+| `func:album`           | Album                    |
+| `func:about`           | Blog Introduction        |
+| `func:banner`          | Homepage Carousel        |
+| `func:message`         | Message Board            |
+| `func:link`            | Friend Links             |
+| `func:history`         | Update History           |
+| `func:history:warning` | Update History - Warning |
+| `func:history:info`    | Update History - Info    |
+| `func:history:success` | Update History - Success |
+| `func:history:error`   | Update History - Error   |
+| `func:history:default` | Update History - Default |
+| `func:hidden-comment`  | Hidden Comments          |
+| `func:pin`             | Pinned                   |
 
 ## 📦 Starting the Project
 
