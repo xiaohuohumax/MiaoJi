@@ -13,6 +13,8 @@
     "peaceiris",
     "persistedstate",
     "prefixs",
+    "shiki",
+    "shikijs",
     "tada",
     "tseslint"
   ],
