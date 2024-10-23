@@ -21,6 +21,7 @@ async function setMarkdownConfig() {
       light: 'one-light',
       dark: 'one-dark-pro',
     },
+    defaultColor: false,
   })
 
   config({
