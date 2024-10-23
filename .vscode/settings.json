@@ -16,7 +16,8 @@
     "shiki",
     "shikijs",
     "tada",
-    "tseslint"
+    "tseslint",
+    "vitepress"
   ],
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {

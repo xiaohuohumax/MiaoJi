@@ -1,4 +1,13 @@
 import Shiki from '@shikijs/markdown-it'
+import {
+  transformerMetaHighlight,
+  transformerNotationDiff,
+  transformerNotationErrorLevel,
+  transformerNotationFocus,
+  transformerNotationHighlight,
+  transformerNotationWordHighlight,
+  transformerRemoveNotationEscape,
+} from '@shikijs/transformers'
 import { logger } from '@xiaohuohumax/miaoji-util'
 import { full as emoji } from 'markdown-it-emoji'
 import MarkdownItGitHubAlerts from 'markdown-it-github-alerts'
@@ -22,6 +31,15 @@ async function setMarkdownConfig() {
       dark: 'one-dark-pro',
     },
     defaultColor: false,
+    transformers: [
+      transformerNotationDiff(),
+      transformerNotationHighlight(),
+      transformerNotationWordHighlight(),
+      transformerNotationErrorLevel(),
+      transformerNotationFocus(),
+      transformerMetaHighlight(),
+      transformerRemoveNotationEscape(),
+    ],
   })
 
   config({

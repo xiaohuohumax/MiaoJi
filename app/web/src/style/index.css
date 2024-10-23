@@ -6,12 +6,22 @@
   --text-color: #f97316;
   --bg-color: #f0f0f0;
   --card-bg-color: #ffffffbb;
+  --code-line-diff-add-color: #10b98124;
+  --code-line-diff-remove-color: #f43f5e24;
+  --code-line-highlight-color: #8e96aa24;
+  --code-line-error-color: #f43f5e24;
+  --code-line-warning-color: #eab30824;
 }
 
 html.dark:root {
   --text-color: #86efac;
   --bg-color: #1b1b1b;
   --card-bg-color: #101010ee;
+  --code-line-diff-add-color: #10b98129;
+  --code-line-diff-remove-color: #f43f5e24;
+  --code-line-highlight-color: #65758529;
+  --code-line-error-color: #f43f5e29;
+  --code-line-warning-color: #eab30829;
 }
 
 body {
@@ -102,4 +112,75 @@ html.dark .shiki span {
 .shiki,
 .shiki span {
   color: var(--shiki-light);
+}
+
+/* 转换器高亮 */
+/* 参考自 vitepress：https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/components/vp-doc.css#L334-L412 */
+.md-editor code[class*=language-] {
+  padding: 1em 24px !important;
+}
+
+.md-editor code[class*=language-] .highlighted {
+  background-color: var(--code-line-highlight-color);
+  transition: background-color .5s;
+  margin: 0 -24px;
+  padding: 0 24px;
+  width:calc(100% + 48px);
+  display: inline-block
+}
+
+.md-editor code[class*=language-] .highlighted.error {
+  background-color: var(--code-line-error-color)
+}
+
+.md-editor code[class*=language-] .highlighted.warning {
+  background-color: var(--code-line-warning-color)
+}
+
+.md-editor code[class*=language-] .diff {
+  transition: background-color .5s;
+  margin: 0 -24px;
+  padding: 0 24px;
+  width:calc(100% + 48px);
+  display: inline-block
+}
+
+.md-editor code[class*=language-] .diff:before {
+  position: absolute;
+  left: 10px
+}
+
+.md-editor .has-focused code[class*=language-] .line:not(.focused) {
+  filter: blur(.095rem);
+  opacity: .4;
+  transition: filter .35s, opacity .35s
+}
+
+.md-editor .has-focused code[class*=language-] .line:not(.focused) {
+  opacity: .7;
+  transition: filter .35s, opacity .35s
+}
+
+.md-editor .has-focused code[class*=language-]:hover .line:not(.focused) {
+  filter: blur(0);
+  opacity: 1
+}
+
+.md-editor code[class*=language-] .diff.remove {
+  background-color: var(--code-line-diff-remove-color);
+  opacity: .7
+}
+
+.md-editor code[class*=language-] .diff.remove:before {
+  content: "-";
+  color: var(--code-line-diff-remove-symbol-color)
+}
+
+.md-editor code[class*=language-] .diff.add {
+  background-color: var(--code-line-diff-add-color)
+}
+
+.md-editor code[class*=language-] .diff.add:before {
+  content: "+";
+  color: var(--code-line-diff-add-symbol-color)
 }

@@ -135,6 +135,9 @@ importers:
       '@shikijs/markdown-it':
         specifier: ^1.22.0
         version: 1.22.0
+      '@shikijs/transformers':
+        specifier: ^1.22.0
+        version: 1.22.0
       '@types/markdown-it-emoji':
         specifier: ^3.0.1
         version: 3.0.1
@@ -1322,6 +1325,9 @@ packages:
 
   '@shikijs/markdown-it@1.22.0':
     resolution: {integrity: sha512-IAWi2pbzYndiuXOWnV5Ll4ULQJeWl45WUACl1Xc2KSiBl0JtQmqKvPOGKN7YSZbyIzkB6bWUItRrv5ucO35U+g==}
+
+  '@shikijs/transformers@1.22.0':
+    resolution: {integrity: sha512-k7iMOYuGQA62KwAuJOQBgH2IQb5vP8uiB3lMvAMGUgAMMurePOx3Z7oNqJdcpxqZP6I9cc7nc4DNqSKduCxmdg==}
 
   '@shikijs/types@1.22.0':
     resolution: {integrity: sha512-Fw/Nr7FGFhlQqHfxzZY8Cwtwk5E9nKDUgeLjZgt3UuhcM3yJR9xj3ZGNravZZok8XmEZMiYkSMTPlPkULB8nww==}
@@ -5300,6 +5306,10 @@ snapshots:
   '@shikijs/markdown-it@1.22.0':
     dependencies:
       markdown-it: 14.1.0
+      shiki: 1.22.0
+
+  '@shikijs/transformers@1.22.0':
+    dependencies:
       shiki: 1.22.0
 
   '@shikijs/types@1.22.0':
