@@ -15,6 +15,7 @@ module.exports = {
       [
         'feat',
         'fix',
+        'release',
         'init',
         'art',
         'docs',
@@ -63,6 +64,11 @@ module.exports = {
         value: 'fix',
         name: 'fix:       🐛 修复缺陷 | Fixing a bug',
         emoji: ':bug:',
+      },
+      {
+        value: 'release',
+        name: 'release:   🚀 发布版本 | Publishing a new version',
+        emoji: ':rocket:',
       },
       {
         value: 'init',
