@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { NIcon, NSpace } from 'naive-ui'
+import { NFlex, NIcon } from 'naive-ui'
 </script>
 
 <template>
-  <NSpace :size="2" align="center" justify="start">
+  <NFlex :size="2" align="center" justify="start">
     <NIcon>
       <slot name="icon" />
     </NIcon>
     <slot />
-  </NSpace>
+  </NFlex>
 </template>

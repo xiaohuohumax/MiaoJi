@@ -2,7 +2,7 @@
 import type { QueryFuncRes } from './components/CLoadPages.vue'
 import CRelativeTime from '@/CRelativeTime.vue'
 import CSubTitle from '@/CSubTitle.vue'
-import { NCard, NSpace, NTimeline, NTimelineItem } from 'naive-ui'
+import { NCard, NFlex, NTimeline, NTimelineItem } from 'naive-ui'
 import type { Issue } from '~/api/module/issue'
 import issueApi from '~/api/module/issue'
 import appConfig from '~/app.config'
@@ -34,7 +34,7 @@ function getHistoryColor(issue: Issue) {
 </script>
 
 <template>
-  <NSpace :vertical="true">
+  <NFlex :vertical="true">
     <NCard size="small">
       <CSubTitle>
         {{ t('page.history.title') }}
@@ -51,16 +51,16 @@ function getHistoryColor(issue: Issue) {
                 </div>
               </template>
               <template #footer>
-                <NSpace vertical size="small">
+                <NFlex vertical size="small">
                   <CReactions :reaction="issue.reactions" :issue-url="issue.html_url" />
                   <CRelativeTime :updated-at="issue.created_at" />
                   <CMarkdown :id="issue.number" :content="issue.body" />
-                </NSpace>
+                </NFlex>
               </template>
             </NTimelineItem>
           </NTimeline>
         </template>
       </CLoadPages>
     </NCard>
-  </NSpace>
+  </NFlex>
 </template>

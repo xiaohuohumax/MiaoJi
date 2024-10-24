@@ -4,7 +4,7 @@ import CRelativeTime from '@/CRelativeTime.vue'
 import CTags from '@/CTags.vue'
 import CTitle from '@/CTitle.vue'
 import { markdown } from '@xiaohuohumax/miaoji-util'
-import { NCard, NIcon, NImage, NSpace } from 'naive-ui'
+import { NCard, NFlex, NIcon, NImage } from 'naive-ui'
 import { ref } from 'vue'
 import type { Issue } from '~/api/module/issue'
 import issueApi from '~/api/module/issue'
@@ -40,19 +40,19 @@ async function queryDataFunc(): Promise<IssueImage> {
 </script>
 
 <template>
-  <NSpace :vertical="true">
+  <NFlex :vertical="true">
     <NCard>
       <CLoadData v-model:data="issueImage" :query-data-func="queryDataFunc">
         <template #success="{ data: { issue, images } }">
-          <NSpace :vertical="true">
+          <NFlex :vertical="true">
             <CTitle>{{ issue.title }}</CTitle>
-            <NSpace align="center">
+            <NFlex align="center">
               <CAuthor :user="issue.user" />
               <CRelativeTime :updated-at="issue.updated_at" />
               <CEditAtGithub :url="issue.html_url" />
               <CTags :labels="issue.labels" />
               <CReactions :reaction="issue.reactions" :issue-url="issue.html_url" />
-            </NSpace>
+            </NFlex>
             <NImage v-for="image in images" :key="image.src" class="md:w-3/4" :src="image.src" :alt="image.alt" lazy>
               <template #placeholder>
                 <div class="text-center p-2">
@@ -62,10 +62,10 @@ async function queryDataFunc(): Promise<IssueImage> {
                 </div>
               </template>
             </NImage>
-          </NSpace>
+          </NFlex>
         </template>
       </CLoadData>
     </NCard>
     <CComment :issue="issueImage?.issue" />
-  </NSpace>
+  </NFlex>
 </template>

@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import CLink from '@/CLink.vue'
-import { NButton, NCard, NDivider, NIcon, NMenu, NSpace } from 'naive-ui'
+import { NButton, NCard, NDivider, NFlex, NIcon, NMenu } from 'naive-ui'
 import { ref, watch } from 'vue'
 import { RouterLink, useRoute, useRouter } from 'vue-router'
 import appConfig from '~/app.config'
@@ -37,7 +37,7 @@ const isMdScreen = useIsMdScreen()
   <div class="header sticky top-0 z-50 font-bold">
     <div class="container mx-auto px-2">
       <NCard size="small" class="rounded-t-none">
-        <NSpace justify="space-between" align="center">
+        <NFlex justify="space-between" align="center">
           <div class="text-lg">
             <RouterLink :to="{ name: RouteName.Home }" class="flex items-center group">
               <img class="w-6 md:w-8 object-cover flex-grow-0" src="/logo.svg?url" :alt="appConfig.appName">
@@ -47,7 +47,7 @@ const isMdScreen = useIsMdScreen()
           <div class="flex items-center">
             <CHeaderSelect />
             <div v-if="isMdScreen">
-              <NSpace align="center">
+              <NFlex align="center" :wrap="false">
                 <NMenu v-model:value="menu" :options="appStore.menuOptions" mode="horizontal" />
                 <CLink @click="appStore.toggleLanguage">
                   <NIcon :size="20">
@@ -64,14 +64,14 @@ const isMdScreen = useIsMdScreen()
                     <IGithubCircle />
                   </NIcon>
                 </CLink>
-              </NSpace>
+              </NFlex>
             </div>
             <CLink v-else>
               <IMenu :size="30" @click="toggleDrawer" />
             </CLink>
             <div v-show="drawer" class="absolute left-0 top-full w-full h-screen">
               <NCard class="h-full mt-2">
-                <NSpace :vertical="true">
+                <NFlex :vertical="true">
                   <NMenu v-model:value="menu" :options="appStore.menuOptions" :root-indent="8" :indent="8" />
                   <NDivider />
                   <NButton size="large" class="w-full" tertiary @click="appStore.toggleTheme">
@@ -87,11 +87,11 @@ const isMdScreen = useIsMdScreen()
                       <IGithubCircle :size="28" />
                     </NButton>
                   </CLink>
-                </NSpace>
+                </NFlex>
               </NCard>
             </div>
           </div>
-        </NSpace>
+        </NFlex>
       </NCard>
     </div>
   </div>

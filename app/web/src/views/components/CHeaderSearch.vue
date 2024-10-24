@@ -4,7 +4,7 @@ import type { ComponentExposed } from 'vue-component-type-helpers'
 import type { QueryFuncRes } from './CLoadPages.vue'
 import CLink from '@/CLink.vue'
 import CTags from '@/CTags.vue'
-import { NButton, NCard, NIcon, NInput, NInputGroup, NList, NListItem, NModal, NSelect, NSpace } from 'naive-ui'
+import { NButton, NCard, NFlex, NIcon, NInput, NInputGroup, NList, NListItem, NModal, NSelect } from 'naive-ui'
 import { ref, useTemplateRef, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import issueApi from '~/api/module/issue'
@@ -86,7 +86,7 @@ watch(() => mode.value, () => loadPagesRef.value?.init())
   <NModal :show="show" :mask-closable="true" display-directive="show" @mask-click="show = false">
     <div class="flex w-[540px] px-2 md:px-0" style="margin-top: calc(100svh / 6);">
       <NCard aria-modal="true">
-        <NSpace :vertical="true">
+        <NFlex :vertical="true">
           <NInputGroup>
             <NSelect
               v-model:value="mode" class="w-36" size="large" :options="[
@@ -132,7 +132,7 @@ watch(() => mode.value, () => loadPagesRef.value?.init())
               </NList>
             </template>
           </CLoadPages>
-        </NSpace>
+        </NFlex>
       </NCard>
     </div>
   </NModal>

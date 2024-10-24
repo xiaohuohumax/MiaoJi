@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { NSpace, NTag } from 'naive-ui'
+import { NFlex, NTag } from 'naive-ui'
 import { computed } from 'vue'
 import type { Label } from '~/api/module/label'
 import { ITag } from '~/icons'
@@ -22,7 +22,7 @@ const filteredLabels = computed(() => excludeFuncLabels(props.labels))
     <template v-if="showIcon" #icon>
       <ITag />
     </template>
-    <NSpace>
+    <NFlex>
       <RouterLink
         v-for="label in filteredLabels" :key="label.name"
         :to="{ name: RouteName.Home, query: { label: label.name } }" @click="emit('update:label-click', label)"
@@ -36,6 +36,6 @@ const filteredLabels = computed(() => excludeFuncLabels(props.labels))
           {{ label.name }}
         </NTag>
       </RouterLink>
-    </NSpace>
+    </NFlex>
   </CPreIcon>
 </template>

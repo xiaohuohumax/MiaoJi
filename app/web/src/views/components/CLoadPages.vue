@@ -1,6 +1,6 @@
 <script setup lang='ts' generic="D">
 import awaitTo from 'await-to-js'
-import { NButton, NEmpty, NIcon, NSpace } from 'naive-ui'
+import { NButton, NEmpty, NFlex, NIcon } from 'naive-ui'
 import { ref } from 'vue'
 import appConfig from '~/app.config'
 import { useI18n } from '~/i18n'
@@ -64,7 +64,7 @@ defineExpose({
 </script>
 
 <template>
-  <NSpace :vertical="true">
+  <NFlex :vertical="true">
     <slot :datas="datas" />
     <slot v-if="s === 'loading'" name="loading">
       <div class="text-center p-2">
@@ -99,5 +99,5 @@ defineExpose({
     <slot v-else-if="s === 'empty'" name="empty">
       <NEmpty class="p-4" />
     </slot>
-  </NSpace>
+  </NFlex>
 </template>

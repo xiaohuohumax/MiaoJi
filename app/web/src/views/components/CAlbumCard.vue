@@ -2,7 +2,7 @@
 import CAuthor from '@/CAuthor.vue'
 import CRelativeTime from '@/CRelativeTime.vue'
 import { markdown } from '@xiaohuohumax/miaoji-util'
-import { NCard, NIcon, NImage, NSpace } from 'naive-ui'
+import { NCard, NFlex, NIcon, NImage } from 'naive-ui'
 import { computed } from 'vue'
 import type { Issue } from '~/api/module/issue'
 import appConfig from '~/app.config'
@@ -41,16 +41,16 @@ const isPin = computed(() => hasFuncLabel(props.issue.labels, appConfig.funcLabe
           </template>
         </NImage>
       </template>
-      <NSpace vertical size="small">
+      <NFlex vertical size="small">
         <div class="text-lg">
           {{ issue.title }}
         </div>
-        <NSpace>
+        <NFlex>
           <CAuthor :user="issue.user" />
           <CRelativeTime :updated-at="issue.updated_at" />
-        </NSpace>
+        </NFlex>
         <CReactions :reaction="issue.reactions" :issue-url="issue.html_url" />
-      </NSpace>
+      </NFlex>
     </NCard>
   </RouterLink>
 </template>

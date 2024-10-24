@@ -3,7 +3,7 @@ import type { Issue } from '@xiaohuohumax/miaoji-api'
 import CLink from '@/CLink.vue'
 import CPreIcon from '@/CPreIcon.vue'
 import { steam } from '@xiaohuohumax/miaoji-util'
-import { NSpace, NTag } from 'naive-ui'
+import { NFlex, NTag } from 'naive-ui'
 import { IBarChart } from '~/icons'
 
 type IssueReaction = Issue['reactions']
@@ -42,12 +42,12 @@ const reactions = Object.entries(props.reaction || {}).map(([key, value]) => {
     <template #icon>
       <IBarChart />
     </template>
-    <NSpace>
+    <NFlex>
       <CLink v-for="r in reactions" :key="r.count" :href="issueUrl" target="_blank" @click.stop>
         <NTag :bordered="false" :checkable="true" class="bg-transparent">
           {{ r.icon }} {{ r.count }}
         </NTag>
       </CLink>
-    </NSpace>
+    </NFlex>
   </CPreIcon>
 </template>

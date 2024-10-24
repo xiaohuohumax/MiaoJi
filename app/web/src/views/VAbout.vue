@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import CSubTitle from '@/CSubTitle.vue'
-import { NCard, NSpace, useMessage } from 'naive-ui'
+import { NCard, NFlex, useMessage } from 'naive-ui'
 import { ref } from 'vue'
 import type { Issue } from '~/api/module/issue'
 import issueApi from '~/api/module/issue'
@@ -28,7 +28,7 @@ async function queryDataFunc(): Promise<Issue> {
 </script>
 
 <template>
-  <NSpace :vertical="true">
+  <NFlex :vertical="true">
     <NCard size="small">
       <CSubTitle>
         {{ t('page.about.title') }}
@@ -42,5 +42,5 @@ async function queryDataFunc(): Promise<Issue> {
         </template>
       </CLoadData>
     </NCard>
-  </NSpace>
+  </NFlex>
 </template>

@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import type { QueryFuncRes } from './components/CLoadPages.vue'
 import CSubTitle from '@/CSubTitle.vue'
-import { NCard, NGrid, NGridItem, NSpace } from 'naive-ui'
+import { NCard, NFlex, NGrid, NGridItem } from 'naive-ui'
 import type { Issue } from '~/api/module/issue'
 import issueApi from '~/api/module/issue'
 import appConfig from '~/app.config'
@@ -43,7 +43,7 @@ async function queryPagesFunc(page: number, perPage: number): Promise<QueryFuncR
 </script>
 
 <template>
-  <NSpace :vertical="true">
+  <NFlex :vertical="true">
     <NCard size="small">
       <CSubTitle>
         {{ t('page.album.title') }}
@@ -59,5 +59,5 @@ async function queryPagesFunc(page: number, perPage: number): Promise<QueryFuncR
         </NGrid>
       </template>
     </CLoadPages>
-  </NSpace>
+  </NFlex>
 </template>

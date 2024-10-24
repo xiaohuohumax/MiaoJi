@@ -3,7 +3,7 @@ import CAuthor from '@/CAuthor.vue'
 import CRelativeTime from '@/CRelativeTime.vue'
 import CTags from '@/CTags.vue'
 import CTitle from '@/CTitle.vue'
-import { NCard, NSpace } from 'naive-ui'
+import { NCard, NFlex } from 'naive-ui'
 import { ref } from 'vue'
 import type { Issue } from '~/api/module/issue'
 import issueApi from '~/api/module/issue'
@@ -31,24 +31,24 @@ async function queryDataFunc(): Promise<Issue> {
 </script>
 
 <template>
-  <NSpace :vertical="true">
+  <NFlex :vertical="true">
     <NCard size="small">
       <CLoadData v-model:data="issue" :query-data-func="queryDataFunc">
         <template #success="{ data }">
-          <NSpace :vertical="true">
+          <NFlex :vertical="true">
             <CTitle>{{ data.title }}</CTitle>
-            <NSpace align="center">
+            <NFlex align="center">
               <CAuthor :user="data.user" />
               <CRelativeTime :updated-at="data.updated_at" />
               <CEditAtGithub :url="data.html_url" />
               <CTags :labels="data.labels" />
               <CReactions :reaction="data.reactions" :issue-url="data.html_url" />
-            </NSpace>
+            </NFlex>
             <CMarkdown :id="data.number" :content="data.body" />
-          </NSpace>
+          </NFlex>
         </template>
       </CLoadData>
     </NCard>
     <CComment :issue="issue" />
-  </NSpace>
+  </NFlex>
 </template>

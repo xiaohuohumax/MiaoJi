@@ -2,7 +2,7 @@
 import type { QueryFuncRes } from './components/CLoadPages.vue'
 import CLink from '@/CLink.vue'
 import CSubTitle from '@/CSubTitle.vue'
-import { NButton, NCard, NGrid, NGridItem, NSpace } from 'naive-ui'
+import { NButton, NCard, NFlex, NGrid, NGridItem } from 'naive-ui'
 import { computed } from 'vue'
 import type { Issue } from '~/api/module/issue'
 import issueApi from '~/api/module/issue'
@@ -55,7 +55,7 @@ const applyHref = computed(() => {
 </script>
 
 <template>
-  <NSpace :vertical="true">
+  <NFlex :vertical="true">
     <NCard size="small">
       <CSubTitle>
         {{ t('page.link.title') }}
@@ -76,5 +76,5 @@ const applyHref = computed(() => {
         {{ t('page.link.toApply') }}
       </NButton>
     </CLink>
-  </NSpace>
+  </NFlex>
 </template>

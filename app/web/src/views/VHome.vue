@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import type { ComponentExposed } from 'vue-component-type-helpers'
 import type { QueryFuncRes } from './components/CLoadPages.vue'
-import { NSpace } from 'naive-ui'
+import { NFlex } from 'naive-ui'
 import { onActivated, useTemplateRef } from 'vue'
 import { onBeforeRouteLeave } from 'vue-router'
 import type { Issue } from '~/api/module/issue'
@@ -75,15 +75,15 @@ onBeforeRouteLeave(() => {
 </script>
 
 <template>
-  <NSpace :vertical="true">
+  <NFlex :vertical="true">
     <CBanner />
     <CLoadPages ref="loadPagesRef" :query-pages-func="queryPagesFunc">
       <template #default="{ datas }">
-        <NSpace :vertical="true">
+        <NFlex :vertical="true">
           <CArticleCard v-for="issue in datas" :key="issue.number" :issue="issue" />
           <div class="mt-4" />
-        </NSpace>
+        </NFlex>
       </template>
     </CLoadPages>
-  </NSpace>
+  </NFlex>
 </template>

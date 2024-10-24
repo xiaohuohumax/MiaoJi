@@ -5,7 +5,7 @@ import type { QueryFuncRes } from './CLoadPages.vue'
 import CLink from '@/CLink.vue'
 import CRelativeTime from '@/CRelativeTime.vue'
 import CSubTitle from '@/CSubTitle.vue'
-import { NButton, NCard, NImage, NSpace, NThing } from 'naive-ui'
+import { NButton, NCard, NFlex, NImage, NThing } from 'naive-ui'
 import { computed, nextTick, useTemplateRef, watch } from 'vue'
 import type { Comment } from '~/api/module/comment'
 import commentApi from '~/api/module/comment'
@@ -49,7 +49,7 @@ watch(() => props.issue, () => {
 
 <template>
   <NCard size="small">
-    <NSpace :vertical="true">
+    <NFlex :vertical="true">
       <CSubTitle>
         {{ t('component.comment.title') }}
       </CSubTitle>
@@ -58,7 +58,7 @@ watch(() => props.issue, () => {
       </div>
       <CLoadPages v-else ref="loadPagesRef" :query-pages-func="queryPagesFunc" :auto-query="false" state="loading">
         <template #default="{ datas }">
-          <NSpace :vertical="true">
+          <NFlex :vertical="true">
             <CLink v-if="issue" :href="`${issue.html_url}#new_comment_field`" target="_blank">
               <NButton secondary class="w-full" type="info">
                 {{ t('component.comment.toComment') }}
@@ -74,16 +74,16 @@ watch(() => props.issue, () => {
                 </CLink>
               </template>
               <template #description>
-                <NSpace align="center">
+                <NFlex align="center">
                   <CRelativeTime :updated-at="comment.created_at" />
                   <CReactions :reaction="comment.reactions" :issue-url="comment.issue_url" />
-                </NSpace>
+                </NFlex>
                 <CMarkdown :id="comment.id" :content="comment.body" />
               </template>
             </NThing>
-          </NSpace>
+          </NFlex>
         </template>
       </CLoadPages>
-    </NSpace>
+    </NFlex>
   </NCard>
 </template>
