@@ -9,7 +9,6 @@ import { ref, useTemplateRef, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import issueApi from '~/api/module/issue'
 import appConfig from '~/app.config'
-import { useI18n } from '~/i18n'
 import { IDocument, IPicture, ISearch, ITag } from '~/icons'
 import { RouteName } from '~/router/routes'
 import { useAppStore } from '~/store/app'
@@ -17,7 +16,6 @@ import { excludeFuncLabels } from '~/util/label'
 import { sleep } from '~/util/time'
 import CLoadPages from './CLoadPages.vue'
 
-const { t } = useI18n()
 const appStore = useAppStore()
 const router = useRouter()
 type Mode = 'tag' | 'article' | 'album'
@@ -91,15 +89,15 @@ watch(() => mode.value, () => loadPagesRef.value?.init())
             <NSelect
               v-model:value="mode" class="w-36" size="large" :options="[
                 {
-                  label: t('component.headerSearch.radioTag'),
+                  label: $t('component.headerSearch.radioTag'),
                   value: 'tag',
                 },
                 {
-                  label: t('component.headerSearch.radioArticle'),
+                  label: $t('component.headerSearch.radioArticle'),
                   value: 'article',
                 },
                 {
-                  label: t('component.headerSearch.radioAlbum'),
+                  label: $t('component.headerSearch.radioAlbum'),
                   value: 'album',
                 },
               ]"
@@ -116,7 +114,7 @@ watch(() => mode.value, () => loadPagesRef.value?.init())
             </NSelect>
             <NInput v-model:value.trim="select" size="large" @keydown.enter="handleSelect" />
             <NButton secondary type="success" size="large" @click="handleSelect">
-              {{ t('component.headerSearch.search') }}
+              {{ $t('component.headerSearch.search') }}
             </NButton>
           </NInputGroup>
           <CLoadPages ref="loadPagesRef" :query-pages-func="queryPagesFunc" :auto-query="false">

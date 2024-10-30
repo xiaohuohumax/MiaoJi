@@ -6,12 +6,10 @@ import { NCard, NFlex, NTimeline, NTimelineItem } from 'naive-ui'
 import type { Issue } from '~/api/module/issue'
 import issueApi from '~/api/module/issue'
 import appConfig from '~/app.config'
-import { useI18n } from '~/i18n'
 import CMarkdown from '~/views/components/CMarkdown.vue'
 import CLoadPages from './components/CLoadPages.vue'
 import CReactions from './components/CReactions.vue'
 
-const { t } = useI18n()
 async function queryPagesFunc(page: number, perPage: number): Promise<QueryFuncRes<Issue>> {
   const data = await issueApi.page({
     page,
@@ -37,7 +35,7 @@ function getHistoryColor(issue: Issue) {
   <NFlex :vertical="true">
     <NCard size="small">
       <CSubTitle>
-        {{ t('page.history.title') }}
+        {{ $t('page.history.title') }}
       </CSubTitle>
     </NCard>
     <NCard size="small">

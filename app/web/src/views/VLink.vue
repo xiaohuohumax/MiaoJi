@@ -4,10 +4,10 @@ import CLink from '@/CLink.vue'
 import CSubTitle from '@/CSubTitle.vue'
 import { NButton, NCard, NFlex, NGrid, NGridItem } from 'naive-ui'
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import type { Issue } from '~/api/module/issue'
 import issueApi from '~/api/module/issue'
 import appConfig from '~/app.config'
-import { useI18n } from '~/i18n'
 import { hasFuncLabel } from '~/util/label'
 import CLinkCard from './components/CLinkCard.vue'
 import CLoadPages from './components/CLoadPages.vue'
@@ -58,7 +58,7 @@ const applyHref = computed(() => {
   <NFlex :vertical="true">
     <NCard size="small">
       <CSubTitle>
-        {{ t('page.link.title') }}
+        {{ $t('page.link.title') }}
       </CSubTitle>
     </NCard>
     <CLoadPages :query-pages-func="queryPagesFunc">
@@ -73,7 +73,7 @@ const applyHref = computed(() => {
     </CLoadPages>
     <CLink :href="applyHref" target="_blank">
       <NButton class="w-full" secondary type="info">
-        {{ t('page.link.toApply') }}
+        {{ $t('page.link.toApply') }}
       </NButton>
     </CLink>
   </NFlex>

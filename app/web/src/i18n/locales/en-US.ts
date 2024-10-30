@@ -1,8 +1,9 @@
+import type { DefineLocaleMessage } from 'vue-i18n'
 import { dateEnUS, enUS } from 'naive-ui'
 
-const lng: I18nSchema = {
+const lang: DefineLocaleMessage = {
   meta: {
-    name: 'en-US',
+    lang: 'en-US',
     description: 'English',
   },
   common: {
@@ -88,4 +89,4 @@ const lng: I18nSchema = {
   },
 }
 
-export default lng
+export default lang

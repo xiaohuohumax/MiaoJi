@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import { NFlex } from 'naive-ui'
-import { useI18n } from '~/i18n'
-
-const { t } = useI18n()
 </script>
 
 <template>
@@ -10,7 +7,7 @@ const { t } = useI18n()
     <NFlex :vertical="true" class="text-center">
       <img src="/images/error_404.svg?url" class="max-w-64 md:max-w-96 mx-auto">
       <div class="">
-        {{ t('page.notFound.content') }}
+        {{ $t('page.notFound.content') }}
       </div>
     </NFlex>
   </div>

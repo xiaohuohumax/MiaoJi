@@ -1,6 +1,7 @@
 import type { MenuOption } from 'naive-ui'
 import type { BuiltInGlobalTheme } from 'naive-ui/es/themes/interface'
 import type { FunctionalComponent, Raw, SVGAttributes } from 'vue'
+import type { I18nKeys } from 'vue-i18n'
 import { logger, markdown, steam } from '@xiaohuohumax/miaoji-util'
 import awaitTo from 'await-to-js'
 import { darkTheme, lightTheme } from 'naive-ui'
@@ -12,12 +13,12 @@ import issueApi from '~/api/module/issue'
 import type { Label } from '~/api/module/label'
 import labelApi from '~/api/module/label'
 import appConfig from '~/app.config'
-import { i18nt, lngList } from '~/i18n'
+import { langs, t } from '~/i18n'
 import { IBrightnessDown, IMoonF } from '~/icons'
 import { RouteName } from '~/router/routes'
 
 interface Menu {
-  name: I18nSchemaKey
+  name: I18nKeys
   routerName: RouteName
   label?: string
 }
@@ -142,9 +143,9 @@ export const useAppStore = defineStore('app', {
       return this.issueCache.get(id)
     },
     toggleLanguage() {
-      const index = lngList.findIndex(lang => lang.meta.name === this.language)
-      const nextIndex = (index + 1) % lngList.length
-      this.language = lngList[nextIndex].meta.name
+      const index = langs.findIndex(lang => lang.meta.lang === this.language)
+      const nextIndex = (index + 1) % langs.length
+      this.language = langs[nextIndex].meta.lang
     },
   },
   getters: {
@@ -161,7 +162,7 @@ export const useAppStore = defineStore('app', {
               to: { name: menu.routerName },
               // class: 'hover:!text-orange-500 dark:hover:!text-green-300',
             },
-            { default: () => i18nt(menu.name) },
+            { default: () => t(menu.name) },
           ),
           key: menu.routerName,
         }

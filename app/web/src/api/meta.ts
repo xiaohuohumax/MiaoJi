@@ -3,7 +3,7 @@ import type { MetaOptions } from '@xiaohuohumax/miaoji-api'
 import type { RequestError } from 'octokit'
 import { Meta } from '@xiaohuohumax/miaoji-api'
 import { logger } from '@xiaohuohumax/miaoji-util'
-import { i18nt } from '~/i18n'
+import { t } from '~/i18n'
 
 class MetaAPI extends Meta {
   private sts: { [key in string]?: number } = {}
@@ -16,7 +16,7 @@ class MetaAPI extends Meta {
     this.octokit.hook.error('request', (error) => {
       const e = error as RequestError
       if (e.status === 500 && error.message.includes('Failed to fetch')) {
-        this.printMessage(i18nt('api.error.network'))
+        this.printMessage(t('api.error.network'))
       }
       else if (e.response) {
         this.handleError(e.response as OctokitResponse<{ message: string }>)
@@ -29,20 +29,20 @@ class MetaAPI extends Meta {
   handleError(response: OctokitResponse<{ message: string }>) {
     switch (response.status) {
       case 401:
-        this.printMessage(i18nt('api.error.unauthorized'))
+        this.printMessage(t('api.error.unauthorized'))
         return
       case 403:
         if (response.data.message && response.data.message.includes('API rate limit')) {
-          this.printMessage(i18nt('api.error.rateLimit'))
+          this.printMessage(t('api.error.rateLimit'))
           return
         }
-        this.printMessage(i18nt('api.error.forbidden'))
+        this.printMessage(t('api.error.forbidden'))
         return
       case 404:
-        this.printMessage(i18nt('api.error.notFound'))
+        this.printMessage(t('api.error.notFound'))
         return
       case 422:
-        this.printMessage(i18nt('api.error.unprocessableEntity'))
+        this.printMessage(t('api.error.unprocessableEntity'))
     }
   }
 

@@ -3,7 +3,6 @@ import awaitTo from 'await-to-js'
 import { NButton, NEmpty, NFlex, NIcon } from 'naive-ui'
 import { ref } from 'vue'
 import appConfig from '~/app.config'
-import { useI18n } from '~/i18n'
 import { IAperture, IMinusCircle } from '~/icons'
 
 export type State = 'init' | 'loading' | 'error' | 'more' | 'over' | 'empty'
@@ -23,7 +22,6 @@ const props = withDefaults(defineProps<{
   state: 'init',
 })
 
-const { t } = useI18n()
 const datas = defineModel<D[]>('datas', { default: () => [] })
 const page = ref(1)
 const s = ref<State>(props.state)
@@ -76,19 +74,19 @@ defineExpose({
     <div v-else-if="s === 'error'" @click="queryPages(0)">
       <slot name="error">
         <NButton class="w-full" secondary type="warning">
-          {{ t('component.loadPages.retry') }}
+          {{ $t('component.loadPages.retry') }}
         </NButton>
       </slot>
     </div>
     <div v-else-if="s === 'more'" @click="queryPages(1)">
       <slot name="more">
         <NButton class="w-full" secondary type="info">
-          {{ t('component.loadPages.more') }}
+          {{ $t('component.loadPages.more') }}
         </NButton>
       </slot>
     </div>
     <slot v-else-if="s === 'over'" name="over">
-      <NEmpty :description="t('component.loadPages.over')">
+      <NEmpty :description="$t('component.loadPages.over')">
         <template #icon>
           <NIcon>
             <IMinusCircle />

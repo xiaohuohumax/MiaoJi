@@ -5,12 +5,10 @@ import { NCard, NFlex, NGrid, NGridItem } from 'naive-ui'
 import type { Issue } from '~/api/module/issue'
 import issueApi from '~/api/module/issue'
 import appConfig from '~/app.config'
-import { useI18n } from '~/i18n'
 import { hasFuncLabel } from '~/util/label'
 import CPhotoCard from './components/CAlbumCard.vue'
 import CLoadPages from './components/CLoadPages.vue'
 
-const { t } = useI18n()
 async function queryPagesFunc(page: number, perPage: number): Promise<QueryFuncRes<Issue>> {
   const labels = [appConfig.funcLabels.album]
   const datas: Issue[] = []
@@ -46,7 +44,7 @@ async function queryPagesFunc(page: number, perPage: number): Promise<QueryFuncR
   <NFlex :vertical="true">
     <NCard size="small">
       <CSubTitle>
-        {{ t('page.album.title') }}
+        {{ $t('page.album.title') }}
       </CSubTitle>
     </NCard>
     <CLoadPages :query-pages-func="queryPagesFunc">

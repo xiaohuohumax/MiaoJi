@@ -2,7 +2,6 @@
 import awaitTo from 'await-to-js'
 import { NButton, NFlex, NIcon } from 'naive-ui'
 import { ref } from 'vue'
-import { useI18n } from '~/i18n'
 import { IAperture } from '~/icons'
 
 export type State = 'init' | 'loading' | 'error' | 'success'
@@ -14,7 +13,6 @@ const props = withDefaults(defineProps<{
   autoQuery: true,
 })
 
-const { t } = useI18n()
 const data = defineModel<D>('data')
 const state = ref<State>('init')
 
@@ -55,7 +53,7 @@ defineExpose({
     </slot>
     <slot v-else-if="state === 'error'" name="error">
       <NButton class="w-full" secondary type="warning" @click="queryData">
-        {{ t('component.loadData.retry') }}
+        {{ $t('component.loadData.retry') }}
       </NButton>
     </slot>
     <slot v-else-if="state === 'success'" name="success" :data="data as D" />

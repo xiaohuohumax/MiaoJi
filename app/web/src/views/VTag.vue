@@ -2,10 +2,8 @@
 import CSubTitle from '@/CSubTitle.vue'
 import CTags from '@/CTags.vue'
 import { NCard, NEmpty, NFlex } from 'naive-ui'
-import { useI18n } from '~/i18n'
 import { useAppStore } from '~/store/app'
 
-const { t } = useI18n()
 const appStore = useAppStore()
 </script>
 
@@ -13,7 +11,7 @@ const appStore = useAppStore()
   <NFlex :vertical="true">
     <NCard size="small">
       <CSubTitle>
-        {{ t('page.tag.title') }}
+        {{ $t('page.tag.title') }}
       </CSubTitle>
     </NCard>
     <NCard size="small">

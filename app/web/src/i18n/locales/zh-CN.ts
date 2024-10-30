@@ -1,8 +1,9 @@
+import type { DefineLocaleMessage } from 'vue-i18n'
 import { dateZhCN, zhCN } from 'naive-ui'
 
-const lng: I18nSchema = {
+const lang: DefineLocaleMessage = {
   meta: {
-    name: 'zh-CN',
+    lang: 'zh-CN',
     description: '中文',
   },
   common: {
@@ -88,4 +89,4 @@ const lng: I18nSchema = {
   },
 }
 
-export default lng
+export default lang

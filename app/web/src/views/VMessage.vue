@@ -2,10 +2,10 @@
 import CSubTitle from '@/CSubTitle.vue'
 import { NCard, NFlex, useMessage } from 'naive-ui'
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import type { Issue } from '~/api/module/issue'
 import issueApi from '~/api/module/issue'
 import appConfig from '~/app.config'
-import { useI18n } from '~/i18n'
 import CMarkdown from '~/views/components/CMarkdown.vue'
 import CReactions from '~/views/components/CReactions.vue'
 import CComment from './components/CComment.vue'
@@ -33,7 +33,7 @@ async function queryDataFunc(): Promise<Issue> {
     <NFlex :vertical="true">
       <NCard size="small">
         <CSubTitle>
-          {{ t('page.message.title') }}
+          {{ $t('page.message.title') }}
         </CSubTitle>
       </NCard>
       <NCard size="small">

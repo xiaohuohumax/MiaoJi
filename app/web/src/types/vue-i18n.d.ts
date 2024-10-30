@@ -1,10 +1,11 @@
 import type { ResourcePath } from '@intlify/core-base'
 import type { NDateLocale, NLocale } from 'naive-ui'
 
-declare global {
-  interface I18nSchema {
+declare module 'vue-i18n' {
+
+  interface I18nLocaleMessage {
     meta: {
-      name: string
+      lang: string
       description: string
     }
     common: {
@@ -89,7 +90,8 @@ declare global {
       dateLocale: NDateLocale
     }
   }
-  type I18nSchemaKey = ResourcePath<I18nSchema>
-}
 
-export { }
+  export type I18nKeys = ResourcePath<I18nLocaleMessage>
+
+  export interface DefineLocaleMessage extends I18nLocaleMessage { }
+}

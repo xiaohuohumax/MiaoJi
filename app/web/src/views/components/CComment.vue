@@ -10,7 +10,6 @@ import { computed, nextTick, useTemplateRef, watch } from 'vue'
 import type { Comment } from '~/api/module/comment'
 import commentApi from '~/api/module/comment'
 import appConfig from '~/app.config'
-import { useI18n } from '~/i18n'
 import { hasFuncLabel } from '~/util/label'
 import CMarkdown from '~/views/components/CMarkdown.vue'
 import CLoadPages from './CLoadPages.vue'
@@ -20,7 +19,6 @@ const props = defineProps<{
   issue?: Issue | null
 }>()
 
-const { t } = useI18n()
 const isHidden = computed(() => props.issue && hasFuncLabel(props.issue.labels, appConfig.funcLabels.hiddenComment))
 const loadPagesRef = useTemplateRef<ComponentExposed<typeof CLoadPages>>('loadPagesRef')
 
@@ -51,17 +49,17 @@ watch(() => props.issue, () => {
   <NCard size="small">
     <NFlex :vertical="true">
       <CSubTitle>
-        {{ t('component.comment.title') }}
+        {{ $t('component.comment.title') }}
       </CSubTitle>
       <div v-if="isHidden" class="text-center">
-        {{ t('component.comment.hiddenComment') }}
+        {{ $t('component.comment.hiddenComment') }}
       </div>
       <CLoadPages v-else ref="loadPagesRef" :query-pages-func="queryPagesFunc" :auto-query="false" state="loading">
         <template #default="{ datas }">
           <NFlex :vertical="true">
             <CLink v-if="issue" :href="`${issue.html_url}#new_comment_field`" target="_blank">
               <NButton secondary class="w-full" type="info">
-                {{ t('component.comment.toComment') }}
+                {{ $t('component.comment.toComment') }}
               </NButton>
             </CLink>
             <NThing v-for="comment in datas" :key="comment.id">

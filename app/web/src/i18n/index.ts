@@ -1,27 +1,19 @@
-import { useI18n as _useI18n, createI18n } from 'vue-i18n'
+import type { DefineLocaleMessage } from 'vue-i18n'
+import { createI18n } from 'vue-i18n'
 
-export const lngList = Object.values<I18nSchema>(import.meta.glob('./locales/*.ts', {
+export const langs = Object.values<DefineLocaleMessage>(import.meta.glob('./locales/*.ts', {
   eager: true,
   import: 'default',
 }))
 
-const messages = <{ [key in string]: I18nSchema }>{}
-
-lngList.forEach(schema => messages[schema.meta.name] = schema)
-
-const i18n = createI18n<[I18nSchema], string>({
+const i18n = createI18n({
   locale: 'zh-CN',
-  fallbackLocale: 'zh-CN',
-  legacy: false,
-  messages,
+  messages: langs.reduce((acc, lang) => {
+    acc[lang.meta.lang] = lang
+    return acc
+  }, {} as Record<string, DefineLocaleMessage>),
 })
 
-export function i18nt(key: I18nSchemaKey) {
-  return i18n.global.t(key)
-}
-
-export function useI18n() {
-  return _useI18n<[I18nSchema], string>()
-}
+export const t = i18n.global.t.bind(i18n.global)
 
 export default i18n
