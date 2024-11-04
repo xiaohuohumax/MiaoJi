@@ -81,7 +81,6 @@ onBeforeRouteLeave(() => {
       <template #default="{ datas }">
         <NFlex :vertical="true">
           <CArticleCard v-for="issue in datas" :key="issue.number" :issue="issue" />
-          <div class="mt-4" />
         </NFlex>
       </template>
     </CLoadPages>

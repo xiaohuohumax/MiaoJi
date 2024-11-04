@@ -1,7 +1,7 @@
 <script setup lang='ts' generic="D">
 import awaitTo from 'await-to-js'
 import { NButton, NEmpty, NFlex, NIcon } from 'naive-ui'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import appConfig from '~/app.config'
 import { IAperture, IMinusCircle } from '~/icons'
 
@@ -59,11 +59,16 @@ defineExpose({
   init,
   queryPages,
 })
+
+const success = computed(() => {
+  const successState: State[] = ['loading', 'more', 'over']
+  return successState.includes(s.value) && datas.value.length > 0
+})
 </script>
 
 <template>
   <NFlex :vertical="true">
-    <slot :datas="datas" />
+    <slot v-if="success" :datas="datas" />
     <slot v-if="s === 'loading'" name="loading">
       <div class="text-center p-2">
         <NIcon :size="30">
